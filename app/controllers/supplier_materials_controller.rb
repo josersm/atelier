@@ -1,0 +1,2 @@
+class SupplierMaterialsController < ApplicationController
+end

@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  project: one
+  description: MyString
+  quantity_xs: 1
+  quantity_s: 1
+  quantity_m: 1
+  quantity_l: 1
+  quantity_xl: 1
+
+two:
+  project: two
+  description: MyString
+  quantity_xs: 1
+  quantity_s: 1
+  quantity_m: 1
+  quantity_l: 1
+  quantity_xl: 1
