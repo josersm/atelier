@@ -20,7 +20,6 @@ Supplier.create(
   price_rating: "€€€",
   sustainability_rating: "8.7",
   minimum_quantity: 150,
-  favourite: false
 )
 
 5.times do
@@ -34,7 +33,6 @@ Supplier.create(
     price_rating: ["€", "€€", "€€€"].sample,
     sustainability_rating: rand(1..10),
     minimum_quantity: rand(1..1000),
-    favourite: false
   )
 end
 
@@ -68,4 +66,14 @@ User.create(
   email: "oporto.manu@gmail.com",
   password: "123456",
   user_type: "supplier"
+)
+
+Favorite.create(
+  brand_id: Brand.first.id,
+  supplier_id: Supplier.first.id,
+)
+
+Favorite.create(
+  brand_id: Brand.first.id,
+  supplier_id: Supplier.second.id,
 )
