@@ -1,0 +1,8 @@
+<h1>L'atelier</h1>
+<div class="container">
+  <% @supplier.each do |suppliers| %>
+    <div class="card">
+      <%= link_to @suppliers.country, suppliers_path %>
+    </div>
+  <% end %>
+</div>
