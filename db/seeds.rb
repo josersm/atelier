@@ -23,6 +23,21 @@ Supplier.create(
   favourite: false
 )
 
+5.times do
+  Supplier.create(
+    name: Faker::Company.name,
+    address: Faker::Address.street_address,
+    description: Faker::Lorem.paragraph,
+    country: Faker::Address.country,
+    email: Faker::Internet.email,
+    phone_number: Faker::PhoneNumber.cell_phone,
+    price_rating: ["€", "€€", "€€€"].sample,
+    sustainability_rating: rand(1..10),
+    minimum_quantity: rand(1..1000),
+    favourite: false
+  )
+end
+
 Brand.create(
   company_name: "Amali",
   bic_number: "123456789",
@@ -31,6 +46,17 @@ Brand.create(
   country: "Spain",
   address: "Modesto Lafuente",
 )
+
+5.times do
+  Brand.create(
+    company_name: Faker::Company.name,
+    bic_number: Faker::Company.ein,
+    email: Faker::Internet.email,
+    contact_number: Faker::PhoneNumber.cell_phone,
+    country: Faker::Address.country,
+    address: Faker::Address.street_address,
+  )
+end
 
 User.create(
   email: "amali@amali.com",

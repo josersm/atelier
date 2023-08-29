@@ -1,9 +1,9 @@
 class SuppliersController < ApplicationController
-  
-  def new
-    @supplier = Supplier.new
+
+  def index
+    @suppliers = Supplier.all
   end
-  
+
   def show
   end
 
