@@ -1,0 +1,18 @@
+<h1>FIND YOUR SUPPLIER</h1>
+
+<div class="supplier-grid">
+  <% @suppliers.each do |supplier| %>
+    <div class="supplier-card">
+      <h2><%= supplier.name %></h2>
+      <p><%= suplier.address %></p>
+      <p><%= supplier.country %></p>
+      <p><%= supplier.email %></p>
+      <p><%= supplier.phone_Number %></p>
+      <p><%= supplier.price_rating %></p>
+      <p><%= supplier.sustainability_rating %></p>
+      <p><%= supplier.minimum_quantity %></p>
+      <%# create button to add to favourites %>
+      <%= link_to "Check supplier", supplier_path(supplier), class: "mr-2" %>
+    </div>
+  <% end %>
+</div>
