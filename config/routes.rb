@@ -14,11 +14,9 @@ Rails.application.routes.draw do
     resources :projects, only: [:new, :create, :update, :index, :show, :edit] do
       resources :products, only: [:create]
     end
-    resources :favourites, only: [:create]
   end
 
   resources :projects, only: [:destroy]
-  resources :favourites, only: [:destroy]
 
 
   resources :suppliers do
