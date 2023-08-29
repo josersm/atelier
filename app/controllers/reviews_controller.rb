@@ -1,10 +1,10 @@
 class ReviewsController < ApplicationController
-  # before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: [:new, :create]
 
-  # def new
-  #   @review = Review.new
-  #   @review.product_id = params[:product_id]
-  # end
+  def new
+    @review = Review.new
+    @review.product_id = params[:product_id]
+  end
 
   # def create
   #   @review = Review.new(review_params)

@@ -13,7 +13,7 @@ User.destroy_all
 Supplier.create(
   name: "Oporto manufacturing",
   address: "Oporto",
-  description: "",
+  description: "lalallala",
   country: "Portugal",
   email: "oporto.manu@gmail.com",
   phone_number: 123456789,
