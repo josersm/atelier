@@ -1,4 +1,5 @@
 class Brand < ApplicationRecord
+	belongs_to :user
   has_many :favorites
   has_many :projects
   has_many :reviews
