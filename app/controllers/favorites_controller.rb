@@ -1,14 +1,13 @@
 class FavoritesController < ApplicationController
-  before_action :authorize_brand!
 
-  class FavoritesController < ApplicationController
     def index
       @favorites = current_user.favorites
+    end
 
     def create
       @supplier = Supplier.find(params[:supplier_id])
       @favorite = Favorite.new(brand: current_user.brand, supplier: @supplier)
-
+      authorize @favorite
       if @favorite.save
         redirect_to supplier_path(@supplier), notice: 'Supplier has been added to favorites'
       else
@@ -21,8 +20,6 @@ class FavoritesController < ApplicationController
       @favorite.destroy
       redirect_to favorites_path, notice: 'Supplier has been removed from favorites'
     end
-
-  end
 
 
   private

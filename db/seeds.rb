@@ -37,20 +37,5 @@ Brand.create(
   contact_number: 123456789,
   country: "Spain",
   address: "Modesto Lafuente",
-		user: user_1
-)
-
-Favorite.create(
-  brand_id: Brand.first.id,
-  supplier_id: Supplier.first.id,
-)
-
-Favorite.create(
-  brand_id: Brand.first.id,
-  supplier_id: Supplier.second.id
-)
-
-Favorite.create(
-  brand_id: Brand.second.id,
-  supplier_id: Supplier.second.id
+	user: user_1
 )

@@ -1,5 +1,5 @@
 <%= link_to 'back', suppliers_path(@supplier) %>
-<%= link_to 'Add to Favorites', brand_favorites_path(@favorite) %>
+<%= link_to 'Add to Favorites',  supplier_favorites_path(@supplier, @favorite), data:{turbo_method: :post} %>
 
 
 
@@ -12,10 +12,7 @@
 
 <h2>Reviews</h2>
 
-<%= link_to brand_projects_path do %>
-  <h2>Submit form</h2>
-<% end %>
-
+<h2>Submit</h2>
 #link to new supplier button
 
 <h3> Map </h3>
