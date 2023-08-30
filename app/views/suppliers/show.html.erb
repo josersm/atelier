@@ -13,7 +13,31 @@
 
 <h2>Previous projects details</h2>
 
-<h2>Reviews</h2>
+
+<div class="review">
+  <h2> Reviews </h2>
+  <%= simple_form_for [@supplier, @review] do |f| %>
+    <%= f.input :comment %>
+    <%= f.input :rating, collection: Review::AUTHORIZED_RATINGS,
+                         include_blank: false %>
+    <%= f.submit class: "btn btn-primary", value: "submit" %>
+  <% end %>
+</div>
+
+
+<% if @supplier.reviews.exists? %>
+  <% @reviews.each do |review| %>
+    <div class="review">
+      <p><%= review.comment %></p>
+      <p><%= review.rating %></p>
+    </div>
+  <% end %>
+<% else %>
+  <p>No reviews yet</p>
+<% end %>
+
+
+
 
 <h2>Submit</h2>
 #link to new supplier button

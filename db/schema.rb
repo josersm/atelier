@@ -63,6 +63,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_30_120532) do
     t.bigint "supplier_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status"
     t.index ["brand_id"], name: "index_projects_on_brand_id"
     t.index ["supplier_id"], name: "index_projects_on_supplier_id"
   end

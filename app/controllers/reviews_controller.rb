@@ -1,28 +1,22 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
 
-  def new
-    @review = Review.new
-    @review.brand_id = params[:brand_id]
-    @review.supplier_id = params[:supplier_id]
-
-  end
-
   def create
+    @supplier = Supplier.find(params[:supplier_id])
     @review = Review.new(review_params)
-    @review.user_id = current_user.id
-    @review.supplier_id = params[:supplier_id]
+    @review.brand = current_user.brand
+    @review.supplier = @supplier
     authorize @review
     if @review.save
-      redirect_to suppliers_path(@supplier), notice: 'Review was successfully created.'
+      redirect_to supplier_path(@supplier), notice: 'Review was successfully created.'
     else
       render 'new'
     end
   end
 
-  # private
+  private
 
-  # def review_params
-  #   params.require(:review).permit(:rating, :comment)
-  # end
+  def review_params
+    params.require(:review).permit(:rating, :comment)
+  end
 end
