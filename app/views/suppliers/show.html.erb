@@ -1,7 +1,10 @@
+<%= link_to 'back', suppliers_path(@supplier) %>
+<% if current_user.brand.favorites.find_by(brand_id: current_user.brand) %>
+  <p>Already in favorites</p>
+<% else %>
+  <%= link_to 'Add to Favorites',  supplier_favorites_path(@supplier, @favorite), data:{turbo_method: :post} %>
+<% end %>
 
-<%= link_to suppliers_path, "back" %>
-
-# link to add to favorites
 
 
 <h1><%= @supplier.name %></h1>
@@ -10,9 +13,33 @@
 
 <h2>Previous projects details</h2>
 
-<h2>Reviews</h2>
 
-<h2>Submit form</h2>
+<div class="review">
+  <h2> Reviews </h2>
+  <%= simple_form_for [@supplier, @review] do |f| %>
+    <%= f.input :comment %>
+    <%= f.input :rating, collection: Review::AUTHORIZED_RATINGS,
+                         include_blank: false %>
+    <%= f.submit class: "btn btn-primary", value: "submit" %>
+  <% end %>
+</div>
+
+
+<% if @supplier.reviews.exists? %>
+  <% @reviews.each do |review| %>
+    <div class="review">
+      <p><%= review.comment %></p>
+      <p><%= review.rating %></p>
+    </div>
+  <% end %>
+<% else %>
+  <p>No reviews yet</p>
+<% end %>
+
+
+
+
+<h2>Submit</h2>
 #link to new supplier button
 
 <h3> Map </h3>
