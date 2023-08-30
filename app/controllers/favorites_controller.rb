@@ -3,11 +3,10 @@ class FavoritesController < ApplicationController
 
   class FavoritesController < ApplicationController
     def index
-      @favorites = current_user.favorites # Assuming you have a relationship between users and favorites
-    end
+      @favorites = current_user.favorites
 
     def create
-      @supplier = Supplier.find(params[:supplier_id]) # Use the correct parameter name, e.g., supplier_id
+      @supplier = Supplier.find(params[:supplier_id]) 
       @favorite = Favorite.new(brand: current_user.brand, supplier: @supplier)
 
       if @favorite.save
