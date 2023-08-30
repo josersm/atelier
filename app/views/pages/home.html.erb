@@ -1,8 +1,8 @@
 <h1>L'atelier</h1>
 <div class="container">
-  <% @supplier.each do |suppliers| %>
+  <% @suppliers.each do |supplier| %>
     <div class="card">
-      <%= link_to @suppliers.country, suppliers_path %>
+      <%= link_to supplier.country, suppliers_path %>
     </div>
   <% end %>
 </div>
