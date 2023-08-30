@@ -3,3 +3,4 @@ class PagesController < ApplicationController
     @suppliers = Supplier.all
   end
 end
+
