@@ -3,7 +3,9 @@ User.destroy_all
 Brand.destroy_all
 Supplier.destroy_all
 
+
 # 4 users for brands
+
 user_1 = User.create(
   email: "amali@amali.com",
   password: "123456",
