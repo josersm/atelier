@@ -44,13 +44,3 @@ Favorite.create(
   brand_id: Brand.first.id,
   supplier_id: Supplier.first.id,
 )
-
-Favorite.create(
-  brand_id: Brand.first.id,
-  supplier_id: Supplier.second.id
-)
-
-Favorite.create(
-  brand_id: Brand.second.id,
-  supplier_id: Supplier.second.id
-)
