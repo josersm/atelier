@@ -29,8 +29,23 @@ Supplier.create(
 	user: user_2
 )
 
-5.times do
+8.times do
   Supplier.create(
+    name: Faker::Company.name,
+    address: Faker::Address.street_address,
+    description: Faker::Lorem.paragraph,
+    country: Faker::Address.country,
+    email: Faker::Internet.email,
+    phone_number: Faker::PhoneNumber.cell_phone,
+    price_rating: ["€", "€€", "€€€"].sample,
+    sustainability_rating: rand(1..10),
+    minimum_quantity: rand(1..1000),
+		user: user_2
+  )
+end
+
+8.times do
+  User.create(
     name: Faker::Company.name,
     address: Faker::Address.street_address,
     description: Faker::Lorem.paragraph,
