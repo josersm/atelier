@@ -14,15 +14,14 @@ Rails.application.routes.draw do
     resources :projects, only: [:new, :create, :update, :index, :show, :edit] do
       resources :products, only: [:create]
     end
-    resources :favorites, only: [:index, :create, :destroy]
   end
 
   resources :projects, only: [:destroy]
-
+  resources :favorites, only: [:index, :destroy]
 
   resources :suppliers do
     resources :reviews, only: [:new, :create]
-		resources :favorites, only: [:index, :create, :destroy]
+		resources :favorites, only: [:create, :new]
   end
 
   resources :reviews, only: [:destroy]
