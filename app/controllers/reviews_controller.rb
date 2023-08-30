@@ -3,7 +3,7 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
-    @review.product_id = params[:product_id]
+    @review.brand_id = params[:brand_id]
   end
 
   # def create
