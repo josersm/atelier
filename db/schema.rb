@@ -1,4 +1,5 @@
 ActiveRecord::Schema[7.0].define(version: 2023_08_29_105426) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -11,6 +12,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_29_105426) do
     t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_brands_on_user_id"
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -85,6 +88,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_29_105426) do
     t.integer "minimum_quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_suppliers_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

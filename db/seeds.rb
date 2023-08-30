@@ -3,6 +3,19 @@ User.destroy_all
 Brand.destroy_all
 Supplier.destroy_all
 
+user_1 = User.create(
+  email: "amali@amali.com",
+  password: "123456",
+  user_type: "brand"
+)
+
+user_2 = User.create(
+  email: "oporto.manu@gmail.com",
+  password: "123456",
+  user_type: "supplier"
+)
+
+
 Supplier.create(
   name: "Oporto manufacturing",
   address: "Oporto",
@@ -13,6 +26,7 @@ Supplier.create(
   price_rating: "€€€",
   sustainability_rating: "8.7",
   minimum_quantity: 150,
+	user: user_2
 )
 
 5.times do
@@ -26,6 +40,7 @@ Supplier.create(
     price_rating: ["€", "€€", "€€€"].sample,
     sustainability_rating: rand(1..10),
     minimum_quantity: rand(1..1000),
+		user: user_2
   )
 end
 
@@ -36,6 +51,7 @@ Brand.create(
   contact_number: 123456789,
   country: "Spain",
   address: "Modesto Lafuente",
+		user: user_1
 )
 
 5.times do
@@ -46,20 +62,11 @@ Brand.create(
     contact_number: Faker::PhoneNumber.cell_phone,
     country: Faker::Address.country,
     address: Faker::Address.street_address,
+			user: user_1
   )
 end
 
-User.create(
-  email: "amali@amali.com",
-  password: "123456",
-  user_type: "brand"
-)
 
-User.create(
-  email: "oporto.manu@gmail.com",
-  password: "123456",
-  user_type: "supplier"
-)
 
 Favorite.create(
   brand_id: Brand.first.id,
