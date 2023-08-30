@@ -6,9 +6,11 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
+    @brand = current_user.brand
+    @project.brand = @brand
     authorize @project
     if @project.save
-      redirect_to @project, notice: "Form was successfully created."
+      redirect_to project_path(@project), notice: "Form was successfully created."
     else
       render :new
     end
@@ -17,10 +19,6 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(
-      :full_name, :company_name, :role, :bic_number, :contact_number,
-      :country, :contact_email, :address, :overall_specification,
-      :number_of_items, :dropdown
-    )
+    params.require(:project).permit(:title, :delivery_mode, :description)
   end
 end

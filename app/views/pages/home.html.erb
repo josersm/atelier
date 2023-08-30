@@ -1,8 +1,45 @@
-<h1>L'atelier</h1>
+<%# Title and banner %>
 <div class="container">
-  <% @suppliers.each do |supplier| %>
-    <div class="card">
-      <%= link_to supplier.country, suppliers_path %>
-    </div>
-  <% end %>
+  <h1>L'atelier</h1>
+  <img src="https://cdn.musebycl.io/2021-10/Burberry%20Open%20Spaces%20hed%202021_0.jpg" alt="banner">
 </div>
+
+<%# filter (add when luca is done) %>
+
+
+<%# cards of 8 countries %>
+<div class="container">
+  <div class="row">
+    <% @suppliers.each do |supplier| %>
+      <div class="col-sm-3">
+        <div class="card">
+          <%= link_to supplier.country, suppliers_path %>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/Color-white.JPG" alt="">
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+<%# about us  %>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="card-header">
+        <h2>What is L'Atelier?</h2>
+      </div>
+      <div class="card-body">
+        L'atelier is a The word “atelier” is defined as a workshop or studio, especially one used by an artist or designer. The word “atelier” is defined as a workshop or studio, especially one used by an artist or designer. It's a term infused with creativity, craftsmanship, and the essence of bringing ideas to life through skilled hands and innovative minds. This very essence encapsulates the vision and purpose of the new manufacturing startup, aptly named "L'atelier."
+        In an era where the fashion industry is a dynamic and ever-evolving landscape, L'atelier emerges as a bridge between clothing brands and manufacturers, seeking to revolutionise the way garments are conceptualised, created, and ultimately brought to the waiting arms of fashion enthusiasts worldwide. With a name that resonates deeply within the artistic and creative realms, the startup is set to redefine the manufacturing paradigm, turning it into a collaborative artistry that transcends mere production processes.
+        L'atelier not only pays homage to the rich tradition of craftsmanship but also reimagines it for the digital age. It recognises that every piece of clothing carries a story woven by the hands that craft it and the minds that envision it. By fostering connections between clothing brands and manufacturers, L'atelier reinvigorates the fashion ecosystem with a renewed spirit of collaboration, efficiency, and creativity. The name alone conveys the startup's commitment to merging the artistry of design with the precision of manufacturing.
+        As the fashion industry continues to grapple with challenges related to sustainability, ethical practices, and the demand for unique, high-quality pieces, L'atelier emerges as a beacon of hope. It promises a platform where brands can find manufacturers who share their values and aspirations, facilitating the creation of clothing that aligns with both aesthetic visions and responsible production practices.
+      </div>
+    </div>
+    <div class="col">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/Color-white.JPG" alt="">
+    </div>
+  </div>
+</div>
+
+<%# sustainability page ? %>

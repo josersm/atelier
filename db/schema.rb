@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_29_150313) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_30_120532) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "brands", force: :cascade do |t|
     t.string "company_name"
-    t.string "bic_number"
+    t.string "bic_number"  
     t.string "email"
     t.integer "contact_number"
     t.string "country"
@@ -60,11 +60,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_29_150313) do
     t.string "title"
     t.string "delivery_mode"
     t.bigint "brand_id", null: false
-    t.bigint "supplier_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "description"
     t.index ["brand_id"], name: "index_projects_on_brand_id"
-    t.index ["supplier_id"], name: "index_projects_on_supplier_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -120,7 +119,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_29_150313) do
   add_foreign_key "favorites", "suppliers"
   add_foreign_key "products", "projects"
   add_foreign_key "projects", "brands"
-  add_foreign_key "projects", "suppliers"
   add_foreign_key "reviews", "brands"
   add_foreign_key "reviews", "suppliers"
   add_foreign_key "supplier_materials", "materials"
