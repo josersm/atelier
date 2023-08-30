@@ -4,7 +4,7 @@ class SupplierPolicy < ApplicationPolicy
   end
 
   def show?
-    true  # or further restrict based on your requirements
+    true
   end
 
   def new?
@@ -25,7 +25,7 @@ class SupplierPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      scope.all  # Adjust this if there are specific scopes for suppliers based on the user.
+      scope.all
     end
   end
 end
