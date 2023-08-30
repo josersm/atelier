@@ -33,6 +33,8 @@ gem "simple_form"
 gem "sassc-rails"
 gem "devise"
 
+gem "dotenv-rails"
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
@@ -52,6 +54,7 @@ gem "bootsnap", require: false
 # gem "sassc-rails"
 
 gem 'faker'
+gem "geocoder"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
