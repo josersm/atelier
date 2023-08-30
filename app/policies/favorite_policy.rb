@@ -1,5 +1,7 @@
 class FavoritePolicy < ApplicationPolicy
-  def index?
-    record.brand.user == user
+  class Scope < Scope
+    def resolve
+      scope.all
+    end
   end
 end
