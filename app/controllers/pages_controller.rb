@@ -17,3 +17,4 @@ class PagesController < ApplicationController
 		# raise
   end
 end
+
