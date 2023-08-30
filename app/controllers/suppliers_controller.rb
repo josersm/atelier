@@ -1,10 +1,16 @@
 class SuppliersController < ApplicationController
-  
-  def new
-    @supplier = Supplier.new
-  end
-  
-  def show
+  before_action :authenticate_user!, except: [:index, :show]
+  def index
+    @suppliers = policy_scope(Supplier)
   end
 
+  def show
+    @supplier = Supplier.find(params[:id])
+    authorize @supplier
+  end
+
+  def new
+    @supplier = Supplier.new
+    authorize @supplier
+  end
 end

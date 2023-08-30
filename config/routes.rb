@@ -6,7 +6,6 @@ Rails.application.routes.draw do
 
   root to: "pages#home"
   get "/about_us", to: "pages#about_us"
-  get "/favourites", to: "pages#favourites"
   get "/dashboard", to: "pages#dashboard"
 
 
@@ -16,9 +15,17 @@ Rails.application.routes.draw do
     resources :products, only: [:create]
   end
 
+
+  resources :favorites do
+    collection do
+      get 'compare'
+    end
+  end
+
   resources :suppliers do
     resources :reviews, only: [:new, :create]
   end
+
 
   resources :reviews, only: [:destroy]
 
