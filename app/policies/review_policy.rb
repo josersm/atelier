@@ -4,6 +4,6 @@ class ReviewPolicy < ApplicationPolicy
   end
 
   def create?
-    !user.nil?
+    true
   end
 end
