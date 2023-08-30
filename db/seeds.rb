@@ -29,20 +29,6 @@ Supplier.create(
 	user: user_2
 )
 
-5.times do
-  Supplier.create(
-    name: Faker::Company.name,
-    address: Faker::Address.street_address,
-    description: Faker::Lorem.paragraph,
-    country: Faker::Address.country,
-    email: Faker::Internet.email,
-    phone_number: Faker::PhoneNumber.cell_phone,
-    price_rating: ["€", "€€", "€€€"].sample,
-    sustainability_rating: rand(1..10),
-    minimum_quantity: rand(1..1000),
-		user: user_2
-  )
-end
 
 Brand.create(
   company_name: "Amali",
@@ -53,20 +39,6 @@ Brand.create(
   address: "Modesto Lafuente",
 		user: user_1
 )
-
-5.times do
-  Brand.create(
-    company_name: Faker::Company.name,
-    bic_number: Faker::Company.ein,
-    email: Faker::Internet.email,
-    contact_number: Faker::PhoneNumber.cell_phone,
-    country: Faker::Address.country,
-    address: Faker::Address.street_address,
-			user: user_1
-  )
-end
-
-
 
 Favorite.create(
   brand_id: Brand.first.id,
