@@ -1,0 +1,8 @@
+<div class="compare-container">
+  <% @favorites_compare.each do |favorite| %>
+    <div class="supplier">
+      <%= favorite.supplier.name %>
+      <%# then we can add more info/styles %>
+    </div>
+  <% end %>
+</div>
