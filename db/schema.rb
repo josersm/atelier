@@ -16,7 +16,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_30_120532) do
 
   create_table "brands", force: :cascade do |t|
     t.string "company_name"
-    t.string "bic_number"  
+    t.string "bic_number"
     t.string "email"
     t.integer "contact_number"
     t.string "country"
@@ -62,6 +62,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_30_120532) do
     t.bigint "brand_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status"
     t.text "description"
     t.index ["brand_id"], name: "index_projects_on_brand_id"
   end
