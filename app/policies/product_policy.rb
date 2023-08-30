@@ -1,7 +1,4 @@
 class ProductPolicy < ApplicationPolicy
-  def index?
-    true
-  end
 
   def show?
     true
@@ -17,5 +14,11 @@ class ProductPolicy < ApplicationPolicy
 
   def destroy?
     record.user == user
+  end
+
+  class Scope < Scope
+    def resolve
+      scope.all
+    end
   end
 end
