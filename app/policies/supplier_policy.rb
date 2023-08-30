@@ -1,6 +1,6 @@
 class SupplierPolicy < ApplicationPolicy
   def show?
-    true  
+    true
   end
 
   def new?

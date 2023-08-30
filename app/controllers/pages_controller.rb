@@ -6,8 +6,8 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-		@brands = Brand.where(user: current_user)
-    @suppliers = Supplier.all
+		@brand = Brand.find(user: current_user)
+    @supplier = Supplier.where(user: current_user)
 		raise
   end
 end

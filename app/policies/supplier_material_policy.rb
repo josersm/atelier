@@ -1,4 +1,5 @@
 class SupplierMaterialPolicy < ApplicationPolicy
+
   def show?
     true
   end
