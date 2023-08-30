@@ -3,6 +3,7 @@ User.destroy_all
 Brand.destroy_all
 Supplier.destroy_all
 
+users =  [user_1, ]
 user_1 = User.create(
   email: "amali@amali.com",
   password: "123456",
@@ -40,20 +41,6 @@ Supplier.create(
 	user: user_2
 )
 
-8.times do
-  Supplier.create(
-    name: Faker::Company.name,
-    address: Faker::Address.street_address,
-    description: Faker::Lorem.paragraph,
-    country: Faker::Address.country,
-    email: Faker::Internet.email,
-    phone_number: Faker::PhoneNumber.cell_phone,
-    price_rating: ["€", "€€", "€€€"].sample,
-    sustainability_rating: rand(1..10),
-    minimum_quantity: rand(1..1000),
-		user: user_2
-  )
-end
 Supplier.create(
   name: "Oporto manufacturing",
   address: "Oporto",
@@ -66,22 +53,6 @@ Supplier.create(
   minimum_quantity: 150,
 	user: user_3
 )
-
-
-8.times do
-  User.create(
-    name: Faker::Company.name,
-    address: Faker::Address.street_address,
-    description: Faker::Lorem.paragraph,
-    country: Faker::Address.country,
-    email: Faker::Internet.email,
-    phone_number: Faker::PhoneNumber.cell_phone,
-    price_rating: ["€", "€€", "€€€"].sample,
-    sustainability_rating: rand(1..10),
-    minimum_quantity: rand(1..1000),
-		user: user_2
-  )
-end
 
 Brand.create(
   company_name: "Amali",
@@ -100,8 +71,12 @@ Brand.create(
   contact_number: 123456789,
   country: "Spain",
   address: "Modesto Lafuente",
-		user: user_4
+	user: user_4
 )
+
+4.times do |count|
+  puts "this is the count #{count}"
+end
 
 Favorite.create(
   brand_id: Brand.first.id,
