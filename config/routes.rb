@@ -28,4 +28,6 @@ Rails.application.routes.draw do
   resources :reviews, only: [:destroy]
 
   resources :supplier_materials, only: [:create, :new]
+
+  resources :favorites, only: [:index, :create, :destroy]
 end
