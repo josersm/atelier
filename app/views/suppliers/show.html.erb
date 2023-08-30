@@ -1,6 +1,9 @@
 <%= link_to 'back', suppliers_path(@supplier) %>
-<%= link_to 'Add to Favorites',  supplier_favorites_path(@supplier, @favorite), data:{turbo_method: :post} %>
-
+<% if current_user.brand.favorites.find_by(brand_id: current_user.brand) %>
+  <p>Already in favorites</p>
+<% else %>
+  <%= link_to 'Add to Favorites',  supplier_favorites_path(@supplier, @favorite), data:{turbo_method: :post} %>
+<% end %>
 
 
 
