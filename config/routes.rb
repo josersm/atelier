@@ -17,7 +17,11 @@ Rails.application.routes.draw do
   end
 
   resources :projects, only: [:destroy]
-  resources :favorites, only: [:index, :destroy]
+  resources :favorites, only: [:index, :destroy] do
+    collection do
+      get 'compare'
+    end
+  end
 
   resources :suppliers do
     resources :reviews, only: [:new, :create]
