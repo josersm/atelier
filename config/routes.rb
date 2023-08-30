@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   get "/about_us", to: "pages#about_us"
   get "/dashboard", to: "pages#dashboard"
 
-  resources :brands
+
+  resources :brands, only: [:new, :create, :edit, :update, :destroy]
 
   resources :projects do
     resources :products, only: [:create]
