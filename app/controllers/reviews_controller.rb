@@ -4,21 +4,20 @@ class ReviewsController < ApplicationController
   def new
     @review = Review.new
     @review.brand_id = params[:brand_id]
-    @review.product_id = params[:product_id]
-    authorize @review
+    @review.supplier_id = params[:supplier_id]
 
   end
 
   def create
+    @review = Review.new(review_params)
+    @review.user_id = current_user.id
+    @review.supplier_id = params[:supplier_id]
     authorize @review
-  #   @review = Review.new(review_params)
-  #   @review.user_id = current_user.id
-  #   @review.product_id = params[:product_id]
-  #   if @review.save
-  #     redirect_to product_path(@review.product_id)
-  #   else
-  #     render 'new'
-  #   end
+    if @review.save
+      redirect_to suppliers_path(@supplier), notice: 'Review was successfully created.'
+    else
+      render 'new'
+    end
   end
 
   # private

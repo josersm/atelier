@@ -5,6 +5,7 @@ class SuppliersController < ApplicationController
   end
 
   def show
+    @favorite = Favorite.new
     @supplier = Supplier.find(params[:id])
     authorize @supplier
   end
