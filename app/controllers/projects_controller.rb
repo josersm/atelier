@@ -1,10 +1,12 @@
 class ProjectsController < ApplicationController
-def new
-@project = Project.new
-end
+  def new
+    @project = Project.new
+    authorize @project
+  end
 
   def create
     @project = Project.new(project_params)
+    authorize @project
     if @project.save
       redirect_to @project, notice: "Form was successfully created."
     else

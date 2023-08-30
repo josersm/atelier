@@ -4,9 +4,13 @@ class ReviewsController < ApplicationController
   def new
     @review = Review.new
     @review.brand_id = params[:brand_id]
+    @review.product_id = params[:product_id]
+    authorize @review
+
   end
 
-  # def create
+  def create
+    authorize @review
   #   @review = Review.new(review_params)
   #   @review.user_id = current_user.id
   #   @review.product_id = params[:product_id]
@@ -15,7 +19,7 @@ class ReviewsController < ApplicationController
   #   else
   #     render 'new'
   #   end
-  # end
+  end
 
   # private
 
