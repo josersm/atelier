@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 class ApplicationPolicy
   attr_reader :user, :record
 
@@ -33,6 +32,10 @@ class ApplicationPolicy
   end
 
   def destroy?
+    false
+  end
+
+  def compare?
     false
   end
 
