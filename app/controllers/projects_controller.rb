@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   def new
-		raise
+		# raise
     @project = Project.new
     authorize @project
   end
