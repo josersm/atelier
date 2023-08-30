@@ -6,18 +6,17 @@ Rails.application.routes.draw do
 
   root to: "pages#home"
   get "/about_us", to: "pages#about_us"
-  get "/favourites", to: "pages#favourites"
   get "/dashboard", to: "pages#dashboard"
 
 
-  resources :brands do
-    resources :projects, only: [:new, :create, :update, :index, :show, :edit] do
-      resources :products, only: [:create]
-    end
+  resources :brands
+
+  resources :projects do
+    resources :products, only: [:create]
   end
 
-  resources :projects, only: [:destroy]
-  resources :favorites, only: [:index, :destroy] do
+
+  resources :favorites do
     collection do
       get 'compare'
     end
@@ -27,6 +26,7 @@ Rails.application.routes.draw do
     resources :reviews, only: [:new, :create]
 		resources :favorites, only: [:create]
   end
+
 
   resources :reviews, only: [:destroy]
 
