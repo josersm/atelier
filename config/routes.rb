@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :brands, only: [:new, :create, :edit, :update, :destroy]
 
   resources :projects do
-    resources :products, only: [:create]
+    resources :products, only: [:create, :index, :show]
   end
 
 

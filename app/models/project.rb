@@ -1,6 +1,5 @@
 class Project < ApplicationRecord
   belongs_to :brand
-  belongs_to :supplier
   has_many :products
 
   STATUS = [
@@ -11,5 +10,4 @@ class Project < ApplicationRecord
 		"start of the production",
 		"delivery of the production"
 	]
-  validates :user_type, inclusion: { in: STATUS }
 end
