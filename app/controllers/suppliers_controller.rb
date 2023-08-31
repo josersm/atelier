@@ -44,4 +44,29 @@ class SuppliersController < ApplicationController
     @supplier = Supplier.new
     authorize @supplier
   end
+
+  def edit
+    @supplier = Supplier.find(params[:id])
+    authorize @supplier
+  end
+
+  def update
+    @supplier = Supplier.find(params[:id])
+    @supplier.update(supplier_params)
+    authorize @supplier
+    redirect_to supplier_path(@supplier)
+  end
+
+  def destroy
+    @supplier = Supplier.find(params[:id])
+    @supplier.destroy
+    authorize @supplier
+    redirect_to suppliers_path
+  end
+
+  private
+
+  def supplier_params
+    params.require(:supplier).permit(:name, :address, :description, :country, :email, :phone_number, :price_rating, :sustainability_rating, :minimum_quantity, :photo)
+  end
 end
