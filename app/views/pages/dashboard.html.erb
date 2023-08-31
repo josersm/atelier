@@ -1,4 +1,5 @@
-<% if Brand.where(user: current_user).any? && Supplier.where(user: current_user).any? %>
+<%# raise %>
+<% if Brand.where(user: current_user).any? || Supplier.where(user: current_user).any? %>
 
 	<%= "there's a user in Brand / Supplier, that has this user_type:" %>
 	<%= current_user.user_type %>

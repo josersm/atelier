@@ -24,7 +24,8 @@ class SuppliersController < ApplicationController
     @supplier.user = current_user # save the foreign key
 		authorize @supplier
     if @supplier.save
-      redirect_to dashboard_path(@supplier)
+      # redirect_to dashboard_path(@supplier)
+      redirect_to dashboard_path
     else # should ask Isa about else condition
       render :new, status: :unprocessable_entity
     end

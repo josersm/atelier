@@ -10,7 +10,8 @@ class BrandsController < ApplicationController
     @brand.user = current_user # save the foreign key
 		authorize @brand
     if @brand.save
-      redirect_to dashboard_path(@brand)
+      # redirect_to dashboard_path(@brand)
+      redirect_to dashboard_path
     else # should ask Isa about else condition
       render :new, status: :unprocessable_entity
     end
