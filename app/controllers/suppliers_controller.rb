@@ -6,20 +6,7 @@ class SuppliersController < ApplicationController
     @suppliers = policy_scope(Supplier)
 
     @suppliers = Supplier.all
-    @markers = @suppliers.geocoded.map do |supplier|
-      {
-        lat: flat.latitude,
-        lng: flat.longitude
-      }
-    end
 
-    # @markers = @suppliers.geocoded.map do |supplier|
-    #   {
-    #     lat: supplier.latitude,
-    #     lng: supplier.longitude,
-    #     info_window_html: render_to_string(partial: "info_window", locals: { supplier: supplier })
-    #   }
-    end
   end
 
   def show
@@ -28,7 +15,12 @@ class SuppliersController < ApplicationController
 
     @review = Review.new
     @reviews = @supplier.reviews
+    @markers = [{
+      lat: @supplier.latitude,
+      lng: @supplier.longitude
+    }]
     authorize @supplier
+
   end
 
   def new
