@@ -1,3 +1,4 @@
+Project.destroy_all
 Favorite.destroy_all
 User.destroy_all
 Brand.destroy_all
