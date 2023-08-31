@@ -245,3 +245,9 @@ Favorite.create(
   brand_id: Brand.second.id,
   supplier_id: Supplier.second.id,
 )
+
+materials = ["cotton", "polyester", "cashmere", "linen", "Silk", "Wool", "Leather", "Denim", "Velvet", "Nylon", "Spandex", "Rayon", "Satin", "Chiffon", "Tulle", "Fleece", "Tweed", "Corduroy", "Lace", "Suede", "Jacquard", "Chambray", "Organza"]
+
+materials.each do |material_name|
+Material.create!(name: material_name)
+end

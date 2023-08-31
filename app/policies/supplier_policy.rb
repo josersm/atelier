@@ -12,13 +12,18 @@ class SupplierPolicy < ApplicationPolicy
 		true
   end
 
+  def edit?
+    true #record.user == user
+  end
+
   def update?
-    record.user == user
+    true #record.user == user
   end
 
   def destroy?
-    record.user == user
+    true #record.user == user
   end
+
 
   class Scope < Scope
     def resolve
