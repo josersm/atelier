@@ -53,6 +53,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_31_103052) do
     t.integer "quantity_xl"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
     t.index ["project_id"], name: "index_products_on_project_id"
   end
 
