@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'registrations' }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # Defines the root path route ("/")
   # root "articles#index"
@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get "/dashboard", to: "pages#dashboard"
 
 
-  resources :brands
+  resources :brands, only: [:new, :create, :edit, :update, :destroy]
 
   resources :projects do
     resources :products, only: [:create]
