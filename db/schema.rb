@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema[7.0].define(version: 2023_08_30_151709) do
-=======
 ActiveRecord::Schema[7.0].define(version: 2023_08_30_153835) do
->>>>>>> 91c29a3068e0959c73d54ecd5533545de8c8cc2f
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -39,15 +35,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_30_153835) do
     t.index ["brand_id", "supplier_id"], name: "index_favorites_on_brand_id_and_supplier_id", unique: true
     t.index ["brand_id"], name: "index_favorites_on_brand_id"
     t.index ["supplier_id"], name: "index_favorites_on_supplier_id"
-  end
-
-  create_table "favourites", force: :cascade do |t|
-    t.bigint "brand_id", null: false
-    t.bigint "supplier_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["brand_id"], name: "index_favourites_on_brand_id"
-    t.index ["supplier_id"], name: "index_favourites_on_supplier_id"
   end
 
   create_table "materials", force: :cascade do |t|
@@ -120,15 +107,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_30_153835) do
     t.index ["user_id"], name: "index_suppliers_on_user_id"
   end
 
-  create_table "tags", force: :cascade do |t|
-    t.bigint "material_id", null: false
-    t.bigint "supplier_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["material_id"], name: "index_tags_on_material_id"
-    t.index ["supplier_id"], name: "index_tags_on_supplier_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -144,14 +122,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_30_153835) do
 
   add_foreign_key "favorites", "brands"
   add_foreign_key "favorites", "suppliers"
-  add_foreign_key "favourites", "brands"
-  add_foreign_key "favourites", "suppliers"
   add_foreign_key "products", "projects"
   add_foreign_key "projects", "brands"
   add_foreign_key "reviews", "brands"
   add_foreign_key "reviews", "suppliers"
   add_foreign_key "supplier_materials", "materials"
   add_foreign_key "supplier_materials", "suppliers"
-  add_foreign_key "tags", "materials"
-  add_foreign_key "tags", "suppliers"
 end

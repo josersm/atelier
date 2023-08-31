@@ -109,12 +109,9 @@ GEM
     faker (3.2.1)
       i18n (>= 1.8.11, < 2)
     ffi (1.15.5)
-<<<<<<< HEAD
-    geocoder (1.8.2)
-=======
     font-awesome-sass (6.4.2)
       sassc (~> 2.0)
->>>>>>> 91c29a3068e0959c73d54ecd5533545de8c8cc2f
+    geocoder (1.8.2)
     globalid (1.1.0)
       activesupport (>= 5.0)
     i18n (1.14.1)
@@ -274,11 +271,8 @@ DEPENDENCIES
   devise
   dotenv-rails
   faker
-<<<<<<< HEAD
-  geocoder
-=======
   font-awesome-sass (~> 6.1)
->>>>>>> 91c29a3068e0959c73d54ecd5533545de8c8cc2f
+  geocoder
   importmap-rails
   jbuilder
   pg (~> 1.1)
