@@ -7,6 +7,7 @@ pin "@hotwired/stimulus-loading", to: "stimulus-loading.js", preload: true
 pin_all_from "app/javascript/controllers", under: "controllers"
 pin "bootstrap", to: "https://ga.jspm.io/npm:bootstrap@5.3.1/dist/js/bootstrap.esm.js"
 pin "@popperjs/core", to: "https://unpkg.com/@popperjs/core@2.11.2/dist/esm/index.js"
+<<<<<<< HEAD
 pin "mapbox-gl", to: "https://ga.jspm.io/npm:mapbox-gl@2.15.0/dist/mapbox-gl.js"
 pin "process", to: "https://ga.jspm.io/npm:@jspm/core@2.0.1/nodelibs/browser/process-production.js"
 pin "@mapbox/mapbox-gl-geocoder", to: "https://ga.jspm.io/npm:@mapbox/mapbox-gl-geocoder@5.0.1/lib/index.js"
@@ -25,3 +26,7 @@ pin "nanoid", to: "https://ga.jspm.io/npm:nanoid@3.3.6/index.browser.js"
 pin "subtag", to: "https://ga.jspm.io/npm:subtag@0.5.0/subtag.js"
 pin "suggestions", to: "https://ga.jspm.io/npm:suggestions@1.7.1/index.js"
 pin "xtend", to: "https://ga.jspm.io/npm:xtend@4.0.2/immutable.js"
+=======
+pin "ion-rangeslider", to: "https://ga.jspm.io/npm:ion-rangeslider@2.3.1/js/ion.rangeSlider.js"
+pin "jquery", to: "https://ga.jspm.io/npm:jquery@3.7.0/dist/jquery.js"
+>>>>>>> 3f0aa38cb45175836e01f2309796e523c306e291
