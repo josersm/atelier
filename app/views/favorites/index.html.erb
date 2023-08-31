@@ -9,5 +9,12 @@
     </div>
   <% end %>
 
+
   <%= submit_tag "Compare" %>
 <% end %>
+
+<h2>Add Product </h2>
+<div data-controller="button" class="mt-5">
+  <button class="btn btn-outline-primary">Add a new product</button>
+  <%= render "form", product: @product %>
+</div>

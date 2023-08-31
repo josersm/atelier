@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_30_120532) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_31_100406) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "brands", force: :cascade do |t|
     t.string "company_name"
-    t.string "bic_number"  
+    t.string "bic_number"
     t.string "email"
     t.integer "contact_number"
     t.string "country"
@@ -53,6 +53,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_30_120532) do
     t.integer "quantity_xl"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
     t.index ["project_id"], name: "index_products_on_project_id"
   end
 
@@ -63,6 +64,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_30_120532) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "description"
+    t.string "status"
     t.index ["brand_id"], name: "index_projects_on_brand_id"
   end
 
