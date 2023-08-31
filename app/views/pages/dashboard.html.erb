@@ -1,25 +1,53 @@
-<%= @user %>
-<%# @user.first.project %>
-<%# raise %>
+<% if Brand.where(user: current_user).any? && Supplier.where(user: current_user).any? %>
 
-<div class="content">
-	<div class="sidebar">
-		<div id="add-production"></div>
-		<div id="dashboard"></div>
-		<div id="projects"></div>
-		<div id="messages"></div>
-		<div id="favorites"></div>
-	</div>
-	<div class="main">
-		<div id="my-productions">
-			<div class="my-production"></div>
-			<div class="my-production"></div>
-			<div class="my-production"></div>
-			<div class="my-production"></div>
+	<%= "there's a user in Brand / Supplier, that has this user_type:" %>
+	<%= current_user.user_type %>
+	<%= "there's a user in Brand / Supplier, that has this user_type:" %>
+	<%= current_user.user_type %>
+
+
+	<div class="container mt-4">
+		<div class="row">
+			<div class="col-6 m-auto">
+				<div class="flat-form">
+
+				<% user_type = current_user.user_type == "brand" ? "Brand" : "Supplier"  %>
+
+					<h1>Panel for a <%= user_type %></h1>
+
+					<div class="mt-3">
+
+
+						<%= render "pages/partial/panel" %>
+
+					</div>
+					<%= link_to "Back to Homepage",
+					root_path
+					%>
+				</div>
+			</div>
 		</div>
-		<div id="status">
-			<div class="active-productions"></div>
-			<div class="unread-messages"></div>
+	</div>
+
+<% else %>
+
+	<div class="container mt-4">
+		<div class="row">
+			<div class="col-6 m-auto">
+				<div class="flat-form">
+
+				<% user_type = current_user.user_type == "brand" ? "Brand" : "Supplier"  %>
+					<h1>Add a new <%= user_type %></h1>
+
+					<div class="mt-3">
+						<%= render "pages/partial/form", label: "create" %>
+					</div>
+					<%= link_to "Back to Homepage",
+					root_path
+					%>
+				</div>
+			</div>
 		</div>
 	</div>
-</div>
+
+<% end %>

@@ -1,0 +1,32 @@
+<% if @user.user_type == "brand" %>
+	<%# <% @brand = Brand.new %>
+<%# raise %>
+	<%= simple_form_for Brand.new do |f| %>
+  <%= f.input :company_name %>
+  <%= f.input :bic_number %>
+  <%= f.input :email %>
+  <%= f.input :contact_number %>
+  <%# <%= f.input :country %>
+  <%= f.input :address %>
+  <%= f.submit label, class: "btn btn-primary" %>
+	<% end %>
+
+	<%# <%= raise %>
+<% else %>
+
+	<%# <% @supplier = Supplier.new %>
+
+	<%= simple_form_for Supplier.new do |f| %>
+  <%= f.input :name %>
+  <%= f.input :address %>
+  <%= f.input :description %>
+  <%# <%= f.input :country %>
+  <%= f.input :email %>
+  <%= f.input :phone_number %>
+  <%= f.input :price_rating %>
+  <%= f.input :sustainability_rating %>
+  <%= f.input :minimum_quantity %>
+  <%= f.submit label, class: "btn btn-primary" %>
+	<% end %>
+
+<% end %>

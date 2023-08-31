@@ -8,7 +8,8 @@ class SupplierPolicy < ApplicationPolicy
   end
 
   def create?
-    !user.nil?
+    # !user.nil?
+		true
   end
 
   def update?
