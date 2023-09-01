@@ -1,3 +1,4 @@
+Project.destroy_all
 Favorite.destroy_all
 User.destroy_all
 Brand.destroy_all
@@ -7,7 +8,7 @@ Supplier.destroy_all
 # 4 users for brands
 
 user_1 = User.create(
-  email: "amali@amali.com",
+  email: "tasi",
   password: "123456",
   user_type: "brand"
 )

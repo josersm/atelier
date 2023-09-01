@@ -1,7 +1,7 @@
 class ProjectPolicy < ApplicationPolicy
 
   def show?
-    record.user == user
+    true
   end
 
   def create?
@@ -18,7 +18,7 @@ class ProjectPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      scope.all
+      scope.where(brand_id: user.brand)
     end
   end
 end

@@ -26,6 +26,8 @@ class SuppliersController < ApplicationController
     end
   end
 
+
+
   def show
     @favorite = Favorite.new
     @supplier = Supplier.find(params[:id])
@@ -43,6 +45,18 @@ class SuppliersController < ApplicationController
   def new
     @supplier = Supplier.new
     authorize @supplier
+  end
+
+  def create
+    @supplier = Supplier.new(supplier_params)
+    @supplier.user = current_user # save the foreign key
+		authorize @supplier
+    if @supplier.save
+      # redirect_to dashboard_path(@supplier)
+      redirect_to dashboard_path
+    else # should ask Isa about else condition
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def edit

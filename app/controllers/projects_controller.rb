@@ -13,17 +13,29 @@ class ProjectsController < ApplicationController
     if @project.save
       redirect_to dashboard_path(@project), notice: "Form was successfully created."
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
+
   def update
     @project = Project.find(params[:id])
+  end
+    
+  def show
+    @project = Project.find(params[:id])
+    @product = Product.new
+    @brand = @project.brand
+    authorize @project
+  end
+
+  def index
+    @projects = policy_scope(Project)
   end
 
   private
 
   def project_params
-    params.require(:project).permit(:title, :delivery_mode, :description)
+    params.require(:project).permit(:title, :delivery_mode, :description, :status)
   end
 end

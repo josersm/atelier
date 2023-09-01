@@ -18,6 +18,10 @@
     <%= f.text_area :description, rows: 4 %>
   </div>
 
+<div>
+  <%= f.label :status %>
+  <%= f.select :status, options_for_select(['start samples','delivery and comment of samples', 'samples accepted', 'start of the production', 'delivery of the production']) %>
+</div>
 
   <div>
     <%= f.submit "Create Project" %>
