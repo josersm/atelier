@@ -1,0 +1,8 @@
+<% if Supplier.where(user: current_user) %>
+<% supplier = Supplier.where(user: current_user) %>
+<%# <%= raise %>
+<%# Project.where(supplier_id: supplier.id) %>
+<%= "case of supplier" %>
+<% else %>
+<%= "case of brand" %>
+<% end %>
