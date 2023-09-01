@@ -5,6 +5,11 @@ class BrandsController < ApplicationController
     @brands = policy_scope(Brand)
   end
 
+  def new
+    @brand = Brand.new
+    authorize @brand
+  end
+
   def create
     @brand = Brand.new(brand_params)
     @brand.user = current_user # save the foreign key
@@ -17,6 +22,20 @@ class BrandsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    @brand.update(brand_params)
+    authorize @brand
+    redirect_to brand_path(@brand)
+  end
+
+  def destroy
+    @brand.destroy
+    authorize @brand
+    redirect_to brands_path
+  end
 
   def set_brand
     @brand = Brand.find(params[:id])
