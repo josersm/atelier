@@ -1,8 +1,28 @@
 <% if Supplier.where(user: current_user).any? %>
-<%# supplier = Supplier.where(user: current_user) %>
-<%# raise %>
-<%# Project.where(supplier_id: supplier.id) %>
-<%= "case of supplier" %>
+	<%# supplier = Supplier.where(user: current_user) %>
+	<%# raise %>
+	<%# Project.where(supplier_id: supplier.id) %>
+	<%= "case of supplier" %>
+	<%# Supplier.where(user: current_user) %>
+	<%# Project.where(user: current_user).any? %>
+	<% supplier = Supplier.where(user: current_user) %>
+	<% projects = Project.where(supplier_id: supplier) %>
+	<%# raise %>
+
+	<% projects.each do |project| %>
+		<%= project.title %>
+	<% end %>
+
 <% else %>
-<%= "case of brand" %>
+	<%= "case of brand" %>
+	<% brand = Brand.where(user: current_user) %>
+	<% projects = Project.where(brand_id: brand) %>
+
+	<% projects.each do |project| %>
+		<%= project.title %>
+		<%= link_to "see all projects", project_path(project), class: "mr-2" %>
+	<% end %>
+	<%# raise %>
+			<%= link_to "Favorites", favorite_path(brand), class: "mr-2" %>
+
 <% end %>

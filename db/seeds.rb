@@ -245,3 +245,42 @@ Favorite.create(
   brand_id: Brand.second.id,
   supplier_id: Supplier.second.id,
 )
+
+materials = ["cotton", "polyester", "cashmere", "linen", "Silk", "Wool", "Leather", "Denim", "Velvet", "Nylon", "Spandex", "Rayon", "Satin", "Chiffon", "Tulle", "Fleece", "Tweed", "Corduroy", "Lace", "Suede", "Jacquard", "Chambray", "Organza"]
+
+materials.each do |material_name|
+Material.create!(name: material_name)
+end
+
+
+Project.create(
+  brand_id: Brand.first.id,
+	title: "my 1 project",
+	delivery_mode: "whatever mode",
+	description: "first description",
+	status: "request",
+)
+
+Project.create(
+  brand_id: Brand.first.id,
+	title: "my 2 project",
+	delivery_mode: "whatever mode",
+	description: "first description",
+	status: "request",
+)
+
+Project.create(
+  brand_id: Brand.first.id,
+	title: "my 3 project",
+	delivery_mode: "whatever mode",
+	description: "first description",
+	status: "request",
+)
+
+Project.create(
+  brand_id: Brand.first.id,
+	title: "my 5 project",
+	delivery_mode: "whatever mode",
+	description: "first description",
+	status: "request",
+)
