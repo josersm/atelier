@@ -1,0 +1,26 @@
+<div class="project-index">
+  <h1>Project Index</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Supplier ID</th>
+        <th>Description</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @projects.each do |project| %>
+        <tr>
+          <td><%= project.title %></td>
+          <td><%= project.brand.company_name %></td>
+          <td><%= project.brand.user.email %></td>
+          <td><%= project.supplier_id %></td>
+          <td><%= project.description %></td>
+          <td><%= project.status %></td>
+          <td><%= link_to "Check project", project_path(project), class: "mr-2" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
