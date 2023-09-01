@@ -15,7 +15,7 @@
     <% @suppliers.each do |supplier| %>
       <div class="col-sm-3">
         <div class="card">
-          <%= link_to supplier.country, suppliers_path %>
+          <%= link_to supplier.country, suppliers_path(country: supplier.country) %>
           <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/Color-white.JPG" alt="">
         </div>
       </div>
