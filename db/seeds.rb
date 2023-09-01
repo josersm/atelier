@@ -251,3 +251,36 @@ materials = ["cotton", "polyester", "cashmere", "linen", "Silk", "Wool", "Leathe
 materials.each do |material_name|
 Material.create!(name: material_name)
 end
+
+
+Project.create(
+  brand_id: Brand.first.id,
+	title: "my 1 project",
+	delivery_mode: "whatever mode",
+	description: "first description",
+	status: "request",
+)
+
+Project.create(
+  brand_id: Brand.first.id,
+	title: "my 2 project",
+	delivery_mode: "whatever mode",
+	description: "first description",
+	status: "request",
+)
+
+Project.create(
+  brand_id: Brand.first.id,
+	title: "my 3 project",
+	delivery_mode: "whatever mode",
+	description: "first description",
+	status: "request",
+)
+
+Project.create(
+  brand_id: Brand.first.id,
+	title: "my 5 project",
+	delivery_mode: "whatever mode",
+	description: "first description",
+	status: "request",
+)
