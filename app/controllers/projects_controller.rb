@@ -23,6 +23,10 @@ class ProjectsController < ApplicationController
     authorize @project
   end
 
+  def index
+    @projects = policy_scope(Project)
+  end
+
   private
 
   def project_params
