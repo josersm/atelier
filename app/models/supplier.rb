@@ -1,5 +1,5 @@
 class Supplier < ApplicationRecord
-	belongs_to :user
+  belongs_to :user
   has_many :favorites
   has_many :projects
   has_many :reviews
