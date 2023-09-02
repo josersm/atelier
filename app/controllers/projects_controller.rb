@@ -22,13 +22,14 @@ class ProjectsController < ApplicationController
     @brand = current_user.brand
     @project.brand = @brand
     authorize @project
+		# raise
     if @project.save
       redirect_to dashboard_path, notice: "Form was successfully created."
+      # redirect_to new_project_product(@project), notice: "Form was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
   end
-
 
   def update
     @project = Project.find(params[:id])
@@ -41,7 +42,7 @@ class ProjectsController < ApplicationController
 			:title,
 			:delivery_mode,
 			:description,
-			:supplier_id	,
+			:supplier_id,
 			:status
 		)
   end

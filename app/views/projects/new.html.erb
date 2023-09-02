@@ -1,7 +1,8 @@
-<h1> <%= @supplier.name %> </h1>
+<h1> <%# @supplier.name %> </h1>
 <h1>Create a project</h1>
 
 
+<%# raise %>
 <%= simple_form_for @project do |f| %>
   <div>
     <%= f.label :title %>
@@ -17,13 +18,19 @@
     <%= f.label :description %>
     <%= f.text_area :description, rows: 4 %>
   </div>
+
+  <div>
+    <%= f.label :supplier_id %>
+    <%= f.text_area :supplier_id %>
+  </div>
+
 	<%# raise %>
     <%= f.hidden_field :supplier_id, value: @supplier.id %>
 
-<div>
-  <%= f.label :status %>
-  <%= f.select :status, options_for_select(['pending','start samples','delivery and comment of samples', 'samples accepted', 'start of the production', 'delivery of the production']) %>
-</div>
+	<div>
+		<%= f.label :status %>
+		<%= f.select :status, options_for_select(['pending','start samples','delivery and comment of samples', 'samples accepted', 'start of the production', 'delivery of the production']) %>
+	</div>
 
   <div>
     <%= f.submit "Create Project" %>
