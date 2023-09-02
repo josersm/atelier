@@ -5,4 +5,5 @@ class Supplier < ApplicationRecord
   has_many :reviews
   has_many :supplier_materials
   has_many :favoriting_brands, through: :favorites, source: :brand
+  has_many :chatrooms
 end

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get "/dashboard", to: "pages#dashboard"
 
 
+
   resources :brands, only: [:new, :create, :edit, :update, :destroy]
 
   resources :projects do
@@ -25,6 +26,9 @@ Rails.application.routes.draw do
   resources :suppliers do
     resources :reviews, only: [:new, :create]
 		resources :favorites, only: [:create]
+    resources :chatrooms, only: :show do
+      resources :messages, only: :create
+    end
   end
 
 
