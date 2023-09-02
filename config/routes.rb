@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   root to: "pages#home"
   get "/about_us", to: "pages#about_us"
   get "/dashboard", to: "pages#dashboard"
+  get '/num_suppliers_worked_with', to: 'dashboard#num_suppliers_worked_with'
+  get '/num_projects_manufactured', to: 'dashboard#num_projects_manufactured'
+  get 'total_products_manufactured', to: 'dashboard#total_products_manufactured'
 
 
   resources :brands, only: [:new, :create, :edit, :update, :destroy] do
@@ -34,5 +37,6 @@ Rails.application.routes.draw do
   resources :reviews, only: [:destroy]
 
   resources :supplier_materials, only: [:create, :new]
+
 
 end
