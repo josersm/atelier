@@ -21,6 +21,7 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     @brand = current_user.brand
     @project.brand = @brand
+    @project.status = 'pending'
     authorize @project
 		# raise
     if @project.save
@@ -42,8 +43,9 @@ class ProjectsController < ApplicationController
 			:title,
 			:delivery_mode,
 			:description,
-			:supplier_id,
-			:status
+			:supplier_id
+			# ,
+			# :status
 		)
   end
 end

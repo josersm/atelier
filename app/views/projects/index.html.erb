@@ -15,12 +15,25 @@
     <tbody>
       <% @projects.each do |project| %>
 			<% supplier = Supplier.find(project.supplier_id) %>
+
+				<% total_units = 0 %>
+
+				<% project.products.each do |product| %>
+					<% total_units += product.quantity_xs.to_i +
+					product.quantity_s.to_i +
+					product.quantity_m.to_i +
+					product.quantity_l.to_i +
+					product.quantity_xl.to_i
+					%>
+
+				<% end %>
+
         <tr>
           <td><%= project.title %></td>
           <td><%= supplier.name %></td>
           <td><%= supplier.country %></td>
-          <td><%# project.products.count %></td>
-          <td><%# project.products.quantity_xs.count %></td>
+          <td><%= project.products.count %></td>
+          <td><%= total_units %></td>
           <td><%= project.status %></td>
           <td><%= project.updated_at %></td>
           <td><%= link_to "Check project", project_path(project), class: "mr-2" %></td>

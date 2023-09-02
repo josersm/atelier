@@ -4,10 +4,11 @@ class Project < ApplicationRecord
 
   STATUS = [
 		"pending",
-		"start samples",
-		"delivery and comment of samples",
-		"samples accepted",
-		"start of the production",
-		"delivery of the production"
+		"accepted",
+		"samples construction",
+		"delivery of samples",
+		"start of production",
+		"delivery of production"
 	]
+  validates :status, inclusion: { in: STATUS }
 end
