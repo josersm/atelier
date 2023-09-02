@@ -1,18 +1,15 @@
 <% if Supplier.where(user: current_user).any? %>
-	<%# supplier = Supplier.where(user: current_user) %>
-	<%# raise %>
-	<%# Project.where(supplier_id: supplier.id) %>
 	<%= "case of supplier" %>
-	<%# Supplier.where(user: current_user) %>
-	<%# Project.where(user: current_user).any? %>
 	<% supplier = Supplier.where(user: current_user) %>
 	<% projects = Project.where(supplier_id: supplier) %>
-	<%# raise %>
+
 
 	<% projects.each do |project| %>
+		<%= "project name:" %>
 		<%= project.title %>
 	<% end %>
-
+		<%= "project total:" %>
+		<%= project.count %>
 <% else %>
 	<%= "case of brand" %>
 	<% brand = Brand.where(user: current_user) %>
@@ -23,6 +20,6 @@
 		<%= link_to "see all projects", project_path(project), class: "mr-2" %>
 	<% end %>
 	<%# raise %>
-			<%= link_to "Favorites", favorite_path(brand), class: "mr-2" %>
+	<%= link_to "Favorites", favorites_path, class: "mr-2" %>
 
 <% end %>

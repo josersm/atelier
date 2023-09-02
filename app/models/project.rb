@@ -3,7 +3,7 @@ class Project < ApplicationRecord
   has_many :products
 
   STATUS = [
-		"request",
+		"pending",
 		"start samples",
 		"delivery and comment of samples",
 		"samples accepted",
