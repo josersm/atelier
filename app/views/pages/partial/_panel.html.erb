@@ -17,9 +17,9 @@
 
 	<% projects.each do |project| %>
 		<%= project.title %>
-		<%= link_to "see all projects", project_path(project), class: "mr-2" %>
 	<% end %>
 	<%# raise %>
+		<%= link_to "see all projects", brand_projects_path(brand.first.id), class: "mr-2" %>
 	<%= link_to "Favorites", favorites_path, class: "mr-2" %>
 
 <% end %>

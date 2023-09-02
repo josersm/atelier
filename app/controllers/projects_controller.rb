@@ -1,4 +1,16 @@
 class ProjectsController < ApplicationController
+
+  def index
+    @projects = policy_scope(Project)
+  end
+
+  def show
+    @project = Project.find(params[:id])
+    @product = Product.new
+    @brand = @project.brand
+    authorize @project
+  end
+
   def new
     @project = Project.new
     @supplier = Supplier.find(params[:supplier_id])
@@ -11,7 +23,7 @@ class ProjectsController < ApplicationController
     @project.brand = @brand
     authorize @project
     if @project.save
-      redirect_to dashboard_path(@project), notice: "Form was successfully created."
+      redirect_to dashboard_path, notice: "Form was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -21,21 +33,16 @@ class ProjectsController < ApplicationController
   def update
     @project = Project.find(params[:id])
   end
-    
-  def show
-    @project = Project.find(params[:id])
-    @product = Product.new
-    @brand = @project.brand
-    authorize @project
-  end
-
-  def index
-    @projects = policy_scope(Project)
-  end
 
   private
 
   def project_params
-    params.require(:project).permit(:title, :delivery_mode, :description, :status)
+    params.require(:project).permit(
+			:title,
+			:delivery_mode,
+			:description,
+			:supplier_id	,
+			:status
+		)
   end
 end

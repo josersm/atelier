@@ -3,21 +3,26 @@
   <table>
     <thead>
       <tr>
-        <th>Title</th>
-        <th>Supplier ID</th>
-        <th>Description</th>
-        <th>Status</th>
+        <th style="width: 300px">Title</th>
+        <th style="width: 300px">Name Of Supplier</th>
+        <th style="width: 300px">Location</th>
+        <th style="width: 300px">number of products</th>
+        <th style="width: 300px">number of total units</th>
+        <th style="width: 300px">STATUS</th>
+        <th style="width: 300px">Estimated delivery of production</th>
       </tr>
     </thead>
     <tbody>
       <% @projects.each do |project| %>
+			<% supplier = Supplier.find(project.supplier_id) %>
         <tr>
           <td><%= project.title %></td>
-          <td><%= project.brand.company_name %></td>
-          <td><%= project.brand.user.email %></td>
-          <td><%= project.supplier_id %></td>
-          <td><%= project.description %></td>
+          <td><%= supplier.name %></td>
+          <td><%= supplier.country %></td>
+          <td><%# project.products.count %></td>
+          <td><%# project.products.quantity_xs.count %></td>
           <td><%= project.status %></td>
+          <td><%= project.updated_at %></td>
           <td><%= link_to "Check project", project_path(project), class: "mr-2" %></td>
         </tr>
       <% end %>

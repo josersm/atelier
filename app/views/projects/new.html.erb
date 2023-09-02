@@ -17,10 +17,12 @@
     <%= f.label :description %>
     <%= f.text_area :description, rows: 4 %>
   </div>
+	<%# raise %>
+    <%= f.hidden_field :supplier_id, value: @supplier.id %>
 
 <div>
   <%= f.label :status %>
-  <%= f.select :status, options_for_select(['start samples','delivery and comment of samples', 'samples accepted', 'start of the production', 'delivery of the production']) %>
+  <%= f.select :status, options_for_select(['pending','start samples','delivery and comment of samples', 'samples accepted', 'start of the production', 'delivery of the production']) %>
 </div>
 
   <div>
