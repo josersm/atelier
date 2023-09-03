@@ -1,10 +1,19 @@
 <%= link_to 'back', suppliers_path(@supplier) %>
-<% if current_user.brand.favorites.find_by(brand_id: current_user.brand) %>
-  <p>Already in favorites</p>
-<% else %>
-  <%= link_to 'Add to Favorites',  supplier_favorites_path(@supplier, @favorite), data:{turbo_method: :post} %>
+<% if user_signed_in? && current_user.brand %>  <!-- Ensure user is logged in and has a brand -->
+  <% if current_user.brand.favorites.exists?(supplier_id: @supplier.id) %> <!-- Check if the supplier is in the favorites -->
+    <p>Already in favorites</p>
+  <% else %>
+    <%= link_to 'Add to Favorites',  supplier_favorites_path(@supplier, @favorite), data:{turbo_method: :post} %>
+  <% end %>
 <% end %>
 
+<% if current_user && current_user.user_type == "supplier" %>
+  <p>Edit page supplier page</p>
+<% elsif current_user %>
+  <p>Supplier page</p>
+<% else %>
+  <!-- Maybe some content for non-logged in users or just leave it blank -->
+<% end %>
 
 
 <h1><%= @supplier.name %></h1>
@@ -43,6 +52,19 @@
 #link to new supplier button
 
 <h3> Map </h3>
+<div style="width: 100%; height: 600px;"
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+
+</div>
 
 <h2>Messages</h2>
-<%= link_to "Message", supplier_chatroom_path(@supplier, @chatroom) %>
+<%= link_to 'Chat with Supplier', supplier_chatroom_path(@supplier) %>
+<div>
+<%= link_to 'favorites', favorites_path(@favorite) %>
+</div>
+
+<div>
+<%= link_to 'submit form', new_supplier_project_path(@supplier) %>
+</div>

@@ -1,12 +1,15 @@
 class MessagesController < ApplicationController
-  skip_after_action :verify_authorized, only: [:create], if: -> { Rails.env.development? || Rails.env.test? }
+
   def create
     @chatroom = Chatroom.find(params[:chatroom_id])
     @message = Message.new(message_params)
     @message.chatroom = @chatroom
     @message.user = current_user
+
+    authorize @message
+
     if @message.save
-      redirect_to chatroom_path(@chatroom)
+      redirect_to supplier_chatroom_path(params[:supplier_id], @chatroom)
     else
       render "chatrooms/show", status: :unprocessable_entity
     end

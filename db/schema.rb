@@ -74,6 +74,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_02_220025) do
     t.integer "quantity_xl"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
     t.index ["project_id"], name: "index_products_on_project_id"
   end
 
@@ -116,13 +117,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_02_220025) do
     t.text "description"
     t.string "country"
     t.string "email"
-    t.integer "phone_number"
+    t.string "phone_number"
     t.string "price_rating"
     t.float "sustainability_rating"
     t.integer "minimum_quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["user_id"], name: "index_suppliers_on_user_id"
   end
 

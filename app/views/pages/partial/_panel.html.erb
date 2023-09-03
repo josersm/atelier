@@ -1,0 +1,119 @@
+<% if Supplier.where(user: current_user).any? %>
+	<%= "case of supplier" %>
+	<% supplier = Supplier.where(user: current_user) %>
+	<% projects = Project.where(supplier_id: supplier) %>
+		<h2><%= "Active Projects" %></h2>
+		<h2><%= projects.count %></h2>
+		<p>
+		<%# link_to "View all projects", supplier_projects_path(supplier.first.id), class: "mr-2" %>
+		</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 300px">Title</th>
+        <th style="width: 300px">Name Of Brand</th>
+        <th style="width: 300px">Location</th>
+        <th style="width: 300px">number of products</th>
+        <th style="width: 300px">number of total units</th>
+        <th style="width: 300px">STATUS</th>
+        <th style="width: 300px">Estimated delivery of production</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <% projects.each do |project| %>
+<%# raise %>
+				<% supplier = Supplier.find(project.supplier_id) %>
+
+				<% total_units = 0 %>
+
+				<% project.products.each do |product| %>
+					<% total_units += product.quantity_xs.to_i +
+					product.quantity_s.to_i +
+					product.quantity_m.to_i +
+					product.quantity_l.to_i +
+					product.quantity_xl.to_i
+					%>
+				<% end %>
+				<%# raise %>
+        <tr>
+          <td><%= project.title %></td>
+          <td><%= project.brand.company_name %></td>
+          <td><%= supplier.country %></td>
+          <td><%= project.products.count %></td>
+          <td><%= total_units %></td>
+          <td><%= project.status %></td>
+          <td><%= project.updated_at %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+<% else %>
+
+	<%= "case of brand" %>
+
+	<% brand = Brand.where(user: current_user) %>
+	<% projects = Project.where(brand_id: brand) %>
+
+		<h2><%= "Active Projects" %></h2>
+		<h2><%= projects.count %></h2>
+		<p>
+		<%= link_to "View all projects", brand_projects_path(brand.first.id), class: "mr-2" %>
+		</p>
+
+
+	<% projects.each do |project| %>
+		<%# project.title %>
+	<% end %>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 300px">Title</th>
+        <th style="width: 300px">Name Of Supplier</th>
+        <th style="width: 300px">Location</th>
+        <th style="width: 300px">number of products</th>
+        <th style="width: 300px">number of total units</th>
+        <th style="width: 300px">STATUS</th>
+        <th style="width: 300px">Estimated delivery of production</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% projects.each do |project| %>
+
+				<% supplier = Supplier.find(project.supplier_id) %>
+
+				<% total_units = 0 %>
+
+				<% project.products.each do |product| %>
+					<% total_units += product.quantity_xs.to_i +
+					product.quantity_s.to_i +
+					product.quantity_m.to_i +
+					product.quantity_l.to_i +
+					product.quantity_xl.to_i
+					%>
+
+				<% end %>
+
+
+        <tr>
+          <td><%= project.title %></td>
+          <td><%= supplier.name %></td>
+          <td><%= supplier.country %></td>
+										<%# raise %>
+          <td><%= project.products.count %></td>
+          <td><%= total_units %></td>
+          <td><%= project.status %></td>
+          <td><%= project.updated_at %></td>
+          <td><%= link_to "Check project", project_path(project), class: "mr-2" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+	<%# raise %>
+	<%= link_to "Favorites", favorites_path, class: "mr-2" %>
+
+<% end %>
