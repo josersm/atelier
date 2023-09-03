@@ -1,27 +1,39 @@
-<h1> <%= @supplier.name %> </h1>
+<h1> <%# @supplier.name %> </h1>
 <h1>Create a project</h1>
 
 
+<%# raise %>
 <%= simple_form_for @project do |f| %>
   <div>
     <%= f.label :title %>
     <%= f.text_field :title %>
   </div>
 
-  <div>
-    <%= f.label :delivery_mode %>
-    <%= f.text_field :delivery_mode %>
-  </div>
+	<div>
+		<%= f.label :delivery_mode %>
+		<%= f.select :delivery_mode, options_for_select(
+			[
+			'Standard Delivery',
+			'Express Delivery',
+			'Eco Delivery'
+			]
+			) %>
+	</div>
 
   <div>
     <%= f.label :description %>
     <%= f.text_area :description, rows: 4 %>
   </div>
 
-<div>
-  <%= f.label :status %>
-  <%= f.select :status, options_for_select(['start samples','delivery and comment of samples', 'samples accepted', 'start of the production', 'delivery of the production']) %>
-</div>
+
+
+  <%# <div> %>
+    <%# f.label :supplier_id %>
+    <%# f.text_area :supplier_id %>
+  <%# </div> %>
+
+	<%= f.hidden_field :supplier_id, value: @supplier.id %>
+
 
   <div>
     <%= f.submit "Create Project" %>
