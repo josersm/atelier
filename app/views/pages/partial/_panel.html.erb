@@ -1,5 +1,5 @@
 <% if Supplier.where(user: current_user).any? %>
-	<%= "case of supplier" %>
+
 	<% supplier = Supplier.where(user: current_user) %>
 	<% projects = Project.where(supplier_id: supplier) %>
 		<h2><%= "Active Projects" %></h2>
@@ -52,21 +52,38 @@
 
 <% else %>
 
-	<%= "case of brand" %>
 
 	<% brand = Brand.where(user: current_user) %>
 	<% projects = Project.where(brand_id: brand) %>
-
-		<h2><%= "Active Projects" %></h2>
-		<h2><%= projects.count %></h2>
-		<p>
-		<%= link_to "View all projects", brand_projects_path(brand.first.id), class: "mr-2" %>
-		</p>
+	<% favorites = Favorite.where(brand_id: brand) %>
 
 
-	<% projects.each do |project| %>
-		<%# project.title %>
-	<% end %>
+	<div>
+		<h2><%= "My Suppliers - Favorites" %></h2><br>
+		<div class="cards d-flex">
+				<% favorites.limit(3).each do |favorite| %>
+				<div class="card">
+						<p>Name<%= favorite.supplier.name %></p><br>
+						<p>Description<%= favorite.supplier.description %></p><br>
+						<p>Price_rating<%= favorite.supplier.price_rating %></p><br>
+						<p>Sustainability_rating<%= favorite.supplier.sustainability_rating %></p><br>
+						<p>Minimum_quantity<%= favorite.supplier.minimum_quantity %></p><br>
+						<%# raise %>
+				</div>
+				<% end %>
+		</div>
+
+	</div>
+
+	<div>
+			<h2><%= "Active Projects" %></h2>
+			<h2><%= projects.count %></h2>
+			<p>
+			<%= link_to "View all projects", brand_projects_path(brand.first.id), class: "mr-2" %>
+			</p>
+	</div>
+
+
 
   <table>
     <thead>

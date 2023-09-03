@@ -78,6 +78,14 @@ class SuppliersController < ApplicationController
     redirect_to suppliers_path
   end
 
+  def num_suppliers_worked_with
+    supplier_ids = current_user.projects.pluck(:supplier_id)
+    @num_suppliers_worked_with = Supplier.where(id: supplier_ids).distinct.count
+    authorize @num_suppliers_worked_with, :num_suppliers_worked_with?
+  end
+
+
+
   private
 
   def supplier_params

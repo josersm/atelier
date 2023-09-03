@@ -32,9 +32,16 @@ class ProjectsController < ApplicationController
     end
   end
 
+
+  def total_projects_manufactured
+    @total_projects_manufactured = current_user.project.count
+    authorize @total_projects_manufactured, :total_projects_manufactured?
+  end
+  
   def update
     @project = Project.find(params[:id])
   end
+
 
   private
 
