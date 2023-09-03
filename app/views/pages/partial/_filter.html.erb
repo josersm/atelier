@@ -1,8 +1,7 @@
-<h1>FIND YOUR SUPPLIER</h1>
-
 <%= form_tag suppliers_path, method: :get, class: "search-form" do %>
   <%= hidden_field_tag :country, params[:country] %>
   <%= select_tag :country, options_for_select(@countries, params[:country]), prompt: "Select a country", class: "search-input" %>
+
 
   <%= hidden_field_tag :sustainability_rating, params[:sustainability_rating] %>
   <%= select_tag :sustainability_rating, options_for_select((1..10), params[:sustainability_rating]), prompt: "1-10", class: "search-input" %>
@@ -18,27 +17,4 @@
   </div>
 
   <%= submit_tag "Filter", class: "search-button" %>
-  <%= link_to 'Reset Filters', suppliers_path %>
 <% end %>
-
-
-
-<div class="supplier-grid">
-  <% @suppliers.each do |supplier| %>
-    <div class="supplier-card">
-      <h2><%= supplier.name %></h2>
-      <p>Country: <%= supplier.country %></p>
-      <p>Address: <%= supplier.address %></p>
-      <p>Email: <%= supplier.email %></p>
-      <p>Phone: <%= supplier.phone_number %></p>
-      <p>Price: <%= supplier.price_rating %></p>
-      <p>Sustainability rating (1-10): <%= supplier.sustainability_rating %></p>
-      <p>Minimum quantity: <%= supplier.minimum_quantity %></p>
-      <%# create button to add to favourites %>
-      <%= link_to "Check supplier", supplier_path(supplier), class: "mr-2" %>
-    </div>
-  <% end %>
-</div>
-
-<%= link_to 'Home', root_path %>
-<%= link_to 'Favorites', favorites_path %>
