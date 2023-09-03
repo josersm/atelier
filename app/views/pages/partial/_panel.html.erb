@@ -17,13 +17,12 @@
         <th style="width: 300px">number of products</th>
         <th style="width: 300px">number of total units</th>
         <th style="width: 300px">STATUS</th>
-        <th style="width: 300px">Estimated delivery of production</th>
+        <th style="width: 300px">DELIVERY DATE</th>
       </tr>
     </thead>
     <tbody>
 
       <% projects.each do |project| %>
-<%# raise %>
 				<% supplier = Supplier.find(project.supplier_id) %>
 
 				<% total_units = 0 %>
@@ -36,15 +35,35 @@
 					product.quantity_xl.to_i
 					%>
 				<% end %>
-				<%# raise %>
         <tr>
           <td><%= project.title %></td>
           <td><%= project.brand.company_name %></td>
           <td><%= supplier.country %></td>
           <td><%= project.products.count %></td>
           <td><%= total_units %></td>
-          <td><%= project.status %></td>
-          <td><%= project.updated_at %></td>
+
+          <td>
+					<%= simple_form_for Project.find(project.id) do |f| %>
+					<%= f.input :status %>
+						<div>
+							<%= f.select :status, options_for_select(
+								[
+							"pending",
+							"accepted",
+							"samples construction",
+							"delivery of samples",
+							"start of production",
+							"delivery of production"
+								],
+								selected = project.status
+								) %>
+						</div>
+					<%= f.submit "Update Project", class: "btn btn-primary" %>
+					<% end %>
+					</td>
+          <td><%= project.delivery_date %></td>
+
+
         </tr>
       <% end %>
     </tbody>
@@ -57,7 +76,6 @@
 	<% projects = Project.where(brand_id: brand) %>
 	<% favorites = Favorite.where(brand_id: brand) %>
 
-
 	<div>
 		<h2><%= "My Suppliers - Favorites" %></h2><br>
 		<div class="cards d-flex">
@@ -68,7 +86,6 @@
 						<p>Price_rating<%= favorite.supplier.price_rating %></p><br>
 						<p>Sustainability_rating<%= favorite.supplier.sustainability_rating %></p><br>
 						<p>Minimum_quantity<%= favorite.supplier.minimum_quantity %></p><br>
-						<%# raise %>
 				</div>
 				<% end %>
 		</div>
@@ -82,8 +99,6 @@
 			<%= link_to "View all projects", brand_projects_path(brand.first.id), class: "mr-2" %>
 			</p>
 	</div>
-
-
 
   <table>
     <thead>
@@ -114,12 +129,10 @@
 
 				<% end %>
 
-
         <tr>
           <td><%= project.title %></td>
           <td><%= supplier.name %></td>
           <td><%= supplier.country %></td>
-										<%# raise %>
           <td><%= project.products.count %></td>
           <td><%= total_units %></td>
           <td><%= project.status %></td>
@@ -130,7 +143,6 @@
     </tbody>
   </table>
 
-	<%# raise %>
 	<%= link_to "Favorites", favorites_path, class: "mr-2" %>
 
 <% end %>

@@ -8,7 +8,7 @@ Supplier.destroy_all
 # 4 users for brands
 
 user_1 = User.create(
-  email: "tasi",
+  email: "amali1@amali.com",
   password: "123456",
   user_type: "brand"
 )
