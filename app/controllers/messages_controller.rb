@@ -9,7 +9,11 @@ class MessagesController < ApplicationController
     authorize @message
 
     if @message.save
-      redirect_to supplier_chatroom_path(params[:supplier_id], @chatroom)
+      ChatroomChannel.broadcast_to(
+        @chatroom,
+        render_to_string(partial: "message", locals: {message: @message})
+      )
+      head :ok
     else
       render "chatrooms/show", status: :unprocessable_entity
     end
