@@ -11,9 +11,14 @@ export default class extends Controller {
       { channel: "ChatroomChannel", chatroom_id: this.chatroomIdValue },
       { received: data => this.#insertMessageAndScrollDown(data) }
     )
+    document.addEventListener('turbo:submit-end', () => {
+      console.log('Turbo submit event fired from within the controller!');
+    });
   }
-  
+
   resetForm(event) {
+    event.preventDefault();
+    console.log('resetForm method called');
     event.target.reset()
   }
 

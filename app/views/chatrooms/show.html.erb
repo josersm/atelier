@@ -9,9 +9,7 @@
       <%= render "messages/message", message: message %>
     <% end %>
   </div>
-</div>
-
-<%= simple_form_for [@supplier, @chatroom, @message = Message.new],
+  <%= simple_form_for [@supplier, @chatroom, @message = Message.new],
   html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" },
   class: "d-flex" } do |f| %>
   <%= f.input :content,
@@ -21,3 +19,4 @@
   %>
   <%= f.submit "Send", class: "btn btn-primary mb-3" %>
 <% end %>
+</div>
