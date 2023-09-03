@@ -277,10 +277,21 @@ Project.create(
 	status: "request",
 )
 
-Project.create(
+projectweek = Project.create(
   brand_id: Brand.first.id,
 	title: "my 5 project",
 	delivery_mode: "whatever mode",
 	description: "first description",
 	status: "request",
+)
+
+Product.create(
+  project: projectweek,
+	description: "my collection",
+	name: "my collection",
+	quantity_xs: 5,
+  quantity_s: 5,
+  quantity_m: 5,
+  quantity_l: 5,
+  quantity_xl: 5,
 )
