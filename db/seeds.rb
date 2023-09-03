@@ -8,7 +8,7 @@ Supplier.destroy_all
 # 4 users for brands
 
 user_1 = User.create(
-  email: "tasi",
+  email: "amali1@amali.com",
   password: "123456",
   user_type: "brand"
 )
@@ -253,45 +253,112 @@ Material.create!(name: material_name)
 end
 
 
-Project.create(
+# seeds for Graphs
+
+# project 1
+
+my_project_1 = Project.create(
   brand_id: Brand.first.id,
+  supplier_id: Supplier.first.id,
 	title: "my 1 project",
-	delivery_mode: "whatever mode",
+	delivery_mode: "Standard Delivery",
 	description: "first description",
-	status: "request",
-)
-
-Project.create(
-  brand_id: Brand.first.id,
-	title: "my 2 project",
-	delivery_mode: "whatever mode",
-	description: "first description",
-	status: "request",
-)
-
-Project.create(
-  brand_id: Brand.first.id,
-	title: "my 3 project",
-	delivery_mode: "whatever mode",
-	description: "first description",
-	status: "request",
-)
-
-projectweek = Project.create(
-  brand_id: Brand.first.id,
-	title: "my 5 project",
-	delivery_mode: "whatever mode",
-	description: "first description",
-	status: "request",
+	status: "pending",
 )
 
 Product.create(
-  project: projectweek,
+  project_id: my_project_1.id,
 	description: "my collection",
 	name: "my collection",
-	quantity_xs: 5,
-  quantity_s: 5,
-  quantity_m: 5,
-  quantity_l: 5,
-  quantity_xl: 5,
+	quantity_xs: rand(1..10),
+  quantity_s: rand(1..10),
+  quantity_m: rand(1..10),
+  quantity_l: rand(1..10),
+  quantity_xl: rand(1..10),
+)
+
+# project 2
+
+my_project_2 = Project.create(
+  brand_id: Brand.first.id,
+  supplier_id: Supplier.first.id,
+	title: "my 2 project",
+	delivery_mode: "Standard Delivery",
+	description: "first description",
+	status: "pending",
+)
+
+Product.create(
+  project_id: my_project_2.id,
+	description: "my collection",
+	name: "my collection",
+	quantity_xs: rand(1..10),
+  quantity_s: rand(1..10),
+  quantity_m: rand(1..10),
+  quantity_l: rand(1..10),
+  quantity_xl: rand(1..10)
+)
+
+# project 3
+my_project_3 = Project.create(
+  brand_id: Brand.first.id,
+  supplier_id: Supplier.first.id,
+	title: "my 3 project",
+	delivery_mode: "Standard Delivery",
+	description: "first description",
+	status: "pending",
+)
+
+Product.create(
+  project_id: my_project_3.id,
+	description: "my collection",
+	name: "my collection",
+	quantity_xs: rand(1..10),
+  quantity_s: rand(1..10),
+  quantity_m: rand(1..10),
+  quantity_l: rand(1..10),
+  quantity_xl: rand(1..10),
+  created_at: "Sun, 30 Aug 2023 17:04:50.346529000 UTC +00:00"
+)
+
+# project 4
+my_project_4 = Project.create(
+  brand_id: Brand.first.id,
+  supplier_id: Supplier.first.id,
+	title: "my 4 project",
+	delivery_mode: "Standard Delivery",
+	description: "first description",
+	status: "pending",
+)
+
+Product.create(
+  project_id: my_project_4.id,
+	description: "my collection",
+	name: "my collection",
+	quantity_xs: rand(1..10),
+  quantity_s: rand(1..10),
+  quantity_m: rand(1..10),
+  quantity_l: rand(1..10),
+  quantity_xl: rand(1..10)
+)
+
+# project 5
+my_project_5 = Project.create(
+  brand_id: Brand.first.id,
+  supplier_id: Supplier.first.id,
+	title: "my 5 project",
+	delivery_mode: "Standard Delivery",
+	description: "first description",
+	status: "pending",
+)
+
+Product.create(
+  project_id: my_project_5.id,
+	description: "my collection",
+	name: "my collection",
+	quantity_xs: rand(1..10),
+  quantity_s: rand(1..10),
+  quantity_m: rand(1..10),
+  quantity_l: rand(1..10),
+  quantity_xl: rand(1..10)
 )
