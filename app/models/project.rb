@@ -11,4 +11,12 @@ class Project < ApplicationRecord
 		"delivery of production"
 	]
   validates :status, inclusion: { in: STATUS }
+
+  DELIVERY_MODE = [
+		"Standard Delivery",
+		"Express Delivery",
+		"Eco Delivery"
+	]
+  validates :status, inclusion: { in: STATUS }
+  validates :delivery_mode, inclusion: { in: DELIVERY_MODE }
 end
