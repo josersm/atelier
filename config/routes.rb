@@ -28,6 +28,9 @@ Rails.application.routes.draw do
     resources :projects, only: [:new ]
     resources :reviews, only: [:new, :create]
 		resources :favorites, only: [:create]
+    resources :chatrooms, only: :show do
+      resources :messages, only: :create
+    end
   end
 
 
