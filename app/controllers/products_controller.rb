@@ -20,6 +20,12 @@ class ProductsController < ApplicationController
     end
   end
 
+  def total_products_manufactured
+    @total_products_manufactured = current_user.product.count
+    authorize @total_products_manufactured, :total_products_manufactured?
+  end
+
+
   private
 
   def product_params
