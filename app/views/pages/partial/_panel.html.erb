@@ -8,16 +8,16 @@
 		<%# link_to "View all projects", supplier_projects_path(supplier.first.id), class: "mr-2" %>
 		</p>
 
-  <table>
+  <table data-controller="dashboard">
     <thead>
       <tr>
-        <th style="width: 300px">Title</th>
-        <th style="width: 300px">Name Of Brand</th>
-        <th style="width: 300px">Location</th>
-        <th style="width: 300px">number of products</th>
-        <th style="width: 300px">number of total units</th>
-        <th style="width: 300px">STATUS</th>
-        <th style="width: 300px">DELIVERY DATE</th>
+        <th>Title</th>
+        <th>Name Of Brand</th>
+        <th>Location</th>
+        <th>number of products</th>
+        <th>number of total units</th>
+        <th>STATUS</th>
+        <th>DELIVERY DATE</th>
       </tr>
     </thead>
     <tbody>
@@ -35,17 +35,16 @@
 					product.quantity_xl.to_i
 					%>
 				<% end %>
-        <tr>
+        <tr data-dashboard-target="dashboardElement">
           <td><%= project.title %></td>
           <td><%= project.brand.company_name %></td>
           <td><%= supplier.country %></td>
           <td><%= project.products.count %></td>
           <td><%= total_units %></td>
 
-          <td>
 					<%= simple_form_for Project.find(project.id) do |f| %>
-					<%= f.input :status %>
-						<div>
+          <td data-action="click->dashboard#fire">
+						<%= f.input :status %>
 							<%= f.select :status, options_for_select(
 								[
 							"pending",
@@ -57,12 +56,15 @@
 								],
 								selected = project.status
 								) %>
-						</div>
+					</td>
+
+          <td>
+						<%= f.input :delivery_date,
+            as: :string,
+            input_html: { data: { controller: "datepicker" } } %>
+					</td>
 					<%= f.submit "Update Project", class: "btn btn-primary" %>
 					<% end %>
-					</td>
-          <td><%= project.delivery_date %></td>
-
 
         </tr>
       <% end %>
