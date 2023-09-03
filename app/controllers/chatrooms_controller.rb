@@ -1,5 +1,4 @@
 class ChatroomsController < ApplicationController
-  skip_after_action :verify_authorized, only: [:show, :create], if: -> { Rails.env.development? || Rails.env.test? }
   def show
     @supplier = Supplier.find(params[:supplier_id])
     if current_user.user_type == "brand"
