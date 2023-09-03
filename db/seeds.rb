@@ -4,6 +4,111 @@ User.destroy_all
 Brand.destroy_all
 Supplier.destroy_all
 
+# demo
+
+# user 2
+
+# user_demo_supplier_2 = User.create(
+#  email: "lewagon@gmail.com",
+#  password: "1234567",
+#  user_type: "supplier",
+# )
+
+# Supplier.create(
+#  name: "Madrid Manufacturing",
+#  address: "P.º del Embarcadero, 8, 28011 Madrid",
+#  description: Faker::Lorem.paragraph,
+#  country: "Spain",
+#  email: Faker::Internet.email,
+#  phone_number: Faker::PhoneNumber.cell_phone,
+#  price_rating: "€€€",
+#  sustainability_rating: 8,
+#  minimum_quantity: 153,
+#  user: user_demo_supplier_2
+# )
+
+# # user 3
+
+# user_demo_supplier_3 = User.create(
+#  email: "lewagon@gmail.com",
+#  password: "1234567",
+#  user_type: "supplier",
+# )
+
+# Supplier.create(
+#  name: "Madrid Manufacturing",
+#  address: "P.º de la Florida, 11, 28008 Madrid",
+#  description: Faker::Lorem.paragraph,
+#  country: "Spain",
+#  email: Faker::Internet.email,
+#  phone_number: Faker::PhoneNumber.cell_phone,
+#  price_rating: "€€€",
+#  sustainability_rating: 9,
+#  minimum_quantity: 80,
+#  user: user_demo_supplier_3
+# )
+
+ # user 1
+user_demo_supplier_1 = User.create(
+  email: "lewagon@gmail.com",
+  password: "1234567",
+  user_type: "supplier",
+)
+
+Supplier.create(
+  name: "Madrid Manufacturing",
+  address: "C. del Dr. Esquerdo, 70, 28009 Madrid",
+  description: Faker::Lorem.paragraph,
+  country: "Spain",
+  email: Faker::Internet.email,
+  phone_number: Faker::PhoneNumber.cell_phone,
+  price_rating: "€€",
+  sustainability_rating: 9.0,
+  minimum_quantity: 25,
+  user: user_demo_supplier_1
+)
+
+
+ # user 4
+
+ user_demo_supplier_4 = User.create(
+  email: "lewagon@gmail.com",
+  password: "1234567",
+  user_type: "supplier",
+)
+
+Supplier.create(
+  name: "Portugal Manufacturing",
+  address: "Região Norte PT, R. de Brito Capelo 90, 4050-121 Porto, Portugal",
+  description: Faker::Lorem.paragraph,
+  country: "Portugal",
+  email: Faker::Internet.email,
+  phone_number: Faker::PhoneNumber.cell_phone,
+  price_rating: "€€",
+  sustainability_rating: 8,
+  minimum_quantity: 35,
+  user: user_demo_supplier_4
+)
+
+ # demo brand
+
+
+user_demo_brand = User.create(
+  email: "brand@gmail.com",
+  password: "1234567",
+  user_type: "brand",
+)
+
+Brand.create(
+  company_name: "Amali",
+  bic_number: "123456789",
+  email: "brand@gmail.com",
+  contact_number: 123456789,
+  country: "Spain",
+  address: "Modesto Lafuente",
+	user: user_demo_brand,
+)
+
 
 # 4 users for brands
 
@@ -134,7 +239,7 @@ Supplier.create(
   phone_number: Faker::PhoneNumber.cell_phone,
   price_rating: ["€", "€€", "€€€"].sample,
   sustainability_rating: rand(1..10),
-  minimum_quantity: rand(1..1000),
+  minimum_quantity: rand(1..250),
   user: user_5
 )
 
@@ -160,7 +265,7 @@ Supplier.create(
   phone_number: Faker::PhoneNumber.cell_phone,
   price_rating: ["€", "€€", "€€€"].sample,
   sustainability_rating: rand(1..10),
-  minimum_quantity: rand(1..1000),
+  minimum_quantity: rand(1..250),
   user: user_7
 )
 
@@ -173,7 +278,7 @@ Supplier.create(
   phone_number: Faker::PhoneNumber.cell_phone,
   price_rating: ["€", "€€", "€€€"].sample,
   sustainability_rating: rand(1..10),
-  minimum_quantity: rand(1..1000),
+  minimum_quantity: rand(1..250),
   user: user_8
 )
 
@@ -186,7 +291,7 @@ Supplier.create(
   phone_number: Faker::PhoneNumber.cell_phone,
   price_rating: ["€", "€€", "€€€"].sample,
   sustainability_rating: rand(1..10),
-  minimum_quantity: rand(1..1000),
+  minimum_quantity: rand(1..250),
   user: user_9
 )
 
@@ -199,7 +304,7 @@ Supplier.create(
   phone_number: Faker::PhoneNumber.cell_phone,
   price_rating: ["€", "€€", "€€€"].sample,
   sustainability_rating: rand(1..10),
-  minimum_quantity: rand(1..1000),
+  minimum_quantity: rand(1..250),
   user: user_10
 )
 
@@ -212,7 +317,7 @@ Supplier.create(
   phone_number: Faker::PhoneNumber.cell_phone,
   price_rating: ["€", "€€", "€€€"].sample,
   sustainability_rating: rand(1..10),
-  minimum_quantity: rand(1..1000),
+  minimum_quantity: rand(1..250),
   user: user_11
 )
 
@@ -225,26 +330,26 @@ Supplier.create(
   phone_number: Faker::PhoneNumber.cell_phone,
   price_rating: ["€", "€€", "€€€"].sample,
   sustainability_rating: rand(1..10),
-  minimum_quantity: rand(1..1000),
+  minimum_quantity: rand(1..250),
   user: user_12
 )
 
 # favorite
 
-Favorite.create(
-  brand_id: Brand.first.id,
-  supplier_id: Supplier.first.id,
-)
+# Favorite.create(
+#   brand_id: Brand.first.id,
+#   supplier_id: Supplier.first.id,
+# )
 
-Favorite.create(
-  brand_id: Brand.first.id,
-  supplier_id: Supplier.second.id,
-)
+# Favorite.create(
+#   brand_id: Brand.first.id,
+#   supplier_id: Supplier.second.id,
+# )
 
-Favorite.create(
-  brand_id: Brand.second.id,
-  supplier_id: Supplier.second.id,
-)
+# Favorite.create(
+#   brand_id: Brand.second.id,
+#   supplier_id: Supplier.second.id,
+# )
 
 materials = ["cotton", "polyester", "cashmere", "linen", "Silk", "Wool", "Leather", "Denim", "Velvet", "Nylon", "Spandex", "Rayon", "Satin", "Chiffon", "Tulle", "Fleece", "Tweed", "Corduroy", "Lace", "Suede", "Jacquard", "Chambray", "Organza"]
 
