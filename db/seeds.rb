@@ -1,14 +1,16 @@
+SupplierMaterial.destroy_all
 Project.destroy_all
 Favorite.destroy_all
 User.destroy_all
 Brand.destroy_all
 Supplier.destroy_all
+Material.destroy_all
 
 
 # 4 users for brands
 
 user_1 = User.create(
-  email: "tasi",
+  email: "amali1@amaili.com",
   password: "123456",
   user_type: "brand"
 )
@@ -249,7 +251,7 @@ Favorite.create(
 materials = ["cotton", "polyester", "cashmere", "linen", "Silk", "Wool", "Leather", "Denim", "Velvet", "Nylon", "Spandex", "Rayon", "Satin", "Chiffon", "Tulle", "Fleece", "Tweed", "Corduroy", "Lace", "Suede", "Jacquard", "Chambray", "Organza"]
 
 materials.each do |material_name|
-Material.create!(name: material_name)
+  Material.create!(name: material_name)
 end
 
 
