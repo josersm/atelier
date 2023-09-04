@@ -1,11 +1,11 @@
 SupplierMaterial.destroy_all
-Project.destroy_all
 Favorite.destroy_all
 User.destroy_all
-Brand.destroy_all
 Supplier.destroy_all
 Material.destroy_all
-
+Product.destroy_all
+Project.destroy_all
+Brand.destroy_all
 
 # 4 users for brands
 
@@ -130,9 +130,9 @@ Brand.create(
 
 Supplier.create(
   name: Faker::Company.name,
-  address: Faker::Address.street_address,
+  address: "C. del Dr. Esquerdo, 70, 28009 Madrid",
   description: Faker::Lorem.paragraph,
-  country: Faker::Address.country,
+  country: "Spain",
   email: Faker::Internet.email,
   phone_number: Faker::PhoneNumber.cell_phone,
   price_rating: ["€", "€€", "€€€"].sample,
@@ -143,9 +143,9 @@ Supplier.create(
 
 Supplier.create(
   name: Faker::Company.name,
-  address: Faker::Address.street_address,
+  address: "C. del Dr. Esquerdo, 70, 28009 Madrid",
   description: Faker::Lorem.paragraph,
-  country: Faker::Address.country,
+  country: "Spain",
   email: Faker::Internet.email,
   phone_number: Faker::PhoneNumber.cell_phone,
   price_rating: ["€", "€€", "€€€"].sample,
@@ -156,9 +156,9 @@ Supplier.create(
 
 Supplier.create(
   name: Faker::Company.name,
-  address: Faker::Address.street_address,
+  address: "C. del Dr. Esquerdo, 70, 28009 Madrid",
   description: Faker::Lorem.paragraph,
-  country: Faker::Address.country,
+  country: "Spain",
   email: Faker::Internet.email,
   phone_number: Faker::PhoneNumber.cell_phone,
   price_rating: ["€", "€€", "€€€"].sample,
@@ -169,9 +169,9 @@ Supplier.create(
 
 Supplier.create(
   name: Faker::Company.name,
-  address: Faker::Address.street_address,
+  address: "C. del Dr. Esquerdo, 70, 28009 Madrid",
   description: Faker::Lorem.paragraph,
-  country: Faker::Address.country,
+  country: "Spain",
   email: Faker::Internet.email,
   phone_number: Faker::PhoneNumber.cell_phone,
   price_rating: ["€", "€€", "€€€"].sample,
@@ -182,9 +182,9 @@ Supplier.create(
 
 Supplier.create(
   name: Faker::Company.name,
-  address: Faker::Address.street_address,
+  address: "C. del Dr. Esquerdo, 70, 28009 Madrid",
   description: Faker::Lorem.paragraph,
-  country: Faker::Address.country,
+  country: "Spain",
   email: Faker::Internet.email,
   phone_number: Faker::PhoneNumber.cell_phone,
   price_rating: ["€", "€€", "€€€"].sample,
@@ -195,9 +195,9 @@ Supplier.create(
 
 Supplier.create(
   name: Faker::Company.name,
-  address: Faker::Address.street_address,
+  address: "C. del Dr. Esquerdo, 70, 28009 Madrid",
   description: Faker::Lorem.paragraph,
-  country: Faker::Address.country,
+  country: "Spain",
   email: Faker::Internet.email,
   phone_number: Faker::PhoneNumber.cell_phone,
   price_rating: ["€", "€€", "€€€"].sample,
@@ -208,9 +208,9 @@ Supplier.create(
 
 Supplier.create(
   name: Faker::Company.name,
-  address: Faker::Address.street_address,
+  address: "C. del Dr. Esquerdo, 70, 28009 Madrid",
   description: Faker::Lorem.paragraph,
-  country: Faker::Address.country,
+  country: "Spain",
   email: Faker::Internet.email,
   phone_number: Faker::PhoneNumber.cell_phone,
   price_rating: ["€", "€€", "€€€"].sample,
@@ -221,9 +221,9 @@ Supplier.create(
 
 Supplier.create(
   name: Faker::Company.name,
-  address: Faker::Address.street_address,
+  address: "C. del Dr. Esquerdo, 70, 28009 Madrid",
   description: Faker::Lorem.paragraph,
-  country: Faker::Address.country,
+  country: "Spain",
   email: Faker::Internet.email,
   phone_number: Faker::PhoneNumber.cell_phone,
   price_rating: ["€", "€€", "€€€"].sample,
