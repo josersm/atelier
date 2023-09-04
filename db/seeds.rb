@@ -1,11 +1,11 @@
 SupplierMaterial.destroy_all
-Project.destroy_all
 Favorite.destroy_all
 User.destroy_all
-Brand.destroy_all
 Supplier.destroy_all
 Material.destroy_all
-
+Product.destroy_all
+Project.destroy_all
+Brand.destroy_all
 
 # 4 users for brands
 
@@ -256,6 +256,7 @@ materials.each do |material_name|
 end
 
 
+
 5.times {
 	SupplierMaterial.create(
 		material_id: rand(1..20),
@@ -269,7 +270,6 @@ SupplierMaterial.create(
 	supplier_id: Supplier.second.id
 )
 }
-
 
 # seeds for Graphs
 

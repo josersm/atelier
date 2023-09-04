@@ -13,7 +13,7 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
-    @brand = Brand.find(params[:brand_id])
+    @supplier = Supplier.find(params[:supplier_id])
     authorize @project
   end
 
@@ -49,7 +49,7 @@ class ProjectsController < ApplicationController
   def index
     @projects = policy_scope(Project)
     @brand = Brand.find(params[:brand_id])
-
+  end
   # def update
   #   @project = Project.find(params[:id])
   # end
