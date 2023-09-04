@@ -37,6 +37,8 @@ gem "devise"
 gem "font-awesome-sass", "~> 6.1"
 
 
+
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
@@ -87,3 +89,7 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "chartkick", "~> 5.0"
+
+gem "groupdate", "~> 6.3"
