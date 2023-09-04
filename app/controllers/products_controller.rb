@@ -20,15 +20,32 @@ class ProductsController < ApplicationController
     end
   end
 
+  def edit
+    @product = Product.find(params[:id])
+    @project = @product.project
+  end
+
+  def update
+    @product = Product.find(params[:id])
+    if @product.update(product_params)
+      redirect_to product_path(@product), notice: 'Product was successfully updated.'
+    else
+      render :edit
+    end
+  end
+  
   def total_products_manufactured
     @total_products_manufactured = current_user.product.count
     authorize @total_products_manufactured, :total_products_manufactured?
   end
 
 
+
   private
 
   def product_params
+    params.require(:product).permit(:name,:description, :quantity_xs, :quantity_s, :quantity_m, :quantity_l, :quantity_xl)
+
     params.require(:product).permit(
 			:description,
 			:quantity_xs,
