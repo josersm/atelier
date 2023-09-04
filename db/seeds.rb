@@ -255,6 +255,22 @@ materials.each do |material_name|
   Material.create!(name: material_name)
 end
 
+
+
+5.times {
+	SupplierMaterial.create(
+		material_id: rand(1..20),
+		supplier_id: Supplier.first.id
+	)
+}
+
+5.times {
+SupplierMaterial.create(
+	material_id: rand(1..20),
+	supplier_id: Supplier.second.id
+)
+}
+
 # seeds for Graphs
 
 # project 1
