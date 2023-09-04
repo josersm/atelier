@@ -21,13 +21,13 @@ user_2 = User.create(
 
 user_3 = User.create(
 	email: "coporto.manu@gmail.com",
-  password: "1234567",
+  password: "123456",
   user_type: "brand"
 )
 
 user_4 = User.create(
 	email: "camali@amali.com",
-	password: "1234567",
+	password: "123456",
 	user_type: "brand"
 )
 
@@ -35,49 +35,49 @@ user_4 = User.create(
 
 user_5 = User.create(
   email: Faker::Internet.email,
-  password: "1234567",
+  password: "123456",
   user_type: "supplier",
 )
 
 user_6 = User.create(
   email: Faker::Internet.email,
-  password: "1234567",
+  password: "123456",
   user_type: "supplier",
 )
 
 user_7 = User.create(
   email: Faker::Internet.email,
-  password: "1234567",
+  password: "123456",
   user_type: "supplier",
 )
 
 user_8 = User.create(
   email: Faker::Internet.email,
-  password: "1234567",
+  password: "123456",
   user_type: "supplier",
 )
 
 user_9 = User.create(
   email: Faker::Internet.email,
-  password: "1234567",
+  password: "123456",
   user_type: "supplier",
 )
 
 user_10 = User.create(
   email: Faker::Internet.email,
-  password: "1234567",
+  password: "123456",
   user_type: "supplier",
 )
 
 user_11 = User.create(
   email: Faker::Internet.email,
-  password: "1234567",
+  password: "123456",
   user_type: "supplier",
 )
 
 user_12 = User.create(
   email: Faker::Internet.email,
-  password: "1234567",
+  password: "123456",
   user_type: "supplier",
 )
 
