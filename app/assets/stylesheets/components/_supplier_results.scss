@@ -120,6 +120,7 @@
   height: 100%;
   background-color: white;
   z-index: 1000;
+  border: 1px solid black;
 
   .modal-content {
     width: 100%;
@@ -228,6 +229,66 @@
   }
 }
 
+/* Base line color */
+.irs--flat .irs-bar {
+  background-image: none !important;
+}
+
+.irs-line {
+  background-color: white !important;
+  border: 2px solid black !important;
+}
+
+/* Active range color */
+.irs-bar, .irs-bar-edge, .irs-line-left, .irs-line-mid, .irs-line-right, .irs-slider{
+  background-color: black !important;
+  border: 2px solid black !important;
+}
+
+.irs-from {
+  background-color: white !important;
+  border: 2px solid black !important;
+  color: black !important;
+}
+
+.irs-from:after, .irs-single:after, .irs-to:after {
+  background-color: transparent !important;
+  border: 0.1px solid transparent !important;
+}
+
+.irs--flat .irs-from:before, .irs--flat .irs-to:before, .irs--flat .irs-single:before {
+  background-color: transparent !important;
+  border: 0.1px solid transparent !important;
+}
+
+.irs-to {
+  background-color: white !important;
+  border: 2px solid black !important;
+  color: black !important;
+}
+
+/* Slider handle style */
+.irs-handle {
+  background-color: white !important;
+  border: 2px solid black !important;
+  width: 20px !important;   // You can adjust the size if needed
+  height: 20px !important;  // You can adjust the size if needed
+  border-radius: 50% !important;
+}
+
+.irs-handle i {
+  background-color: white !important;
+  color: black !important;
+}
+
+/* Tooltip style */
+.irs-single, .irs-min, .irs-max {
+  background-color: white !important;
+  border: 2px solid black !important;
+  color: black !important;
+}
+
+
 .sust-img-filter {
   max-width: 100%;
   height: auto;
@@ -240,13 +301,49 @@
   }
 }
 
+.modal-header {
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.filter-action-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.filter-action-button {
+  background-color: white;
+  border: 2px solid black;
+  color: black;
+  padding: 8px 16px;
+  text-decoration: none;
+  font-weight: bold;
+  flex: 1;
+  text-align: center;
+  margin: 5px;
+}
+
+.bw-button {
+  margin-left: 20px;
+  background-color: white;
+  border: 2px solid black;
+  padding: 8px 16px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+
 @media screen and (max-width: 1500px) {
   .supplier-result-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
-
-
 
 @media screen and (max-width: 768px) {
   .supplier-result-grid {

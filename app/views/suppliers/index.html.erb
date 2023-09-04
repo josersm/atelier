@@ -1,9 +1,13 @@
 <%= form_tag suppliers_path, method: :get, class: "search-form" do %>
   <div data-controller="filter">
-    <button data-action="click->filter#openModal" type="button">FILTERS</button>
+    <button data-action="click->filter#openModal" type="button" class="bw-button">FILTERS</button>
     <div class="filter-modal">
-      <h3>ALL FILTERS</h3>
-      <button data-action="click->filter#closeModal">X</button>
+      <div class="modal-header">
+          <h5>ALL FILTERS</h5>
+          <button data-action="click->filter#closeModal" style="background: none; border: none; padding: 0;">
+              <img src="https://res.cloudinary.com/dzm55bol0/image/upload/v1693870230/ph_x_xbkngj.png" alt="Close" style="width: 20px; height: auto;">
+          </button>
+      </div>
 
       <div class="filter-options">
         <div data-action="click->filter#showOption" data-filter="country">
@@ -78,8 +82,10 @@
         </div>
       </div>
 
-      <%= submit_tag "Filter", class: "search-button" %>
-      <%= link_to 'Reset Filters', suppliers_path, class: "search-button"%>
+      <div class="filter-action-buttons">
+          <%= submit_tag "Filter", class: "search-button filter-action-button" %>
+          <%= link_to 'Reset', suppliers_path, class: "search-button filter-action-button"%>
+      </div>
     </div>
   </div>
 <% end %>
@@ -121,6 +127,3 @@
     <% end %>
   <% end %>
 </div>
-
-<%= link_to 'Home', root_path %>
-<%= link_to 'Favorites', favorites_path %>

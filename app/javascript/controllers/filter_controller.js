@@ -20,6 +20,7 @@ export default class extends Controller {
   }
 
   showOption(event) {
+    console.log('showOption called'); 
     const filterType = event.currentTarget.getAttribute('data-filter')
     const filterElement = this.element.querySelector(`[data-filter-toggle="${filterType}"]`)
 

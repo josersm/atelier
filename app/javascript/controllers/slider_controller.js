@@ -14,7 +14,7 @@ export default class extends Controller {
     const minValue = parseInt(this.minInputTarget.getAttribute('value'), 10);
     const maxValue = parseInt(this.rangeTarget.getAttribute('data-max-value'), 10);
     const $range = $(this.rangeTarget);
-    
+
     $range.ionRangeSlider({
       type: "double",
       min: minValue,
@@ -22,6 +22,11 @@ export default class extends Controller {
       from: minValue,
       to: maxValue,
       onFinish: this.updateValues.bind(this)
+    });
+
+    $range.on('change', function(event) {
+      console.log('Slider changed!');
+      event.stopPropagation();
     });
 }
 
