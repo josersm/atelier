@@ -24,6 +24,11 @@ class SuppliersController < ApplicationController
     if params[:minimum_quantity].present? && params[:max_quantity].present?
       @suppliers = @suppliers.where("minimum_quantity BETWEEN ? AND ?", params[:minimum_quantity], params[:max_quantity])
     end
+
+    if params[:supplier_materials].present?
+      @suppliers = @suppliers.joins(:supplier_materials).where(supplier_materials: { material_id: params[:supplier_materials] })
+    end
+
   end
 
 
@@ -89,6 +94,6 @@ class SuppliersController < ApplicationController
   private
 
   def supplier_params
-    params.require(:supplier).permit(:name, :address, :description, :country, :email, :phone_number, :price_rating, :sustainability_rating, :minimum_quantity, :photo)
+    params.require(:supplier).permit(:name, :address, :description, :country, :email, :phone_number, :price_rating, :sustainability_rating, :minimum_quantity, :photo, :material_ids => [])
   end
 end
