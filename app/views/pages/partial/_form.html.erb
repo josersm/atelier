@@ -11,22 +11,27 @@
   <%= f.submit label, class: "btn btn-primary" %>
 	<% end %>
 
-	<%# <%= raise %>
+
 <% else %>
 
 	<%# <% @supplier = Supplier.new %>
 
-	<%= simple_form_for Supplier.new do |f| %>
-  <%= f.input :name %>
-  <%= f.input :address %>
-  <%= f.input :description %>
-  <%# <%= f.input :country %>
-  <%= f.input :email %>
-  <%= f.input :phone_number %>
-  <%= f.input :price_rating %>
-  <%= f.input :sustainability_rating %>
-  <%= f.input :minimum_quantity %>
-  <%= f.submit label, class: "btn btn-primary" %>
-	<% end %>
+  <%= simple_form_for Supplier.new do |f| %>
+    <%= f.input :name %>
+    <%= f.input :address %>
+    <%= f.input :description %>
+    <%= f.input :email %>
+    <%= f.input :phone_number %>
+    <%= f.input :price_rating %>
+    <%= f.input :sustainability_rating %>
+    <%= f.input :minimum_quantity %>
+
+    <%= f.association :materials, as: :check_boxes %>
+
+    <%= f.button :submit, "Create Supplier", class: "btn btn-primary" %>
+  <% end %>
+
+
+
 
 <% end %>
