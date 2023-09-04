@@ -13,10 +13,11 @@
 
 						<%= render "pages/partial/panel" %>
 
-
-            <div class="mt-3">
-              <%= render "pages/partial/ongoing_projects" %>
-             </div>
+            <% if current_user.brand %>
+              <div class="mt-3">
+                <%= render "pages/partial/ongoing_projects" %>
+              </div>
+            <% end %>
 
 					</div>
 				</div>
@@ -32,7 +33,7 @@
 
 <% all_months = [] %>
 <% current_month = start_date %>
-<% 
+<%
 while current_month <= end_date
   all_months << [current_month.strftime("%b"), 0]
   current_month = current_month.next_month
