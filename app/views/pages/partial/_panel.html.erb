@@ -22,12 +22,9 @@
       </tr>
     </thead>
     <tbody>
-
       <% projects.each do |project| %>
 				<% supplier = Supplier.find(project.supplier_id) %>
-
 				<% total_units = 0 %>
-
 				<% project.products.each do |product| %>
 					<% total_units += product.quantity_xs.to_i +
 					product.quantity_s.to_i +
@@ -66,14 +63,12 @@
 					</td>
 					<%= f.submit "Update Project", class: "btn btn-primary" %>
 					<% end %>
-
         </tr>
       <% end %>
     </tbody>
   </table>
 
 <% else %>
-
 <%# BRAND DASHBOARD %>
 	<% brand = Brand.where(user: current_user) %>
 	<%# raise %>
@@ -86,11 +81,15 @@
 		<div class="cards d-flex">
 				<% favorites.limit(3).each do |favorite| %>
 				<div class="card">
-						<p>Name<%= favorite.supplier.name %></p><br>
-						<p>Description<%= favorite.supplier.description %></p><br>
-						<p>Price_rating<%= favorite.supplier.price_rating %></p><br>
-						<p>Sustainability_rating<%= favorite.supplier.sustainability_rating %></p><br>
-						<p>Minimum_quantity<%= favorite.supplier.minimum_quantity %></p><br>
+						<p>Name:<%= favorite.supplier.name %></p><br>
+						<p>Description:<%= favorite.supplier.description %></p><br>
+						<p>Price_rating:<%= favorite.supplier.price_rating %></p><br>
+						<%# raise %>
+						<% favorite.supplier.materials.each do |material|  %>
+						<%= material.name %>
+						<% end  %>
+						<p>Sustainability_rating:<%= favorite.supplier.sustainability_rating %></p><br>
+						<p>Minimum_quantity:<%= favorite.supplier.minimum_quantity %></p><br>
 				</div>
 				<% end %>
 		</div>
@@ -102,8 +101,19 @@
 			<div class="card border">
 				<h3><%= "ALL MY PROJECTS" %></h2>
 				<h2><%= projects.count %></h2>
+				<ul>
+				<%# raise %>
+
+				<li>PROJECT PENDING (<%= projects.where(status: "pending").count %>)</li>
+				<li>DELIVERY OF SAMPLES (<%= projects.where(status: "delivery of samples").count %>)</li>
+				<li>PROJECT ACCEPTED (<%= projects.where(status: "accepted").count %>)</li>
+				<li>START PRODUCTION (<%= projects.where(status: "start of production").count %>)</li>
+				<li>SAMPLES CONSTRUCTION (<%= projects.where(status: "samples construction").count %>)</li>
+				<li>DELIVERY OF PRODUCTION (<%= projects.where(status: "delivery of production").count %>)</li>
+
+				</ul>
 				<p>
-				<%= link_to "View all projects", brand_projects_path(brand.first.id), class: "mr-2" %>
+				<%= link_to "SEE ALL", brand_projects_path(brand.first.id), class: "mr-2" %>
 				</p>
 			</div>
 			<div class="card border">
@@ -113,57 +123,51 @@
 				<%= link_to "View all projects", brand_projects_path(brand.first.id), class: "mr-2" %>
 				</p>
 			</div>
-
 		</div>
-
 	</div>
 <%# CURRENT PROJECTS %>
+	<div>
 		<h2><%= "CURRENT PROJECTS" %></h2>
 
-  <table>
-    <thead>
-      <tr>
-        <th style="width: 300px">TITLE</th>
-        <th style="width: 300px">SUPPLIER NAME</th>
-        <th style="width: 300px">COUNTRY</th>
-        <th style="width: 300px">PRODUCTS</th>
-        <th style="width: 300px">TOTAL UNITS</th>
-        <th style="width: 300px">STATUS</th>
-        <th style="width: 300px">DELIVERY DATE</th>
-        <th style="width: 300px">SEE PROJECT</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% projects.each do |project| %>
-
-				<% supplier = Supplier.find(project.supplier_id) %>
-
-				<% total_units = 0 %>
-
-				<% project.products.each do |product| %>
-					<% total_units += product.quantity_xs.to_i +
-					product.quantity_s.to_i +
-					product.quantity_m.to_i +
-					product.quantity_l.to_i +
-					product.quantity_xl.to_i
-					%>
-
+		<table>
+			<thead>
+				<tr>
+					<th style="width: 300px">TITLE</th>
+					<th style="width: 300px">SUPPLIER NAME</th>
+					<th style="width: 300px">COUNTRY</th>
+					<th style="width: 300px">PRODUCTS</th>
+					<th style="width: 300px">TOTAL UNITS</th>
+					<th style="width: 300px">STATUS</th>
+					<th style="width: 300px">DELIVERY DATE</th>
+					<th style="width: 300px">SEE PROJECT</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% projects.each do |project| %>
+					<% supplier = Supplier.find(project.supplier_id) %>
+					<% total_units = 0 %>
+					<% project.products.each do |product| %>
+						<% total_units += product.quantity_xs.to_i +
+						product.quantity_s.to_i +
+						product.quantity_m.to_i +
+						product.quantity_l.to_i +
+						product.quantity_xl.to_i
+						%>
+					<% end %>
+					<tr>
+						<td><%= project.title %></td>
+						<td><%= supplier.name %></td>
+						<td><%= supplier.country %></td>
+						<td><%= project.products.count %></td>
+						<td><%= total_units %></td>
+						<td><%= project.status %></td>
+						<td><%= project.updated_at %></td>
+						<td><%= link_to "SEE PROJECT", project_path(project), class: "mr-2" %></td>
+					</tr>
 				<% end %>
-
-        <tr>
-          <td><%= project.title %></td>
-          <td><%= supplier.name %></td>
-          <td><%= supplier.country %></td>
-          <td><%= project.products.count %></td>
-          <td><%= total_units %></td>
-          <td><%= project.status %></td>
-          <td><%= project.updated_at %></td>
-          <td><%= link_to "SEE PROJECT", project_path(project), class: "mr-2" %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-
+			</tbody>
+		</table>
+	</div>
 	<%# link_to "Favorites", favorites_path, class: "mr-2" %>
 
 <% end %>
