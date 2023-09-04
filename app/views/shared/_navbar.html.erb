@@ -12,6 +12,11 @@
       </li>
     </ul>
   </div>
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <div class="container-fluid">
+    <%= link_to root_path, class: "navbar-brand" do %>
+      <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
+    <% end %>
 
     <!-- elements that are in the middle -->
   <div class="navbar-nav mx-auto">
@@ -36,6 +41,9 @@
         <%# if user_signed_in? %>
           <li class="nav-item spacing-right">
             <%= link_to "log in", "#", class: "nav-link" %>
+        <% if user_signed_in? %>
+          <li class="nav-item active">
+            <%= link_to "Home", root_path, class: "nav-link" %>
           </li>
           <li class="nav-item dropdown spacing-right spacing-side-right">
             <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
