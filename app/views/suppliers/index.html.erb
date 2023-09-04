@@ -23,20 +23,31 @@
 
 
 
-<div class="supplier-grid">
+<div class="supplier-result-grid">
   <% @suppliers.each do |supplier| %>
-    <div class="supplier-card">
-      <h2><%= supplier.name %></h2>
-      <p>Country: <%= supplier.country %></p>
-      <p>Address: <%= supplier.address %></p>
-      <p>Email: <%= supplier.email %></p>
-      <p>Phone: <%= supplier.phone_number %></p>
-      <p>Price: <%= supplier.price_rating %></p>
-      <p>Sustainability rating (1-10): <%= supplier.sustainability_rating %></p>
-      <p>Minimum quantity: <%= supplier.minimum_quantity %></p>
+    <%= link_to supplier_path(supplier), class: "supplier-result-card" do %>
+      <img src="https://res.cloudinary.com/dzm55bol0/image/upload/v1693819062/image_143_a5j6tt.png" alt="Supplier Image" class="supplier-result-image" />
+      <div class="supplier-result-card-header">
+        <p class="supplier-result-name"><%= truncate(supplier.name.upcase, length: 25, separator: ' ', omission: '...') %></p>
+        <p><%= supplier.price_rating %></p>
+      </div>
+      <p class="supplier-result-description"><%= supplier.description %></p>
+      <div class="supplier-result-card-footer">
+        <% if supplier.sustainability_rating <= 2%>
+          <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821904/sust_1_ifiisc.png", class: "sust-img" %>
+        <% elsif supplier.sustainability_rating <= 4%>
+          <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821903/sust_2_loylzt.png", class: "sust-img" %>
+        <% elsif supplier.sustainability_rating <= 6%>
+          <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821903/sust_3_fr1mk5.png", class: "sust-img" %>
+        <% elsif supplier.sustainability_rating <= 8%>
+          <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821902/sust_4_ehprtk.png", class: "sust-img" %>
+        <% else %>
+          <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821902/sust_5_hrgnpe.png", class: "sust-img" %>
+        <% end %>
+        <p> <i>Min. Quantities <%= supplier.minimum_quantity %> units</i></p>
+      </div>
       <%# create button to add to favourites %>
-      <%= link_to "Check supplier", supplier_path(supplier), class: "mr-2" %>
-    </div>
+    <% end %>
   <% end %>
 </div>
 
