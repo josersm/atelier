@@ -1,31 +1,88 @@
-<h1>SEE <%= @suppliers.count %> RESULTS IN </h1>
-
 <%= form_tag suppliers_path, method: :get, class: "search-form" do %>
-  <%= hidden_field_tag :country, params[:country] %>
-  <%= select_tag :country, options_for_select(@countries, params[:country]), prompt: "Select a country", class: "search-input" %>
+  <div data-controller="filter">
+    <button data-action="click->filter#openModal" type="button">FILTERS</button>
+    <div class="filter-modal">
+      <h3>ALL FILTERS</h3>
+      <button data-action="click->filter#closeModal">X</button>
 
-  <%= hidden_field_tag :sustainability_rating, params[:sustainability_rating] %>
-  <%= select_tag :sustainability_rating, options_for_select((1..10), params[:sustainability_rating]), prompt: "1-10", class: "search-input" %>
+      <div class="filter-options">
+        <div data-action="click->filter#showOption" data-filter="country">
+          COUNTRY
+          <div class="filter-toggle country hidden" data-filter-toggle="country">
+            <% @countries.each do |country| %>
+              <div class="country-list-results">
+              <%= link_to country, suppliers_path(country: country), class: "country-option" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
 
-  <%= submit_tag "€", name: "price_rating", class: "search-button" %>
-  <%= submit_tag "€€", name: "price_rating", class: "search-button" %>
-  <%= submit_tag "€€€", name: "price_rating", class: "search-button" %>
+        <div data-action="click->filter#showOption" data-filter="sustainability">
+              SUSTAINABILITY
+              <div class="filter-toggle sustainability hidden" data-filter-toggle="sustainability">
+                  <%= hidden_field_tag :sustainability_rating, params[:sustainability_rating] %>
+                  <div class="sustainability-icons">
+                      <%= link_to suppliers_path(sustainability_rating: 5), class: "sustainability-option" do %>
+                          <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821902/sust_5_hrgnpe.png", class: "sust-img-filter", alt: "Sustainability Rating 5" %>
+                      <% end %>
 
+                      <%= link_to suppliers_path(sustainability_rating: 4), class: "sustainability-option" do %>
+                          <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821902/sust_4_ehprtk.png", class: "sust-img-filter", alt: "Sustainability Rating 4" %>
+                      <% end %>
 
-  <div data-controller="slider">
-   <%= hidden_field_tag :minimum_quantity, @min_value, data: { slider_target: "minInput" } %>
-   <%= hidden_field_tag :max_quantity, @max_value, data: { slider_target: "maxInput" } %>
-   <input type="text" data-slider-target="range" data-max-value="<%= @max_value %>">
+                      <%= link_to suppliers_path(sustainability_rating: 3), class: "sustainability-option" do %>
+                          <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821903/sust_3_fr1mk5.png", class: "sust-img-filter", alt: "Sustainability Rating 3" %>
+                      <% end %>
+
+                      <%= link_to suppliers_path(sustainability_rating: 2), class: "sustainability-option" do %>
+                          <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821903/sust_2_loylzt.png", class: "sust-img-filter", alt: "Sustainability Rating 2" %>
+                      <% end %>
+
+                      <%= link_to suppliers_path(sustainability_rating: 1), class: "sustainability-option" do %>
+                          <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821904/sust_1_ifiisc.png", class: "sust-img-filter", alt: "Sustainability Rating 1" %>
+                      <% end %>
+
+                  </div>
+              </div>
+          </div>
+
+        <div data-action="click->filter#showOption" data-filter="price">
+          PRICE
+          <div class="filter-toggle price hidden" data-filter-toggle="price">
+            <%= submit_tag "€", name: "price_rating", class: "search-button" %>
+            <%= submit_tag "€€", name: "price_rating", class: "search-button" %>
+            <%= submit_tag "€€€", name: "price_rating", class: "search-button" %>
+          </div>
+        </div>
+
+        <div data-action="click->filter#showOption" data-filter="quantity">
+          QUANTITY
+          <div class="filter-toggle quantity hidden" data-filter-toggle="quantity">
+            <div data-controller="slider">
+              <%= hidden_field_tag :minimum_quantity, @min_value, data: { slider_target: "minInput" } %>
+              <%= hidden_field_tag :max_quantity, @max_value, data: { slider_target: "maxInput" } %>
+              <input type="text" data-slider-target="range" data-max-value="<%= @max_value %>">
+            </div>
+          </div>
+        </div>
+
+        <div class="materials-container" data-action="click->filter#showOption" data-filter="material">
+            MATERIAL
+            <div class="filter-toggle material hidden" data-filter-toggle="material">
+                <% Material.all.each do |material| %>
+                    <div class="material-list-results">
+                        <%= link_to material.name, suppliers_path(supplier_materials: material.id), class: "material-option" %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+      </div>
+
+      <%= submit_tag "Filter", class: "search-button" %>
+      <%= link_to 'Reset Filters', suppliers_path, class: "search-button"%>
+    </div>
   </div>
-
-<%= select_tag :supplier_materials, options_from_collection_for_select(Material.all, :id, :name, params[:supplier_materials]), prompt: "Select a material" %>
-
-  <%= submit_tag "Filter", class: "search-button" %>
-  <%= link_to 'Reset Filters', suppliers_path %>
-
 <% end %>
-
-
 
 <div class="supplier-result-grid">
   <% @suppliers.each do |supplier| %>
@@ -33,7 +90,7 @@
       <img src="https://res.cloudinary.com/dzm55bol0/image/upload/v1693819062/image_143_a5j6tt.png" alt="Supplier Image" class="supplier-result-image" />
       <div class="supplier-result-card-header">
         <div class="supplier-header-top">
-          <p class="supplier-result-name"><%= truncate(supplier.name.upcase, length: 50, separator: ' ', omission: '...') %></p>
+          <p class="supplier-result-name"><%= truncate(supplier.name.upcase, length: 20, separator: ' ', omission: '...') %></p>
         </div>
         <div class="materials-list">
           <% supplier.materials.each do |material| %>
@@ -47,13 +104,13 @@
           <p><%= supplier.price_rating %></p>
         </div>
       <div class="supplier-result-card-footer">
-        <% if supplier.sustainability_rating <= 2%>
+        <% if supplier.sustainability_rating <= 1 %>
           <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821904/sust_1_ifiisc.png", class: "sust-img" %>
-        <% elsif supplier.sustainability_rating <= 4%>
+        <% elsif supplier.sustainability_rating <= 2 %>
           <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821903/sust_2_loylzt.png", class: "sust-img" %>
-        <% elsif supplier.sustainability_rating <= 6%>
+        <% elsif supplier.sustainability_rating <= 3 %>
           <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821903/sust_3_fr1mk5.png", class: "sust-img" %>
-        <% elsif supplier.sustainability_rating <= 8%>
+        <% elsif supplier.sustainability_rating <= 4 %>
           <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821902/sust_4_ehprtk.png", class: "sust-img" %>
         <% else %>
           <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821902/sust_5_hrgnpe.png", class: "sust-img" %>
