@@ -85,21 +85,49 @@
 			<h2 class="h2-dashboard"><%= "MY SUPPLIERS - FAVORITES" %></h2>
 			<div class="title-line-child"></div>
 		</div>
-		<div class="cards container-dashboard d-flex">
+
+
+			<div class="supplier-result-grid">
 				<% favorites.limit(3).each do |favorite| %>
-				<div class="card">
-						<p>Name:<%= favorite.supplier.name %></p><br>
-						<p>Description:<%= favorite.supplier.description %></p><br>
-						<p>Price_rating:<%= favorite.supplier.price_rating %></p><br>
-						<%# raise %>
-						<% favorite.supplier.materials.each do |material|  %>
-						<%= material.name %>
-						<% end  %>
-						<p>Sustainability_rating:<%= favorite.supplier.sustainability_rating %></p><br>
-						<p>Minimum_quantity:<%= favorite.supplier.minimum_quantity %></p><br>
-				</div>
+
+					<%= link_to supplier_path(favorite.supplier), class: "supplier-result-card" do %>
+						<img src="https://res.cloudinary.com/dzm55bol0/image/upload/v1693819062/image_143_a5j6tt.png" alt="Supplier Image" class="supplier-result-image" />
+						<div class="supplier-result-card-header">
+							<div class="supplier-header-top">
+								<p class="supplier-result-name"><%= truncate(favorite.supplier.name.upcase, length: 50, separator: ' ', omission: '...') %></p>
+							</div>
+							<div class="materials-list">
+								<% favorite.supplier.materials.each do |material| %>
+									<span class="material-item"><%= material.name.upcase %></span>
+								<% end %>
+							</div>
+						</div>
+
+						<p class="supplier-result-description"><%= truncate(favorite.supplier.description, length: 155, separator: ' ', omission: '...') %></p>
+						<div class="supplier-footer-price">
+								<p><%= favorite.supplier.price_rating %></p>
+							</div>
+						<div class="supplier-result-card-footer">
+							<% if favorite.supplier.sustainability_rating <= 2%>
+								<%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821904/sust_1_ifiisc.png", class: "sust-img" %>
+							<% elsif favorite.supplier.sustainability_rating <= 4%>
+								<%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821903/sust_2_loylzt.png", class: "sust-img" %>
+							<% elsif favorite.supplier.sustainability_rating <= 6%>
+								<%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821903/sust_3_fr1mk5.png", class: "sust-img" %>
+							<% elsif favorite.supplier.sustainability_rating <= 8%>
+								<%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821902/sust_4_ehprtk.png", class: "sust-img" %>
+							<% else %>
+								<%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821902/sust_5_hrgnpe.png", class: "sust-img" %>
+							<% end %>
+							<p> <i>Min. Quantities <%= favorite.supplier.minimum_quantity %> units</i></p>
+						</div>
+						<%# create button to add to favourites %>
+					<% end %>
+
 				<% end %>
-		</div>
+			</div>
+
+
 	</div>
 <%# MY PROJECTS %>
 	<div>
