@@ -11,13 +11,12 @@
 
 					<div class="mt-3">
 
-
 						<%= render "pages/partial/panel" %>
+
 
             <div class="mt-3">
               <%= render "pages/partial/ongoing_projects" %>
              </div>
-
 
 					</div>
 				</div>
@@ -25,6 +24,34 @@
 		</div>
 	</div>
 
+
+  <%# GRAPHS %>
+  <div>
+<% start_date = 12.months.ago.beginning_of_month %> <!-- Adjust the time range as needed -->
+<% end_date = Time.current.end_of_month %>
+
+<% all_months = [] %>
+<% current_month = start_date %>
+<% 
+while current_month <= end_date
+  all_months << [current_month.strftime("%b"), 0]
+  current_month = current_month.next_month
+end
+ %>
+
+<% items_by_month_data = Product.group("DATE_TRUNC('month', created_at)").pluck(Arel.sql("DATE_TRUNC('month', created_at) AS month"), Arel.sql("SUM(quantity_xs + quantity_s + quantity_m + quantity_l + quantity_xl) AS total_items")) %>
+
+<% items_by_month = all_months.map do |month, _|
+  month_data = items_by_month_data.find { |item_month, _| item_month.strftime("%b") == month }
+  [month, month_data ? month_data[1] : 0]
+end %>
+
+<%= column_chart items_by_month, xtitle: 'Month', ytitle: 'Items', label: 'Items' %>
+
+  </div>
+
+
+  <%= link_to "Back to Homepage",root_path %>
 
 
   <%= link_to "Back to Homepage",root_path %>

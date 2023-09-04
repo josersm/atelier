@@ -1,6 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: :home
-
+  before_action :authenticate_user!, only: [:dashboard, :inbox]
   def home
     @suppliers = Supplier.all
 
@@ -30,5 +29,9 @@ class PagesController < ApplicationController
 
   def dashboard
 		@user = current_user
+  end
+
+  def inbox
+    @chatrooms = current_user.chatrooms
   end
 end

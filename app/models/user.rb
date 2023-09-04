@@ -7,4 +7,14 @@ class User < ApplicationRecord
 	has_one :supplier
   USER = ["supplier", "brand"]
   validates :user_type, inclusion: { in: USER }
+  def chatrooms
+    case user_type
+    when "brand"
+      brand.chatrooms
+    when "supplier"
+      supplier.chatrooms
+    else
+      []
+    end
+  end
 end

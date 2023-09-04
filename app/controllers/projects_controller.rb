@@ -37,11 +37,17 @@ class ProjectsController < ApplicationController
     @total_projects_manufactured = current_user.project.count
     authorize @total_projects_manufactured, :total_projects_manufactured?
   end
-  
+
+  # def update
+  #   @project = Project.find(params[:id])
+  # end
+
   def update
     @project = Project.find(params[:id])
+    @project.update(project_params)
+    authorize @project
+    redirect_to dashboard_path
   end
-
 
   private
 
@@ -50,9 +56,9 @@ class ProjectsController < ApplicationController
 			:title,
 			:delivery_mode,
 			:description,
-			:supplier_id
-			# ,
-			# :status
+			:supplier_id,
+			:delivery_date,
+			:status
 		)
   end
 end
