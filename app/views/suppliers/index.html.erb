@@ -1,4 +1,4 @@
-<h1>FIND YOUR SUPPLIER</h1>
+<h1>SEE <%= @suppliers.count %> RESULTS IN </h1>
 
 <%= form_tag suppliers_path, method: :get, class: "search-form" do %>
   <%= hidden_field_tag :country, params[:country] %>
@@ -11,14 +11,18 @@
   <%= submit_tag "€€", name: "price_rating", class: "search-button" %>
   <%= submit_tag "€€€", name: "price_rating", class: "search-button" %>
 
+
   <div data-controller="slider">
    <%= hidden_field_tag :minimum_quantity, @min_value, data: { slider_target: "minInput" } %>
    <%= hidden_field_tag :max_quantity, @max_value, data: { slider_target: "maxInput" } %>
    <input type="text" data-slider-target="range" data-max-value="<%= @max_value %>">
   </div>
 
+<%= select_tag :supplier_materials, options_from_collection_for_select(Material.all, :id, :name, params[:supplier_materials]), prompt: "Select a material" %>
+
   <%= submit_tag "Filter", class: "search-button" %>
   <%= link_to 'Reset Filters', suppliers_path %>
+
 <% end %>
 
 
@@ -28,10 +32,20 @@
     <%= link_to supplier_path(supplier), class: "supplier-result-card" do %>
       <img src="https://res.cloudinary.com/dzm55bol0/image/upload/v1693819062/image_143_a5j6tt.png" alt="Supplier Image" class="supplier-result-image" />
       <div class="supplier-result-card-header">
-        <p class="supplier-result-name"><%= truncate(supplier.name.upcase, length: 25, separator: ' ', omission: '...') %></p>
-        <p><%= supplier.price_rating %></p>
+        <div class="supplier-header-top">
+          <p class="supplier-result-name"><%= truncate(supplier.name.upcase, length: 50, separator: ' ', omission: '...') %></p>
+        </div>
+        <div class="materials-list">
+          <% supplier.materials.each do |material| %>
+            <span class="material-item"><%= material.name.upcase %></span>
+          <% end %>
+        </div>
       </div>
-      <p class="supplier-result-description"><%= supplier.description %></p>
+
+      <p class="supplier-result-description"><%= truncate(supplier.description, length: 155, separator: ' ', omission: '...') %></p>
+      <div class="supplier-footer-price">
+          <p><%= supplier.price_rating %></p>
+        </div>
       <div class="supplier-result-card-footer">
         <% if supplier.sustainability_rating <= 2%>
           <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821904/sust_1_ifiisc.png", class: "sust-img" %>
