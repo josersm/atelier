@@ -1,6 +1,17 @@
 <div class= "d-flex">
 
-  <div class="d-flex flex-column">
+  <div class="container showpage-card-header">
+    <div class="container showpage-supplier_picture">
+      <img src="https://res.cloudinary.com/dzm55bol0/image/upload/v1693819062/image_143_a5j6tt.png" alt="Supplier Image" class="supplier-result-image" />
+    </div>
+
+
+    <%= link_to 'submit form', new_supplier_project_path(@supplier) %>
+    <%= link_to 'Chat with Supplier', supplier_chatroom_path(@supplier) %>
+    <%= link_to 'favorites', favorites_path(@favorite) %>
+  </div>
+
+  <div class="container">
     <%= link_to 'back', suppliers_path(@supplier) %>
     <% if user_signed_in? && current_user.brand %>  <!-- Ensure user is logged in and has a brand -->
       <% if current_user.brand.favorites.exists?(supplier_id: @supplier.id) %> <!-- Check if the supplier is in the favorites -->
@@ -18,77 +29,66 @@
       <!-- Maybe some content for non-logged in users or just leave it blank -->
     <% end %>
 
-    <div class="container">
+    <div class="d-flex showpage-title">
       <h1><%= @supplier.name %></h1>
       <h2>Supplier materials</h2>
-      <ul>
-        <% if @supplier.supplier_materials.any? %>
-          <% @supplier.materials.each do |material| %>
-            <li><%= material.name %></li>
-        <% end %>
-        <% else %>
-          <li>No materials associated with this supplier.</li>
-        <% end %>
-      </ul>
-      <p><%= @supplier.sustainability_rating %></p>
+      <% if @supplier.supplier_materials.any? %>
+        <% @supplier.materials.each do |material| %>
+        <li><%= material.name %></li>
+      <% end %>
+          <% else %>
+            <li>No materials associated with this supplier.</li>
+          <% end %>
+        </ul>
 
-      <div class="d-flex flex-row"
-        <% if current_user.brand.favorites.exists?(supplier_id: @supplier.id) %> <!-- Check if the supplier is in the favorites -->
-          <p>Already in favorites</p>
-        <% else %>
-          <%= link_to 'Add to Favorites',  supplier_favorites_path(@supplier, @favorite), data:{turbo_method: :post} %>
-        <% end %>
+      <p><%= @supplier.sustainability_rating %></p>
+      <% if current_user.brand.favorites.exists?(supplier_id: @supplier.id) %> <!-- Check if the supplier is in the favorites -->
+        <p>Already in favorites</p>
+      <% else %>
+        <%= link_to 'Add to Favorites',  supplier_favorites_path(@supplier, @favorite), data:{turbo_method: :post} %>
+      <% end %>
+    </div>
+
+    <h2> Description </h2>
+    <div class="showpage-description">
+      <%= @supplier.description %> <br>
+    </div>
+
+
+    <div class="showpage-previous_projects">
+      <h2> Previous projects details </h2>
+
+    </div>
+
+    <div class="Map">
+      <h3> Map </h3>
+      <div style="width: 530.992px; height: 300px"
+        data-controller="map"
+        data-map-markers-value="<%= @markers.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
     </div>
 
-    <div class="description-show-page"
-      <h2>Company overview</h2>
-      <%= @supplier.description %> <br>
+    <h3> Reviews </h3>
+    <div class="showpage-reviews"
 
-      <%= link_to 'submit form', new_supplier_project_path(@supplier) %>
-      <%= link_to 'Chat with Supplier', supplier_chatroom_path(@supplier) %>
-      <%= link_to 'favorites', favorites_path(@favorite) %>
-    </div>
-  </div>
-
-
-  <div class="previous projects">
-    <h2>Previous projects details</h2>
-  <div>
-
-  <div class="review">
-    <h2> Reviews </h2>
-    <%= simple_form_for [@supplier, @review] do |f| %>
-    <%= f.input :comment %>
-    <%= f.input :rating, collection: Review::AUTHORIZED_RATINGS,
-                              include_blank: false %>
-    <%= f.submit class: "btn btn-primary", value: "submit" %>
-    <% end %>
-
-
-
-    <% if @supplier.reviews.exists? %>
-      <% @reviews.each do |review| %>
-        <div class="review">
-          <p><%= review.comment %></p>
-          <p><%= review.rating %></p>
-        </div>
+      <%= simple_form_for [@supplier, @review] do |f| %>
+      <%= f.input :comment %>
+      <%= f.input :rating, collection: Review::AUTHORIZED_RATINGS,
+                                include_blank: false %>
+      <%= f.submit class: "btn btn-primary", value: "submit" %>
       <% end %>
-    <% else %>
-      <p>No reviews yet</p>
-    <% end %>
-  </div>
 
-  <div class="map">
-    <h3> Map </h3>
-    <div style="width: 100%; height: 600px;"
-      data-controller="map"
-      data-map-markers-value="<%= @markers.to_json %>"
-      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      <% if @supplier.reviews.exists? %>
+        <% @reviews.each do |review| %>
+          <div class="review">
+            <p><%= review.comment %></p>
+            <p><%= review.rating %></p>
+          </div>
+        <% end %>
+      <% else %>
+        <p>No reviews yet</p>
+      <% end %>
     </div>
-  </div>
-
-  <div class="favorite">
-    <%= link_to 'favorites', favorites_path(@favorite) %>
   </div>
 </div>
