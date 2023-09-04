@@ -1,80 +1,94 @@
-<%= link_to 'back', suppliers_path(@supplier) %>
-<% if user_signed_in? && current_user.brand %>  <!-- Ensure user is logged in and has a brand -->
-  <% if current_user.brand.favorites.exists?(supplier_id: @supplier.id) %> <!-- Check if the supplier is in the favorites -->
-    <p>Already in favorites</p>
-  <% else %>
-    <%= link_to 'Add to Favorites',  supplier_favorites_path(@supplier, @favorite), data:{turbo_method: :post} %>
-  <% end %>
-<% end %>
+<div class= "d-flex">
 
-<% if current_user && current_user.user_type == "supplier" %>
-  <p>Edit page supplier page</p>
-<% elsif current_user %>
-  <p>Supplier page</p>
-<% else %>
-  <!-- Maybe some content for non-logged in users or just leave it blank -->
-<% end %>
-
-
-<h1><%= @supplier.name %></h1>
-<h2>Company overview</h2>
-<%= @supplier.description %> <br>
-
-
-<h2>Supplier materials</h2>
-<ul>
-  <% if @supplier.supplier_materials.any? %>
-    <% @supplier.materials.each do |material| %>
-      <li><%= material.name %></li>
+  <div class="d-flex flex-column">
+    <%= link_to 'back', suppliers_path(@supplier) %>
+    <% if user_signed_in? && current_user.brand %>  <!-- Ensure user is logged in and has a brand -->
+      <% if current_user.brand.favorites.exists?(supplier_id: @supplier.id) %> <!-- Check if the supplier is in the favorites -->
+        <p>Already in favorites</p>
+      <% else %>
+        <%= link_to 'Add to Favorites',  supplier_favorites_path(@supplier, @favorite), data:{turbo_method: :post} %>
+      <% end %>
     <% end %>
-  <% else %>
-    <li>No materials associated with this supplier.</li>
-  <% end %>
-</ul>
+
+    <% if current_user && current_user.user_type == "supplier" %>
+      <p>Edit page supplier page</p>
+    <% elsif current_user %>
+      <p>Supplier page</p>
+    <% else %>
+      <!-- Maybe some content for non-logged in users or just leave it blank -->
+    <% end %>
+
+    <div class="container">
+      <h1><%= @supplier.name %></h1>
+      <h2>Supplier materials</h2>
+      <ul>
+        <% if @supplier.supplier_materials.any? %>
+          <% @supplier.materials.each do |material| %>
+            <li><%= material.name %></li>
+        <% end %>
+        <% else %>
+          <li>No materials associated with this supplier.</li>
+        <% end %>
+      </ul>
+      <p><%= @supplier.sustainability_rating %></p>
+
+      <div class="d-flex flex-row"
+        <% if current_user.brand.favorites.exists?(supplier_id: @supplier.id) %> <!-- Check if the supplier is in the favorites -->
+          <p>Already in favorites</p>
+        <% else %>
+          <%= link_to 'Add to Favorites',  supplier_favorites_path(@supplier, @favorite), data:{turbo_method: :post} %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="description-show-page"
+      <h2>Company overview</h2>
+      <%= @supplier.description %> <br>
+
+      <%= link_to 'submit form', new_supplier_project_path(@supplier) %>
+      <%= link_to 'Chat with Supplier', supplier_chatroom_path(@supplier) %>
+      <%= link_to 'favorites', favorites_path(@favorite) %>
+    </div>
+  </div>
 
 
+  <div class="previous projects">
+    <h2>Previous projects details</h2>
+  <div>
 
-<h2>Previous projects details</h2>
-
-<div class="review">
-  <h2> Reviews </h2>
-  <%= simple_form_for [@supplier, @review] do |f| %>
+  <div class="review">
+    <h2> Reviews </h2>
+    <%= simple_form_for [@supplier, @review] do |f| %>
     <%= f.input :comment %>
     <%= f.input :rating, collection: Review::AUTHORIZED_RATINGS,
-                         include_blank: false %>
+                              include_blank: false %>
     <%= f.submit class: "btn btn-primary", value: "submit" %>
-  <% end %>
-</div>
+    <% end %>
 
 
-<% if @supplier.reviews.exists? %>
-  <% @reviews.each do |review| %>
-    <div class="review">
-      <p><%= review.comment %></p>
-      <p><%= review.rating %></p>
+
+    <% if @supplier.reviews.exists? %>
+      <% @reviews.each do |review| %>
+        <div class="review">
+          <p><%= review.comment %></p>
+          <p><%= review.rating %></p>
+        </div>
+      <% end %>
+    <% else %>
+      <p>No reviews yet</p>
+    <% end %>
+  </div>
+
+  <div class="map">
+    <h3> Map </h3>
+    <div style="width: 100%; height: 600px;"
+      data-controller="map"
+      data-map-markers-value="<%= @markers.to_json %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
-  <% end %>
-<% else %>
-  <p>No reviews yet</p>
-<% end %>
+  </div>
 
-
-<h3> Map </h3>
-<div style="width: 100%; height: 600px;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-
-</div>
-
-
-<h2>Messages</h2>
-<%= link_to 'Chat with Supplier', supplier_chatroom_path(@supplier) %>
-
-<div>
-<%= link_to 'favorites', favorites_path(@favorite) %>
-</div>
-
-<div>
-<%= link_to 'submit form', new_supplier_project_path(@supplier) %>
+  <div class="favorite">
+    <%= link_to 'favorites', favorites_path(@favorite) %>
+  </div>
 </div>
