@@ -24,7 +24,9 @@
     <tbody>
 
       <% projects.each do |project| %>
-				<% supplier = Supplier.find(project.supplier_id) %>
+        <% if project.supplier %>
+          <%=supplier = Supplier.find(project.supplier_id) %>
+        <% end %>
 
 				<% total_units = 0 %>
 
@@ -135,8 +137,9 @@
     </thead>
     <tbody>
       <% projects.each do |project| %>
-
-				<% supplier = Supplier.find(project.supplier_id) %>
+        <% if project.supplier %>
+          <% supplier = Supplier.find(project.supplier_id) %>
+        <% end %>
 
 				<% total_units = 0 %>
 
@@ -152,8 +155,10 @@
 
         <tr>
           <td><%= project.title %></td>
-          <td><%= supplier.name %></td>
-          <td><%= supplier.country %></td>
+          <% if project.supplier %>
+            <td><%= supplier.name %></td>
+            <td><%= supplier.country %></td>
+          <% end %>
           <td><%= project.products.count %></td>
           <td><%= total_units %></td>
           <td><%= project.status %></td>
