@@ -1,3 +1,4 @@
+Product.destroy_all
 Project.destroy_all
 Favorite.destroy_all
 User.destroy_all
@@ -30,6 +31,8 @@ user_4 = User.create(
 	password: "123456",
 	user_type: "brand"
 )
+
+puts "users for brands have been created"
 
 # 8 users for suppliers
 
@@ -81,6 +84,8 @@ user_12 = User.create(
   user_type: "supplier",
 )
 
+puts "users for suppliers have been created"
+
 # 4 brands
 
 Brand.create(
@@ -122,6 +127,9 @@ Brand.create(
   address: "Modesto Lafuente",
 	user: user_4,
 )
+
+puts "Brands have been created"
+
 
 # 8 suppliers
 
@@ -229,6 +237,9 @@ Supplier.create(
   user: user_12
 )
 
+puts "Suppliers have been created"
+
+
 # favorite
 
 Favorite.create(
@@ -246,11 +257,15 @@ Favorite.create(
   supplier_id: Supplier.second.id,
 )
 
+puts "Favorites have been created"
+
 materials = ["cotton", "polyester", "cashmere", "linen", "Silk", "Wool", "Leather", "Denim", "Velvet", "Nylon", "Spandex", "Rayon", "Satin", "Chiffon", "Tulle", "Fleece", "Tweed", "Corduroy", "Lace", "Suede", "Jacquard", "Chambray", "Organza"]
 
 materials.each do |material_name|
 Material.create!(name: material_name)
 end
+
+puts "Materials have been created"
 
 
 # seeds for Graphs
@@ -362,3 +377,5 @@ Product.create(
   quantity_l: rand(1..10),
   quantity_xl: rand(1..10)
 )
+
+puts "Projects have been created"
