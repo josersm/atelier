@@ -11,3 +11,9 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+
+// General style
+h1, h2, p {
+  margin: 0;
+}
