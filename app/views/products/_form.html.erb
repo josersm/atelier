@@ -1,0 +1,10 @@
+<%= simple_form_for [brand, project, product] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :quantity_xs %>
+  <%= f.input :quantity_s %>
+  <%= f.input :quantity_m %>
+  <%= f.input :quantity_l %>
+  <%= f.input :quantity_xl %>
+  <%= f.submit label, class: "btn btn-primary" %>
+<% end %>
