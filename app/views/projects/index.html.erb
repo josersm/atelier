@@ -3,22 +3,40 @@
   <table>
     <thead>
       <tr>
-        <th>Title</th>
-        <th>Supplier ID</th>
-        <th>Description</th>
-        <th>Status</th>
+        <th style="width: 300px">Title</th>
+        <th style="width: 300px">Name Of Supplier</th>
+        <th style="width: 300px">Location</th>
+        <th style="width: 300px">number of products</th>
+        <th style="width: 300px">number of total units</th>
+        <th style="width: 300px">STATUS</th>
+        <th style="width: 300px">Estimated delivery of production</th>
       </tr>
     </thead>
     <tbody>
       <% @projects.each do |project| %>
+			<% supplier = Supplier.find(project.supplier_id) %>
+
+				<% total_units = 0 %>
+
+				<% project.products.each do |product| %>
+					<% total_units += product.quantity_xs.to_i +
+					product.quantity_s.to_i +
+					product.quantity_m.to_i +
+					product.quantity_l.to_i +
+					product.quantity_xl.to_i
+					%>
+
+				<% end %>
+
         <tr>
           <td><%= project.title %></td>
-          <td><%= project.brand.company_name %></td>
-          <td><%= project.brand.user.email %></td>
-          <td><%= project.supplier_id %></td>
-          <td><%= project.description %></td>
+          <td><%= supplier.name %></td>
+          <td><%= supplier.country %></td>
+          <td><%= project.products.count %></td>
+          <td><%= total_units %></td>
           <td><%= project.status %></td>
-          <td><%= link_to "Check project", brand_project_path(@brand, project), class: "mr-2" %></td>
+          <td><%= project.updated_at %></td>
+          <td><%= link_to "Check project", project_path(project), class: "mr-2" %></td>
         </tr>
       <% end %>
     </tbody>

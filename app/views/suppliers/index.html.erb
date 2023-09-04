@@ -18,9 +18,10 @@
   </div>
 
   <%= submit_tag "Filter", class: "search-button" %>
+  <%= link_to 'Reset Filters', suppliers_path %>
 <% end %>
 
-<%= link_to 'Reset Filters', suppliers_path %>
+
 
 <div class="supplier-grid">
   <% @suppliers.each do |supplier| %>

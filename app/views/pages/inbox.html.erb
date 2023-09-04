@@ -1,0 +1,10 @@
+<h1>Your Inboxes</h1>
+
+<ul>
+  <% @chatrooms.each do |chatroom| %>
+    <li>
+      Chat with <%= chatroom.other_party(current_user).name %>
+      <%= link_to 'Go to Chat', supplier_chatroom_path(chatroom.supplier, chatroom) %>
+    </li>
+  <% end %>
+</ul>

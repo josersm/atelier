@@ -33,11 +33,29 @@ class ProductsController < ApplicationController
       render :edit
     end
   end
+  
+  def total_products_manufactured
+    @total_products_manufactured = current_user.product.count
+    authorize @total_products_manufactured, :total_products_manufactured?
+  end
+
+
 
   private
 
   def product_params
     params.require(:product).permit(:name,:description, :quantity_xs, :quantity_s, :quantity_m, :quantity_l, :quantity_xl)
+
+    params.require(:product).permit(
+			:description,
+			:quantity_xs,
+			:quantity_s,
+			:quantity_m,
+			:quantity_l,
+			:quantity_xl,
+			:price,
+			:name
+		)
   end
 
 
