@@ -11,25 +11,27 @@
   <%= "Address: #{@brand.address}" %>
 </div>
 
-
-<h2>Products:</h2>
+  <h2>Products:</h2>
 <% if @project.products.empty? %>
   <p>No products available</p>
 <% else %>
   <h2>Display Product List</h2>
-  <ul>
+  <ul class="list-group">
     <% @project.products.each do |product| %>
-      <li><%= product.name%></li>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <%= product.name %>
+        <%= link_to 'Edit Product', edit_project_product_path( @project, product), class: 'btn btn-sm btn-warning' %>
+      </li>
     <% end %>
   </ul>
 <% end %>
 
 
-<h2>Create New Product</h2>
-<div data-controller="toggle">
-  <button data-action="click->toggle#fire" class="btn btn-outline-primary-blue">Add a new product</button>
-  <div class="product-details d-none" data-toggle-target="togglableElement" >
-      <%= simple_form_for [@project, @product] do |f| %>
+  <h2>Create New Product</h2>
+  <div data-controller="toggle">
+    <button data-action="click->toggle#fire" class="btn btn-outline-primary-blue">Add a new product</button>
+    <div class="product-details d-none" data-toggle-target="togglableElement">
+      <%= simple_form_for [@brand, @project, @product] do |f| %>
         <%= f.input :name, label: 'Name' %>
         <%= f.input :description, label: 'Description' %>
         <%= f.input :quantity_xs, label: 'Quantity XS' %>
@@ -41,4 +43,7 @@
         <%= f.button :submit, 'Create Product' %>
       <% end %>
     </div>
+  </div>
+
+
 </div>

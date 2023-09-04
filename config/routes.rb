@@ -12,13 +12,15 @@ Rails.application.routes.draw do
   get '/num_projects_manufactured', to: 'dashboard#num_projects_manufactured'
   get 'total_products_manufactured', to: 'dashboard#total_products_manufactured'
 
-  resources :brands, only: [:new, :create, :edit, :update, :destroy] do
+  resources :brands, only: [:new, :create, :edit, :show, :update, :destroy] do
     resources :projects, only: [:index]
 	end
 
   resources :projects, except: [:new] do
     resources :products, only: [:create, :index, :show]
   end
+
+  resources :products, only: [:destroy]
 
 
   resources :favorites do
@@ -28,7 +30,7 @@ Rails.application.routes.draw do
   end
 
   resources :suppliers do
-    resources :projects, only: [:new ]
+    resources :projects, only: [:new]
     resources :reviews, only: [:new, :create]
 		resources :favorites, only: [:create]
     resources :chatrooms, only: :show do

@@ -9,7 +9,7 @@ class ProductPolicy < ApplicationPolicy
   end
 
   def update?
-    record.user == user
+    record.project.brand = user.brand
   end
 
   def destroy?
