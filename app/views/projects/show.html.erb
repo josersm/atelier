@@ -31,7 +31,7 @@
   <div data-controller="toggle">
     <button data-action="click->toggle#fire" class="btn btn-outline-primary-blue">Add a new product</button>
     <div class="product-details d-none" data-toggle-target="togglableElement">
-      <%= simple_form_for [@brand, @project, @product] do |f| %>
+      <%= simple_form_for [ @project, @product] do |f| %>
         <%= f.input :name, label: 'Name' %>
         <%= f.input :description, label: 'Description' %>
         <%= f.input :quantity_xs, label: 'Quantity XS' %>
