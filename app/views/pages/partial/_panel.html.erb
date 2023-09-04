@@ -3,7 +3,7 @@
 <%# SUPPLIER DASHBOARD %>
 	<% supplier = Supplier.where(user: current_user) %>
 	<% projects = Project.where(supplier_id: supplier) %>
-		<h2><%= "Active Projects" %></h2>
+		<h2 class="h2-dashboard"><%= "Active Projects" %></h2>
 		<h2><%= projects.count %></h2>
 		<p>
 		<%# link_to "View all projects", supplier_projects_path(supplier.first.id), class: "mr-2" %>
@@ -77,8 +77,15 @@
 
 <%# MY SUPPLIERS - FAVORITES %>
 	<div>
-		<h2><%= "My Suppliers - Favorites" %></h2><br>
-		<div class="cards d-flex">
+	<!-- 	<div style="display:flex;align-items:center">
+			<h2 class="h2-dashboard"><%= "MY SUPPLIERS - FAVORITES" %></h2>
+			<div style="border:1px solid black"></div>
+		</div> -->
+		<div class="title-line">
+			<h2 class="h2-dashboard"><%= "MY SUPPLIERS - FAVORITES" %></h2>
+			<div class="title-line-child"></div>
+		</div>
+		<div class="cards container-dashboard d-flex">
 				<% favorites.limit(3).each do |favorite| %>
 				<div class="card">
 						<p>Name:<%= favorite.supplier.name %></p><br>
@@ -96,50 +103,55 @@
 	</div>
 <%# MY PROJECTS %>
 	<div>
-		<h2><%= "MY PROJECTS" %></h2>
-		<div class="cards d-flex">
-			<div class="card border">
-				<h3><%= "ALL MY PROJECTS" %></h2>
+		<div class="title-line">
+			<h2 class="h2-dashboard"><%= "MY PROJECTS" %></h2>
+			<div class="title-line-child"></div>
+		</div>
+		<div class="cards container-dashboard row">
+			<div class="card border col-xs-6 col-sm-6 col-md-6 col-lg-6">
+				<h3 class="h3-dashboard"><%= "ALL MY PROJECTS" %></h3>
 				<h2><%= projects.count %></h2>
 				<ul>
 				<%# raise %>
 
 				<li>PROJECT PENDING (<%= projects.where(status: "pending").count %>)</li>
-				<li>DELIVERY OF SAMPLES (<%= projects.where(status: "delivery of samples").count %>)</li>
 				<li>PROJECT ACCEPTED (<%= projects.where(status: "accepted").count %>)</li>
-				<li>START PRODUCTION (<%= projects.where(status: "start of production").count %>)</li>
 				<li>SAMPLES CONSTRUCTION (<%= projects.where(status: "samples construction").count %>)</li>
+				<li>DELIVERY OF SAMPLES (<%= projects.where(status: "delivery of samples").count %>)</li>
+				<li>START PRODUCTION (<%= projects.where(status: "start of production").count %>)</li>
 				<li>DELIVERY OF PRODUCTION (<%= projects.where(status: "delivery of production").count %>)</li>
 
 				</ul>
-				<p>
+				<p class="see-all">
 				<%= link_to "SEE ALL", brand_projects_path(brand.first.id), class: "mr-2" %>
 				</p>
 			</div>
-			<div class="card border">
-				<h3><%= "UNREAD MESSAGES" %></h2>
-				<h2><%= projects.count %></h2>
-				<p>
-				<%= link_to "View all projects", brand_projects_path(brand.first.id), class: "mr-2" %>
+			<div class="card border col-xs-6 col-sm-6 col-md-6 col-lg-6">
+				<h3 class="h3-dashboard"><%= "UNREAD MESSAGES" %></h2>
+				<p class="see-all">
+				<%= link_to "SEE ALL", inbox_path, class: "mr-2" %>
 				</p>
+
 			</div>
 		</div>
 	</div>
 <%# CURRENT PROJECTS %>
 	<div>
-		<h2><%= "CURRENT PROJECTS" %></h2>
-
-		<table>
+		<div class="title-line">
+			<h2 class="h2-dashboard"><%= "CURRENT PROJECTS" %></h2>
+			<div class="title-line-child"></div>
+		</div>
+		<table class="container-dashboard">
 			<thead>
 				<tr>
-					<th style="width: 300px">TITLE</th>
-					<th style="width: 300px">SUPPLIER NAME</th>
-					<th style="width: 300px">COUNTRY</th>
-					<th style="width: 300px">PRODUCTS</th>
-					<th style="width: 300px">TOTAL UNITS</th>
-					<th style="width: 300px">STATUS</th>
-					<th style="width: 300px">DELIVERY DATE</th>
-					<th style="width: 300px">SEE PROJECT</th>
+					<th>TITLE</th>
+					<th>SUPPLIER NAME</th>
+					<th>COUNTRY</th>
+					<th>PRODUCTS</th>
+					<th>TOTAL UNITS</th>
+					<th>STATUS</th>
+					<th>DELIVERY DATE</th>
+					<th>SEE PROJECT</th>
 				</tr>
 			</thead>
 			<tbody>
