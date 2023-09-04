@@ -128,7 +128,7 @@ Brand.create(
 Supplier.create(
   name: Faker::Company.name,
   address: Faker::Address.street_address,
-  description: Faker::Lorem.paragraph,
+  description: Faker::Lorem.paragraph(sentence_count: 10),
   country: Faker::Address.country,
   email: Faker::Internet.email,
   phone_number: Faker::PhoneNumber.cell_phone,
@@ -141,7 +141,7 @@ Supplier.create(
 Supplier.create(
   name: Faker::Company.name,
   address: Faker::Address.street_address,
-  description: Faker::Lorem.paragraph,
+  description: Faker::Lorem.paragraph(sentence_count: 10),
   country: Faker::Address.country,
   email: Faker::Internet.email,
   phone_number: Faker::PhoneNumber.cell_phone,
@@ -154,7 +154,7 @@ Supplier.create(
 Supplier.create(
   name: Faker::Company.name,
   address: Faker::Address.street_address,
-  description: Faker::Lorem.paragraph,
+  description: Faker::Lorem.paragraph(sentence_count: 10),
   country: Faker::Address.country,
   email: Faker::Internet.email,
   phone_number: Faker::PhoneNumber.cell_phone,
@@ -167,7 +167,7 @@ Supplier.create(
 Supplier.create(
   name: Faker::Company.name,
   address: Faker::Address.street_address,
-  description: Faker::Lorem.paragraph,
+  description: Faker::Lorem.paragraph(sentence_count: 10),
   country: Faker::Address.country,
   email: Faker::Internet.email,
   phone_number: Faker::PhoneNumber.cell_phone,
@@ -180,7 +180,7 @@ Supplier.create(
 Supplier.create(
   name: Faker::Company.name,
   address: Faker::Address.street_address,
-  description: Faker::Lorem.paragraph,
+  description: Faker::Lorem.paragraph(sentence_count: 10),
   country: Faker::Address.country,
   email: Faker::Internet.email,
   phone_number: Faker::PhoneNumber.cell_phone,
@@ -193,7 +193,7 @@ Supplier.create(
 Supplier.create(
   name: Faker::Company.name,
   address: Faker::Address.street_address,
-  description: Faker::Lorem.paragraph,
+  description: Faker::Lorem.paragraph(sentence_count: 10),
   country: Faker::Address.country,
   email: Faker::Internet.email,
   phone_number: Faker::PhoneNumber.cell_phone,
@@ -206,7 +206,7 @@ Supplier.create(
 Supplier.create(
   name: Faker::Company.name,
   address: Faker::Address.street_address,
-  description: Faker::Lorem.paragraph,
+  description: Faker::Lorem.paragraph(sentence_count: 10),
   country: Faker::Address.country,
   email: Faker::Internet.email,
   phone_number: Faker::PhoneNumber.cell_phone,
@@ -219,7 +219,7 @@ Supplier.create(
 Supplier.create(
   name: Faker::Company.name,
   address: Faker::Address.street_address,
-  description: Faker::Lorem.paragraph,
+  description: Faker::Lorem.paragraph(sentence_count: 10),
   country: Faker::Address.country,
   email: Faker::Internet.email,
   phone_number: Faker::PhoneNumber.cell_phone,
@@ -251,7 +251,6 @@ materials = ["cotton", "polyester", "cashmere", "linen", "Silk", "Wool", "Leathe
 materials.each do |material_name|
 Material.create!(name: material_name)
 end
-
 
 # seeds for Graphs
 
