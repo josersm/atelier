@@ -1,11 +1,11 @@
 SupplierMaterial.destroy_all
-Project.destroy_all
 Favorite.destroy_all
 User.destroy_all
-Brand.destroy_all
 Supplier.destroy_all
 Material.destroy_all
-
+Product.destroy_all
+Project.destroy_all
+Brand.destroy_all
 
 # 4 users for brands
 
