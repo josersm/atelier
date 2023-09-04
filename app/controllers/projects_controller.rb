@@ -13,7 +13,7 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
-    @supplier = Supplier.find(params[:supplier_id])
+    @brand = Brand.find(params[:brand_id])
     authorize @project
   end
 
