@@ -1,8 +1,150 @@
 <% if Supplier.where(user: current_user).any? %>
-<%# supplier = Supplier.where(user: current_user) %>
-<%# raise %>
-<%# Project.where(supplier_id: supplier.id) %>
-<%= "case of supplier" %>
+
+	<% supplier = Supplier.where(user: current_user) %>
+	<% projects = Project.where(supplier_id: supplier) %>
+		<h2><%= "Active Projects" %></h2>
+		<h2><%= projects.count %></h2>
+		<p>
+		<%# link_to "View all projects", supplier_projects_path(supplier.first.id), class: "mr-2" %>
+		</p>
+
+  <table data-controller="dashboard">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Name Of Brand</th>
+        <th>Location</th>
+        <th>number of products</th>
+        <th>number of total units</th>
+        <th>STATUS</th>
+        <th>DELIVERY DATE</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <% projects.each do |project| %>
+				<% supplier = Supplier.find(project.supplier_id) %>
+
+				<% total_units = 0 %>
+
+				<% project.products.each do |product| %>
+					<% total_units += product.quantity_xs.to_i +
+					product.quantity_s.to_i +
+					product.quantity_m.to_i +
+					product.quantity_l.to_i +
+					product.quantity_xl.to_i
+					%>
+				<% end %>
+        <tr data-dashboard-target="dashboardElement">
+          <td><%= project.title %></td>
+          <td><%= project.brand.company_name %></td>
+          <td><%= supplier.country %></td>
+          <td><%= project.products.count %></td>
+          <td><%= total_units %></td>
+
+					<%= simple_form_for Project.find(project.id) do |f| %>
+          <td data-action="click->dashboard#fire">
+						<%= f.input :status %>
+							<%= f.select :status, options_for_select(
+								[
+							"pending",
+							"accepted",
+							"samples construction",
+							"delivery of samples",
+							"start of production",
+							"delivery of production"
+								],
+								selected = project.status
+								) %>
+					</td>
+
+          <td>
+						<%= f.input :delivery_date,
+            as: :string,
+            input_html: { data: { controller: "datepicker" } } %>
+					</td>
+					<%= f.submit "Update Project", class: "btn btn-primary" %>
+					<% end %>
+
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
 <% else %>
-<%= "case of brand" %>
+
+
+	<% brand = Brand.where(user: current_user) %>
+	<% projects = Project.where(brand_id: brand) %>
+	<% favorites = Favorite.where(brand_id: brand) %>
+
+	<div>
+		<h2><%= "My Suppliers - Favorites" %></h2><br>
+		<div class="cards d-flex">
+				<% favorites.limit(3).each do |favorite| %>
+				<div class="card">
+						<p>Name<%= favorite.supplier.name %></p><br>
+						<p>Description<%= favorite.supplier.description %></p><br>
+						<p>Price_rating<%= favorite.supplier.price_rating %></p><br>
+						<p>Sustainability_rating<%= favorite.supplier.sustainability_rating %></p><br>
+						<p>Minimum_quantity<%= favorite.supplier.minimum_quantity %></p><br>
+				</div>
+				<% end %>
+		</div>
+
+	</div>
+
+	<div>
+			<h2><%= "Active Projects" %></h2>
+			<h2><%= projects.count %></h2>
+			<p>
+			<%= link_to "View all projects", brand_projects_path(brand.first.id), class: "mr-2" %>
+			</p>
+	</div>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 300px">Title</th>
+        <th style="width: 300px">Name Of Supplier</th>
+        <th style="width: 300px">Location</th>
+        <th style="width: 300px">number of products</th>
+        <th style="width: 300px">number of total units</th>
+        <th style="width: 300px">STATUS</th>
+        <th style="width: 300px">Estimated delivery of production</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% projects.each do |project| %>
+
+				<% supplier = Supplier.find(project.supplier_id) %>
+
+				<% total_units = 0 %>
+
+				<% project.products.each do |product| %>
+					<% total_units += product.quantity_xs.to_i +
+					product.quantity_s.to_i +
+					product.quantity_m.to_i +
+					product.quantity_l.to_i +
+					product.quantity_xl.to_i
+					%>
+
+				<% end %>
+
+        <tr>
+          <td><%= project.title %></td>
+          <td><%= supplier.name %></td>
+          <td><%= supplier.country %></td>
+          <td><%= project.products.count %></td>
+          <td><%= total_units %></td>
+          <td><%= project.status %></td>
+          <td><%= project.updated_at %></td>
+          <td><%= link_to "Check project", project_path(project), class: "mr-2" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+	<%= link_to "Favorites", favorites_path, class: "mr-2" %>
+
 <% end %>

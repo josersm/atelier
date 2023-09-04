@@ -24,6 +24,10 @@ class SupplierPolicy < ApplicationPolicy
     true #record.user == user
   end
 
+  def num_suppliers_worked_with?
+    user.present?
+    true #record.user == user
+  end
 
   class Scope < Scope
     def resolve

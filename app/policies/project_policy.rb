@@ -16,6 +16,11 @@ class ProjectPolicy < ApplicationPolicy
     record.user == user
   end
 
+  def num_projects_worked_on?
+    user.present?
+    true #record.user == user
+  end 
+
   class Scope < Scope
     def resolve
       scope.where(brand_id: user.brand)

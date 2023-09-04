@@ -63,4 +63,9 @@ class BrandsController < ApplicationController
 		:address
 		)
   end
+
+  def brands_worked_with
+    @num_brands_worked_with = current_user.brands.distinct.count
+    authorize @num_brands_worked_with, :brands_worked_with?
+  end
 end
