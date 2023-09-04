@@ -15,26 +15,37 @@ class BrandsController < ApplicationController
     @brand.user = current_user # save the foreign key
 		authorize @brand
     if @brand.save
-      # redirect_to dashboard_path(@brand)
+
       redirect_to dashboard_path
     else # should ask Isa about else condition
       render :new, status: :unprocessable_entity
     end
   end
 
-  def edit
+  def show
+    @brand = Brand.find(params[:id])
   end
+
+  def edit
+    @brand = Brand.find(params[:id])
+  end
+
 
   def update
     @brand.update(brand_params)
     authorize @brand
-    redirect_to brand_path(@brand)
+    if @brand.update(brand_params)
+      redirect_to brand_path(@brand),notice: 'Brand was successfully updated.'
+    else
+      render :edit
+    end
   end
 
   def destroy
+    @brand = Brand.find(params[:id])
     @brand.destroy
     authorize @brand
-    redirect_to brands_path
+    redirect_to brands_path, notice: 'Brand was successfully deleted.'
   end
 
   def set_brand
@@ -44,12 +55,12 @@ class BrandsController < ApplicationController
 
 	def brand_params
     params.require(:brand).permit(
-			:company_name,
-			:bic_number,
-			:email,
-			:contact_number,
-			:country,
-			:address
+		:company_name,
+		:bic_number,
+		:email,
+		:contact_number,
+		:country,
+		:address
 		)
   end
 end

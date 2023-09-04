@@ -22,6 +22,7 @@ class ProductsController < ApplicationController
 
   def edit
     @product = Product.find(params[:id])
+    @project = @product.project
   end
 
   def update
@@ -36,7 +37,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:description, :quantity_xs, :quantity_s, :quantity_m, :quantity_l, :quantity_xl, :name)
+    params.require(:product).permit(:name,:description, :quantity_xs, :quantity_s, :quantity_m, :quantity_l, :quantity_xl)
   end
 
 
