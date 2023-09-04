@@ -1,7 +1,7 @@
 class Project < ApplicationRecord
   belongs_to :brand
   has_many :products
-
+  belongs_to :supplier
   STATUS = [
 		"pending",
 		"accepted",

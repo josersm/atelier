@@ -34,7 +34,7 @@ class ProjectsController < ApplicationController
 
 
   def total_projects_manufactured
-    @total_projects_manufactured = current_user.project.count
+    @total_projects_manufactured = current_user.brand.projects.count
     authorize @total_projects_manufactured, :total_projects_manufactured?
   end
 
