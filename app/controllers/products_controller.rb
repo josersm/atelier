@@ -20,7 +20,6 @@ class ProductsController < ApplicationController
     end
   end
 
-<<<<<<< HEAD
   def edit
     @product = Product.find(params[:id])
     @project = @product.project
@@ -34,31 +33,16 @@ class ProductsController < ApplicationController
       render :edit
     end
   end
-=======
+
   def total_products_manufactured
     @total_products_manufactured = current_user.product.count
     authorize @total_products_manufactured, :total_products_manufactured?
   end
 
->>>>>>> d7db14c963934001dfc142d126cc37cfc72740e2
-
   private
 
   def product_params
-<<<<<<< HEAD
     params.require(:product).permit(:name,:description, :quantity_xs, :quantity_s, :quantity_m, :quantity_l, :quantity_xl)
-=======
-    params.require(:product).permit(
-			:description,
-			:quantity_xs,
-			:quantity_s,
-			:quantity_m,
-			:quantity_l,
-			:quantity_xl,
-			:price,
-			:name
-		)
->>>>>>> d7db14c963934001dfc142d126cc37cfc72740e2
   end
 
 

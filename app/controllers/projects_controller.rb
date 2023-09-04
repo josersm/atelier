@@ -13,7 +13,7 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
-    @brand = Brand.find(params[:brand_id])
+    @supplier = Supplier.find(params[:supplier_id])
     authorize @project
   end
 
@@ -26,19 +26,14 @@ class ProjectsController < ApplicationController
 		# raise
     if @project.save
       redirect_to dashboard_path, notice: "Form was successfully created."
-<<<<<<< HEAD
-=======
-      # redirect_to new_project_product(@project), notice: "Form was successfully created."
->>>>>>> d7db14c963934001dfc142d126cc37cfc72740e2
     else
       render :new, status: :unprocessable_entity
     end
   end
 
-
-<<<<<<< HEAD
-  def update
-    @project = Project.find(params[:id])
+  def total_projects_manufactured
+    @total_projects_manufactured = current_user.brand.projects.count
+    authorize @total_projects_manufactured, :total_projects_manufactured?
   end
 
   def show
@@ -52,22 +47,18 @@ class ProjectsController < ApplicationController
   def index
     @projects = policy_scope(Project)
     @brand = Brand.find(params[:brand_id])
-=======
+  end
+
   def total_projects_manufactured
     @total_projects_manufactured = current_user.project.count
     authorize @total_projects_manufactured, :total_projects_manufactured?
   end
-
-  # def update
-  #   @project = Project.find(params[:id])
-  # end
 
   def update
     @project = Project.find(params[:id])
     @project.update(project_params)
     authorize @project
     redirect_to dashboard_path
->>>>>>> d7db14c963934001dfc142d126cc37cfc72740e2
   end
 
   private

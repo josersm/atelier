@@ -29,6 +29,9 @@ class PagesController < ApplicationController
 
   def dashboard
 		@user = current_user
+    @supplier = current_user.supplier
+    @brand = current_user.brand
+    @projects = @brand.projects
   end
 
   def inbox
