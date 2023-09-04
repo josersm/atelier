@@ -16,13 +16,8 @@ Rails.application.routes.draw do
     resources :projects, only: [:index]
 	end
 
-  resources :brands, only: [:new, :create, :edit, :show, :update, :destroy] do
-    resources :projects, except: [:destroy] do
-      resources :products, except: [:destroy]
-    end
-  end
   resources :projects, except: [:new] do
-    resources :products, only: [:create, :index, :show, :edit, :update]
+    resources :products, only: [:create, :index, :show]
   end
 
   resources :products, only: [:destroy]
