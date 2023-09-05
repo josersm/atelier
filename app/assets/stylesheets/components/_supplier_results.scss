@@ -1,3 +1,10 @@
+.supplier-result-container { /* you need to replace this with the actual parent's selector */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%; /* assuming you want the parent to take up the full height */
+}
+
 .supplier-result-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -114,7 +121,7 @@
 .filter-modal {
   display: none;
   position: fixed;
-  top: 58px;
+  top: 0px;
   left: 0;
   width: 15%;
   height: 100%;
@@ -229,7 +236,6 @@
   }
 }
 
-/* Base line color */
 .irs--flat .irs-bar {
   background-image: none !important;
 }
@@ -239,7 +245,6 @@
   border: 2px solid black !important;
 }
 
-/* Active range color */
 .irs-bar, .irs-bar-edge, .irs-line-left, .irs-line-mid, .irs-line-right, .irs-slider{
   background-color: black !important;
   border: 2px solid black !important;
@@ -267,12 +272,11 @@
   color: black !important;
 }
 
-/* Slider handle style */
 .irs-handle {
   background-color: white !important;
   border: 2px solid black !important;
-  width: 20px !important;   // You can adjust the size if needed
-  height: 20px !important;  // You can adjust the size if needed
+  width: 20px !important;
+  height: 20px !important;
   border-radius: 50% !important;
 }
 
@@ -308,6 +312,9 @@
   align-items: center;
   padding-left: 10px;
   padding-right: 10px;
+  padding-bottom: 10px;
+  border-bottom:#000 2px solid;
+
 }
 
 .filter-action-buttons {
@@ -328,7 +335,6 @@
 }
 
 .bw-button {
-  margin-left: 20px;
   background-color: white;
   border: 2px solid black;
   padding: 8px 16px;
@@ -336,6 +342,13 @@
   text-align: center;
   cursor: pointer;
   border-radius: 4px;
+}
+
+.filter-results-line {
+  margin-left: 110px;
+  margin-right: 20px;
+  margin-top: 40px;
+  max-width: 84%;
 }
 
 
