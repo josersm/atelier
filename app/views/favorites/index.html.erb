@@ -1,17 +1,62 @@
-<h1>FAVORITES</h1>
+<div data-controller="compare">
 
-<h1>Favorite Suppliers</h1>
-<%= form_tag compare_favorites_path, method: :get do %>
-  <% @favorites.each do |favorite| %>
-    <div>
-      <%= check_box_tag 'supplier_ids[]', favorite.supplier.id %>
-      <%= favorite.supplier.name %>
-    </div>
-  <% end %>
+  <div class="title-line favorites-index-line">
+      <h5>FAVORITES</h5>
+      <div class="title-line-child"></div>
+      <button data-action="click->compare#compare" class="bw-button">Compare</button>
+  </div>
 
+  <div class="favorites-result-container">
+      <div class="favorites-result-grid">
+        <% @favorites.each do |favorite| %>
+          <div class="favorites-card-container">
+            <div class="favorites-result-card">
 
-  <%= submit_tag "Compare" %>
-<% end %>
+              <%= link_to supplier_path(favorite.supplier.id) do %>
+                <div class="supplier-link">
+                <img src="https://res.cloudinary.com/dzm55bol0/image/upload/v1693819062/image_143_a5j6tt.png" alt="Supplier Image" class="supplier-result-image" />
+                <div class="favorites-result-card-header">
+                  <div class="favorites-header-top">
+                    <p class="favorites-result-name"><%= truncate(favorite.supplier.name.upcase, length: 20, separator: ' ', omission: '...') %></p>
+                  </div>
+                  <div class="materials-list">
+                    <% favorite.supplier.materials.each do |material| %>
+                      <span class="material-item"><%= material.name.upcase %></span>
+                    <% end %>
+                  </div>
+                </div>
+                <p class="favorites-result-description"><%= truncate(favorite.supplier.description, length: 155, separator: ' ', omission: '...') %></p>
+                <div class="favorites-footer-price">
+                    <p><%= favorite.supplier.price_rating %></p>
+                </div>
+                <div class="favorites-result-card-footer">
+                  <% if favorite.supplier.sustainability_rating <= 1 %>
+                    <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821904/sust_1_ifiisc.png", class: "sust-img" %>
+                  <% elsif favorite.supplier.sustainability_rating <= 2 %>
+                    <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821903/sust_2_loylzt.png", class: "sust-img" %>
+                  <% elsif favorite.supplier.sustainability_rating <= 3 %>
+                    <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821903/sust_3_fr1mk5.png", class: "sust-img" %>
+                  <% elsif favorite.supplier.sustainability_rating <= 4 %>
+                    <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821902/sust_4_ehprtk.png", class: "sust-img" %>
+                  <% else %>
+                    <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821902/sust_5_hrgnpe.png", class: "sust-img" %>
+                  <% end %>
+                  <p> <i>Min. Quantities <%= favorite.supplier.minimum_quantity %> units</i></p>
+                </div>
+              <% end %>
+              <div class="favorites-buttons">
+                <div class="select-button-container">
+                  <%= check_box_tag 'supplier_ids[]', favorite.supplier.id, false, class: 'select-checkbox', id: "supplier_#{favorite.supplier.id}", data: { compare_target: 'supplier' } %>
+                  <label for="supplier_<%= favorite.supplier.id %>" class="select-button">SELECT</label>
+                  <label for="supplier_<%= favorite.supplier.id %>" class="selected-text">SELECTED</label>
+                </div>
+                <%= button_to 'REMOVE', favorite_path(favorite), method: :delete, class: 'remove-button-favorites', data: { confirm: 'Are you sure you want to remove this favorite?' } %>
+              </div>
 
-<%= link_to 'Home', root_path%>
-<%= link_to 'Suppliers', suppliers_path %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+  </div>
+
+</div> <!-- end of data-controller div -->
