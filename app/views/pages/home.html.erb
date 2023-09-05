@@ -5,7 +5,9 @@
   </div>
 
   <%# filter %>
-<div class="modal-header">
+  <div class="home-filter-container">
+      <div class="home-filter-title">FIND YOUR SUPPLIER</div>
+      <div class="modal-header">
           <h5>ALL FILTERS</h5>
           <button data-action="click->filter#closeModal" style="background: none; border: none; padding: 0;">
               <img src="https://res.cloudinary.com/dzm55bol0/image/upload/v1693870230/ph_x_xbkngj.png" alt="Close" style="width: 20px; height: auto;">
@@ -89,6 +91,7 @@
           <%= submit_tag "Filter", class: "search-button filter-action-button" %>
           <%= link_to 'Reset', suppliers_path, class: "search-button filter-action-button"%>
       </div>
+  </div>
 
 
   <%# Cards of 8 countries %>

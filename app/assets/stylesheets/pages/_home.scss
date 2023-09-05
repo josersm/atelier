@@ -15,8 +15,15 @@
 .home-filter-container {
   width: 80%;
   margin: auto;
-  margin-top: 10%;
-  margin-bottom: 10%;
+}
+
+.home-filter-title {
+  text-align: center;
+  font-size: 24px;
+  color: black;
+  font-family: 'Roboto', 'Helvetica', sans-serif;
+  font-weight: 500;
+  padding-top: 1%;
 }
 
 // Cards Country
