@@ -70,29 +70,45 @@
     </div>
 
     <div>
-      <div style="display: flex; align-items: center;">
+      <div id:"comment-review-box" style="display: flex; align-items: center;">
         <h2>Reviews</h2>
         <div style="border: 1px solid black; margin-left: 10px; flex-grow: 1;"></div>
       </div>
 
       <div class="container reviews">
       <%= simple_form_for [@supplier, @review] do |f| %>
-    <div>
-      <%= f.input :comment %>
-      <%= f.input :rating, collection: Review::AUTHORIZED_RATINGS, include_blank: false %>
-    </div>
-    <div id="review-submit-container">
-      <%= f.submit class: "btn btn-primary", id: "button-submitform-showpage", value: "submit" %>
-    </div>
-  <% end %>
-  <% if @supplier.reviews.exists? %>
-    <% @reviews.each do |review| %>
-      <div class="review">
-        <p><%= review.comment %></p>
-        <p><%= review.rating %></p>
+      <div id="comment-showpage">
+        <%= f.input :comment %>
       </div>
+      <div id="review_rating">
+        <%= f.input :rating, collection: Review::AUTHORIZED_RATINGS, include_blank: false %>
+      </div>
+    </div>
+    <%= f.submit class: "btn btn-primary", id:  "button-submitform-showpage", value: "submit" %>
     <% end %>
-  <% else %>
-    <p>No reviews yet</p>
-  <% end %>
+    <% if @supplier.reviews.exists? %>
+      <table class="review-table">
+        <thead>
+          <tr>
+            <th>Brand</th>
+            <th>Comment</th>
+            <th>Rating</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @reviews.each do |review| %>
+            <tr>
+              <td><%= review.brand_id %></td>
+              <td><%= review.comment %></td>
+              <td><%= review.rating %></td>
+              <td><%= review.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <p>No reviews yet</p>
+    <% end %>
+  </div>
 </div>
