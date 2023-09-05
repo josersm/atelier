@@ -285,6 +285,29 @@ SupplierMaterial.create(
 )
 }
 
+5.times {
+  SupplierMaterial.create(
+    material_id: rand(1..20),
+    supplier_id: Supplier.third.id
+  )
+}
+
+5.times {
+  SupplierMaterial.create(
+    material_id: rand(1..20),
+    supplier_id: Supplier.fourth.id
+  )
+}
+
+5.times {
+  SupplierMaterial.create(
+    material_id: rand(1..20),
+    supplier_id: Supplier.fifth.id
+  )
+}
+
+
+
 # seeds for Graphs
 
 # project 1
