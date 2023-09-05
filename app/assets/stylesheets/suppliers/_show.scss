@@ -1,11 +1,107 @@
+.showpage-description {
+ max-width: 1300px;
+}
+
 .showpage-card {
   border: 1px solid #131212;
+  width:30%;
+  padding:20px;
+}
+
+.supplier-showpage-image {
+  width: 100%;
+
 }
 
 .showpage-card-header{
   border: 1px solid #131212;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 50px;
+  margin-right: 100px;
+  margin-bottom: 300px;
+  padding: 10px;
+  width: 400px;
+  height: 500px;
 }
+
 
 .showpage-title {
   border: 1px solid #131212;
+}
+
+.show-supplier__btn {
+  text-decoration: none;
+  color: white;
+  background-color: black;
+  text-align: center;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+
+
+.previous-project-images {
+  width: 250px;
+  height: 250px;
+  display: inline-block;
+  margin: 8px;
+  border: 1px solid #ccc; /* Optional border */
+
+}
+
+.show-page__btn {
+  margin-bottom: -330px;
+}
+
+.showpage-favorite-back__btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  text-decoration: none;
+
+  text-decoration: none;
+  color: white;
+  background-color: black;
+  text-align: center;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s
+}
+
+/* Regular heart icon */
+.far.fa-heart {
+  color: black; /* Set the default heart color */
+  transition: color 0.3s; /* Add a transition for smooth color change */
+}
+
+/* Hover effect for the heart icon */
+.far.fa-heart:hover {
+  color: red; /* Change the heart color on hover */
+}
+
+
+
+#showpage-add-favorites {
+  color: black;
+  text-decoration: none;
+}
+
+#new_review {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#review-submit-container {
+  display: flex;
+  width: 80%;
+}
+
+#button-submitform-showpage {
+  width: 20%;
+  height: fit-content;
+  margin-left: 15px;
 }
