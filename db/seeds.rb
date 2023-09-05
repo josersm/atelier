@@ -143,7 +143,7 @@ Supplier.create(
   email: Faker::Internet.email,
   phone_number: Faker::PhoneNumber.cell_phone,
   price_rating: ["€", "€€", "€€€"].sample,
-  sustainability_rating: rand(1..10),
+  sustainability_rating: rand(1..5),
   minimum_quantity: rand(1..1000),
   user: user_5
 )
@@ -156,7 +156,7 @@ Supplier.create(
   email: Faker::Internet.email,
   phone_number: Faker::PhoneNumber.cell_phone,
   price_rating: ["€", "€€", "€€€"].sample,
-  sustainability_rating: rand(1..10),
+  sustainability_rating: rand(1..5),
   minimum_quantity: rand(1..1000),
   user: user_6
 )
@@ -169,7 +169,7 @@ Supplier.create(
   email: Faker::Internet.email,
   phone_number: Faker::PhoneNumber.cell_phone,
   price_rating: ["€", "€€", "€€€"].sample,
-  sustainability_rating: rand(1..10),
+  sustainability_rating: rand(1..5),
   minimum_quantity: rand(1..1000),
   user: user_7
 )
@@ -182,7 +182,7 @@ Supplier.create(
   email: Faker::Internet.email,
   phone_number: Faker::PhoneNumber.cell_phone,
   price_rating: ["€", "€€", "€€€"].sample,
-  sustainability_rating: rand(1..10),
+  sustainability_rating: rand(1..5),
   minimum_quantity: rand(1..1000),
   user: user_8
 )
@@ -195,7 +195,7 @@ Supplier.create(
   email: Faker::Internet.email,
   phone_number: Faker::PhoneNumber.cell_phone,
   price_rating: ["€", "€€", "€€€"].sample,
-  sustainability_rating: rand(1..10),
+  sustainability_rating: rand(1..5),
   minimum_quantity: rand(1..1000),
   user: user_9
 )
@@ -208,7 +208,7 @@ Supplier.create(
   email: Faker::Internet.email,
   phone_number: Faker::PhoneNumber.cell_phone,
   price_rating: ["€", "€€", "€€€"].sample,
-  sustainability_rating: rand(1..10),
+  sustainability_rating: rand(1..5),
   minimum_quantity: rand(1..1000),
   user: user_10
 )
@@ -221,7 +221,7 @@ Supplier.create(
   email: Faker::Internet.email,
   phone_number: Faker::PhoneNumber.cell_phone,
   price_rating: ["€", "€€", "€€€"].sample,
-  sustainability_rating: rand(1..10),
+  sustainability_rating: rand(1..5),
   minimum_quantity: rand(1..1000),
   user: user_11
 )
@@ -234,7 +234,7 @@ Supplier.create(
   email: Faker::Internet.email,
   phone_number: Faker::PhoneNumber.cell_phone,
   price_rating: ["€", "€€", "€€€"].sample,
-  sustainability_rating: rand(1..10),
+  sustainability_rating: rand(1..5),
   minimum_quantity: rand(1..1000),
   user: user_12
 )
@@ -284,6 +284,29 @@ SupplierMaterial.create(
 	supplier_id: Supplier.second.id
 )
 }
+
+5.times {
+  SupplierMaterial.create(
+    material_id: rand(1..20),
+    supplier_id: Supplier.third.id
+  )
+}
+
+5.times {
+  SupplierMaterial.create(
+    material_id: rand(1..20),
+    supplier_id: Supplier.fourth.id
+  )
+}
+
+5.times {
+  SupplierMaterial.create(
+    material_id: rand(1..20),
+    supplier_id: Supplier.fifth.id
+  )
+}
+
+
 
 # seeds for Graphs
 
