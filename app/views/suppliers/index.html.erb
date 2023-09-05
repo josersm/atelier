@@ -1,6 +1,10 @@
 <%= form_tag suppliers_path, method: :get, class: "search-form" do %>
-  <div data-controller="filter">
-    <button data-action="click->filter#openModal" type="button" class="bw-button">FILTERS</button>
+  <div data-controller="filter" class="filter-results-line">
+    <div class="title-line">
+      <button data-action="click->filter#openModal" type="button" class="bw-button">FILTERS</button>
+      <div class="title-line-child"></div>
+      <h5>SEE <%= @suppliers.count %> RESULTS</h5>
+    </div>
     <div class="filter-modal">
       <div class="modal-header">
           <h5>ALL FILTERS</h5>
@@ -90,40 +94,42 @@
   </div>
 <% end %>
 
-<div class="supplier-result-grid">
-  <% @suppliers.each do |supplier| %>
-    <%= link_to supplier_path(supplier), class: "supplier-result-card" do %>
-      <img src="https://res.cloudinary.com/dzm55bol0/image/upload/v1693819062/image_143_a5j6tt.png" alt="Supplier Image" class="supplier-result-image" />
-      <div class="supplier-result-card-header">
-        <div class="supplier-header-top">
-          <p class="supplier-result-name"><%= truncate(supplier.name.upcase, length: 20, separator: ' ', omission: '...') %></p>
+<div class="supplier-result-container">
+  <div class="supplier-result-grid">
+    <% @suppliers.each do |supplier| %>
+      <%= link_to supplier_path(supplier), class: "supplier-result-card" do %>
+        <img src="https://res.cloudinary.com/dzm55bol0/image/upload/v1693819062/image_143_a5j6tt.png" alt="Supplier Image" class="supplier-result-image" />
+        <div class="supplier-result-card-header">
+          <div class="supplier-header-top">
+            <p class="supplier-result-name"><%= truncate(supplier.name.upcase, length: 20, separator: ' ', omission: '...') %></p>
+          </div>
+          <div class="materials-list">
+            <% supplier.materials.each do |material| %>
+              <span class="material-item"><%= material.name.upcase %></span>
+            <% end %>
+          </div>
         </div>
-        <div class="materials-list">
-          <% supplier.materials.each do |material| %>
-            <span class="material-item"><%= material.name.upcase %></span>
-          <% end %>
-        </div>
-      </div>
 
-      <p class="supplier-result-description"><%= truncate(supplier.description, length: 155, separator: ' ', omission: '...') %></p>
-      <div class="supplier-footer-price">
-          <p><%= supplier.price_rating %></p>
+        <p class="supplier-result-description"><%= truncate(supplier.description, length: 155, separator: ' ', omission: '...') %></p>
+        <div class="supplier-footer-price">
+            <p><%= supplier.price_rating %></p>
+          </div>
+        <div class="supplier-result-card-footer">
+          <% if supplier.sustainability_rating <= 1 %>
+            <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821904/sust_1_ifiisc.png", class: "sust-img" %>
+          <% elsif supplier.sustainability_rating <= 2 %>
+            <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821903/sust_2_loylzt.png", class: "sust-img" %>
+          <% elsif supplier.sustainability_rating <= 3 %>
+            <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821903/sust_3_fr1mk5.png", class: "sust-img" %>
+          <% elsif supplier.sustainability_rating <= 4 %>
+            <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821902/sust_4_ehprtk.png", class: "sust-img" %>
+          <% else %>
+            <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821902/sust_5_hrgnpe.png", class: "sust-img" %>
+          <% end %>
+          <p> <i>Min. Quantities <%= supplier.minimum_quantity %> units</i></p>
         </div>
-      <div class="supplier-result-card-footer">
-        <% if supplier.sustainability_rating <= 1 %>
-          <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821904/sust_1_ifiisc.png", class: "sust-img" %>
-        <% elsif supplier.sustainability_rating <= 2 %>
-          <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821903/sust_2_loylzt.png", class: "sust-img" %>
-        <% elsif supplier.sustainability_rating <= 3 %>
-          <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821903/sust_3_fr1mk5.png", class: "sust-img" %>
-        <% elsif supplier.sustainability_rating <= 4 %>
-          <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821902/sust_4_ehprtk.png", class: "sust-img" %>
-        <% else %>
-          <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821902/sust_5_hrgnpe.png", class: "sust-img" %>
-        <% end %>
-        <p> <i>Min. Quantities <%= supplier.minimum_quantity %> units</i></p>
-      </div>
-      <%# create button to add to favourites %>
+        <%# create button to add to favourites %>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>
