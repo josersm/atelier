@@ -1,29 +1,72 @@
-<%# Title and banner %>
-<div class="container">
-  <h1>L'atelier</h1>
-  <img src="https://cdn.musebycl.io/2021-10/Burberry%20Open%20Spaces%20hed%202021_0.jpg" alt="banner">
-</div>
+<div id="d-flex justify-content-center w-80">
+  <%# Title and banner %>
+  <div class=" d-flex justify-content-center">
+    <img src="https://d2w9rnfcy7mm78.cloudfront.net/14680480/original_cfc9b8db0722858b17747c1d447a5fe0.jpg?1642019072?bc=0" alt="banner" class="home-banner">
+  </div>
 
-<%# filter (add when luca is done) %>
-<%= render "pages/partial/filter" %>
+  <%# filter %>
+  <div class="home-filter-container  d-flex justify-content-center">
+    <%= form_tag suppliers_path, method: :get, class: "" do %>
+      <%= hidden_field_tag :country, params[:country] %>
+      <%= select_tag :country, options_for_select(@countries, params[:country]), prompt: "Select a country", class: "" %>
 
 
-<%# Cards of 8 countries %>
-<div class="container">
-  <div class="row">
-    <% @suppliers.each do |supplier| %>
-      <div class="col-sm-3">
-        <div class="card">
-          <%= link_to supplier.country, suppliers_path(country: supplier.country) %>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/Color-white.JPG" alt="">
-        </div>
+      <%= hidden_field_tag :sustainability_rating, params[:sustainability_rating] %>
+      <%= select_tag :sustainability_rating, options_for_select((1..10), params[:sustainability_rating]), prompt: "1-10", class: "" %>
+
+      <%= submit_tag "€", name: "price_rating", class: "" %>
+      <%= submit_tag "€€", name: "price_rating", class: "" %>
+      <%= submit_tag "€€€", name: "price_rating", class: "" %>
+
+      <div data-controller="slider">
+      <%= hidden_field_tag :minimum_quantity, @min_value, data: { slider_target: "minInput" } %>
+      <%= hidden_field_tag :max_quantity, @max_value, data: { slider_target: "maxInput" } %>
+      <input type="text" data-slider-target="range" data-max-value="<%= @max_value %>">
       </div>
+      <%= submit_tag "Filter", class: "search-button" %>
     <% end %>
   </div>
-</div>
 
-<%# About us %>
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <div class>
+
+  <%# Cards of 8 countries %>
+  <div class="container home-card-container">
+    <div class="home-grid">
+      <% @suppliers.each do |supplier| %>
+        <div class="home-grid__card">
+          <div class="home-card-country">
+            <%= link_to supplier.country, suppliers_path(country: supplier.country), class: "home-card-text" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <%# About us %>
+  <div class="container home-about_us-container">
+    <div class="row home-about_us-background">
+      <div class="col-7">
+        <div class="card-header home-about_us-header">
+          <h2>WHAT IS L'ATELIER ?</h2>
+        </div>
+        <div class="card-body home-about_us-body">
+          <div class="card-body home-about_us-body-text">
+              The word “atelier” is defined as a workshop or studio, especially one used by an artist or designer. The word “atelier” is defined as a workshop or studio, especially one used by an artist or designer. It's a term infused with creativity, craftsmanship, and the essence of bringing ideas to life through skilled hands and innovative minds. This very essence encapsulates the vision and purpose of the new manufacturing startup, aptly named "L'atelier."
+          </div>
+          <div class="card-body home-about_us-body-text">
+              In an era where the fashion industry is a dynamic and ever-evolving landscape, L'atelier emerges as a bridge between clothing brands and manufacturers, seeking to revolutionise the way garments are conceptualised, created, and ultimately brought to the waiting arms of fashion enthusiasts worldwide. With a name that resonates deeply within the artistic and creative realms, the startup is set to redefine the manufacturing paradigm, turning it into a collaborative artistry that transcends mere production processes.
+          </div>
+          <div class="card-body home-about_us-body-text">
+              As the fashion industry continues to grapple with challenges related to sustainability, ethical practices, and the demand for unique, high-quality pieces, L'atelier emerges as a beacon of hope. It promises a platform where brands can find manufacturers who share their values and aspirations, facilitating the creation of clothing that aligns with both aesthetic visions and responsible production practices.
+          </div>
+          <div class="card-body home-about_us-body-text">
+              L'atelier is a The word “atelier” is defined as a workshop or studio, especially one used by an artist or designer. The word “atelier” is defined as a workshop or studio, especially one used by an artist or designer. It's a term infused with creativity, craftsmanship, and the essence of bringing ideas to life through skilled hands and innovative minds. This very essence encapsulates the vision and purpose of the new manufacturing startup, aptly named "L'atelier."
+          </div>
+        </div>
+      </div>
+      <div class="col-5 home-about_us-image">
+        <img src="" alt="">
+      </div>
+    </div>
+  </div>
+
+</div>
