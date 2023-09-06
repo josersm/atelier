@@ -1,10 +1,22 @@
-<h1>Brand Details</h1>
-<p><strong>Company Name:</strong> <%= @brand.company_name %></p>
-<p><strong>BIC Number:</strong> <%= @brand.bic_number %></p>
-<p><strong>Email:</strong> <%= @brand.email %></p>
-<p><strong>Contact Number:</strong> <%= @brand.contact_number %></p>
-<p><strong>Country:</strong> <%= @brand.country %></p>
-<p><strong>Address:</strong> <%= @brand.address %></p>
-
-<%= link_to 'Edit', edit_brand_path(@brand), class: 'btn btn-primary' %>
-<%= link_to 'Delete', brand_path(@brand), method: :delete, data: { confirm: 'Are you sure you want to delete this brand?' }, class: 'btn btn-danger' %>
+<div id="customized-header">
+  <h2>Brand Details</h2>
+  <div style="border: 1px solid black; margin-left: 10px; flex-grow: 1;"></div>
+</div>
+<div class="container brand-details" style="margin: 100px;">
+  <div class="row">
+    <div class="col-md-6">
+      <p><strong>Company Name:</strong> <%= @brand.company_name %></p>
+      <p><strong>BIC Number:</strong> <%= @brand.bic_number %></p>
+      <p><strong>Email:</strong> <%= @brand.email %></p>
+      <p><strong>Contact Number:</strong> <%= @brand.contact_number %></p>
+      <p><strong>Country:</strong> <%= @brand.country %></p>
+      <p><strong>Address:</strong> <%= @brand.address %></p>
+    </div>
+    <div class="col-md-6">
+      <div class="image-container">
+        <!-- Add your image here -->
+        <img src="https://res.cloudinary.com/do4qlpmbv/image/upload/v1694035183/Ketut_Susilo_rnfltp.png" alt="Brand Image" class="img-fluid" class="img-fluid"; style="max-width: 36%; height: auto;">
+      </div>
+    </div>
+  </div>
+</div>
