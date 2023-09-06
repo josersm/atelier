@@ -1,9 +1,15 @@
+.supplier-result-container { /* you need to replace this with the actual parent's selector */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%; /* assuming you want the parent to take up the full height */
+}
+
 .supplier-result-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   margin: 30px;
-
 
   .supplier-result-card {
     display: flex;
@@ -14,11 +20,15 @@
     transition: box-shadow 0.3s ease;
     text-decoration: none;
     color: inherit;
-    height: 830px;
+    min-height: 630px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-bottom: 80px;
+    max-width: 400px;
 
 
     &:hover {
-      border: 1px solid black;
+      border: 2px solid black;
       border-radius: 2px;
     }
 
@@ -26,13 +36,57 @@
       width: 100%;
       max-height: 100%;
       object-fit: cover;
-      margin-bottom: 15px;
     }
 
     .supplier-result-card-header {
       display: flex;
+      flex-direction: row;
       justify-content: space-between;
       align-items: center;
+
+      .supplier-header-top {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 100%;
+
+          .supplier-result-name {
+            font-size: 1 rem;
+            font-weight: 600;
+            color: #000;
+          }
+      }
+
+      .materials-list {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        white-space: nowrap;
+        max-width: 45%;
+        align-items: center;
+        padding-top: 12px;
+
+        .material-item {
+          font-size: 0.8rem;
+          margin-right: 10px;
+          padding: 2px;
+          background-color: #f0f0f0;
+          border-radius: 4px;
+          display: inline-block;
+        }
+
+        &::-webkit-scrollbar {
+          width: 12px;
+        }
+
+        &::-webkit-scrollbar-track {
+          background: transparent;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background-color: transparent;
+        }
+      }
     }
 
     .supplier-result-description {
@@ -40,28 +94,270 @@
       padding-left: 15px;
       padding-right: 15px;
       color: #505050;
+      text-align: justify;
+      text-justify: inter-word;
+    }
+
+    .supplier-footer-price {
+      margin-right: 0px;
+      text-align: right;
+      padding-right: 0px;
+      font-weight: 600;
     }
 
     .supplier-result-card-footer {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-top: auto;
-    }
-    .sust-img {
-      width: 100px;
-      height: 20px;
-    }
 
-    .supplier-result-name {
-      font-size: 1 rem;
-      font-weight: 600;
-      color: #000;
+      .sust-img {
+        width: 100px;
+        height: 20px;
+      }
     }
   }
 }
 
-// Add mobile responsive behavior
+.filter-modal {
+  display: none;
+  position: fixed;
+  top: 63.6px;
+  left: 0;
+  width: 15%;
+  height: 100%;
+  background-color: white;
+  z-index: 1000;
+  border: 1px solid black;
+
+  .modal-content {
+    width: 100%;
+    padding: 20px;
+    background: white;
+    border-radius: 5px;
+  }
+
+  &.is-open {
+    display: block;
+  }
+}
+
+.filter-options > div {
+  width: 100%;
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #e0e0e0;
+  margin: 0;
+}
+
+.filter-toggle {
+  display: none;
+
+  &.is-shown {
+    display: block;
+  }
+
+  select, input, button {
+    display: block;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+}
+
+.country-list-results {
+  margin: 5px 0;
+
+  .country-option {
+      display: block;
+      text-decoration: none;
+      color: #777;
+      border-radius: 5px;
+      transition: color 0.3s ease;
+
+      &:hover {
+          color: #222;
+      }
+  }
+}
+
+.sustainability-option {
+  margin: 0 5px;
+  display: inline-block;
+  vertical-align: middle;
+  transition: transform 0.2s;
+  width: 140px;
+  padding: 5px;
+
+  &:hover {
+      transform: scale(1.1);
+  }
+}
+
+.materials-container {
+  .filter-toggle.material {
+      max-height: 300px;  // Or whatever height you prefer
+      overflow-y: auto;
+  }
+}
+
+.material-list-results {
+  margin: 5px 0;
+
+  .material-option {
+      display: block;
+      text-decoration: none;
+      color: #777;
+      border-radius: 5px;
+      transition: color 0.3s ease;
+
+      &:hover {
+          color: #222;
+      }
+  }
+}
+
+.filter-toggle.price {
+  &.is-shown {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .search-button {
+    background-color: white;
+    color: black;
+    border: 2px solid white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+
+    &:hover {
+      border: 2px solid black;
+    }
+  }
+}
+
+.irs--flat .irs-bar {
+  background-image: none !important;
+}
+
+.irs-line {
+  background-color: white !important;
+  border: 2px solid black !important;
+}
+
+.irs-bar, .irs-bar-edge, .irs-line-left, .irs-line-mid, .irs-line-right, .irs-slider{
+  background-color: black !important;
+  border: 2px solid black !important;
+}
+
+.irs-from {
+  background-color: white !important;
+  border: 2px solid black !important;
+  color: black !important;
+}
+
+.irs-from:after, .irs-single:after, .irs-to:after {
+  background-color: transparent !important;
+  border: 0.1px solid transparent !important;
+}
+
+.irs--flat .irs-from:before, .irs--flat .irs-to:before, .irs--flat .irs-single:before {
+  background-color: transparent !important;
+  border: 0.1px solid transparent !important;
+}
+
+.irs-to {
+  background-color: white !important;
+  border: 2px solid black !important;
+  color: black !important;
+}
+
+.irs-handle {
+  background-color: white !important;
+  border: 2px solid black !important;
+  width: 20px !important;
+  height: 20px !important;
+  border-radius: 50% !important;
+}
+
+.irs-handle i {
+  background-color: white !important;
+  color: black !important;
+}
+
+/* Tooltip style */
+.irs-single, .irs-min, .irs-max {
+  background-color: white !important;
+  border: 2px solid black !important;
+  color: black !important;
+}
+
+
+.sust-img-filter {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.filter-toggle {
+  &.sustainability {
+      padding: 10px 0;
+  }
+}
+
+.modal-header {
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  border-bottom:#000 2px solid;
+
+}
+
+.filter-action-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.filter-action-button {
+  background-color: white;
+  border: 2px solid black;
+  color: black;
+  padding: 8px 16px;
+  text-decoration: none;
+  font-weight: bold;
+  flex: 1;
+  text-align: center;
+  margin: 5px;
+}
+
+.bw-button {
+  background-color: white;
+  border: 2px solid black;
+  padding: 8px 16px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.filter-results-line {
+  margin-left: 110px;
+  margin-right: 20px;
+  margin-top: 40px;
+  max-width: 84%;
+}
+
+
+@media screen and (max-width: 1500px) {
+  .supplier-result-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 @media screen and (max-width: 768px) {
   .supplier-result-grid {
     grid-template-columns: repeat(2, 1fr);

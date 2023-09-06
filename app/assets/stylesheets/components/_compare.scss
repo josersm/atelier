@@ -1,0 +1,100 @@
+.compare-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  width: 100%;
+  padding: 20px;
+  background: white; // Slight background color to differentiate from cards
+
+  .supplier {
+    flex: 0 0 48%;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px; // Rounded corners
+
+    .supplier-img-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+
+      img {
+        max-width: 80%;
+        border-radius: 8px; // Rounded corners for image
+      }
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      color: #333;
+      text-align: center;
+      border-bottom: 2px solid #eee; // Separation line
+      padding-bottom: 15px;
+      margin-bottom: 15px;
+    }
+
+    .materials-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-bottom: 20px;
+      border-bottom: 1px dashed #ddd; // Dashed separation line
+      padding-bottom: 15px;
+
+      .material-item {
+        background-color: #e7f3e8; // A subtle background
+        border-radius: 5px;
+        padding: 5px 10px;
+        font-size: 0.8rem;
+        color: #2c7f2c; // Color for material names
+      }
+    }
+
+    p {
+      color: #777;
+      margin-bottom: 12px;
+      font-size: 0.9rem;
+      line-height: 1.4; // Added some line height for better readability
+
+      &.address, &.country {
+        font-style: italic;
+      }
+
+      &.description {
+        margin-bottom: 18px;
+        border-bottom: 1px solid #eee; // Separation line
+        padding-bottom: 15px;
+      }
+
+      &.email, &.phone_number {
+        font-weight: bold;
+      }
+
+      &.price_rating {
+        color: #555;
+        font-size: 1.1rem;
+      }
+
+      &.minimum_quantity {
+        color: #555;
+        margin-top: 20px;
+      }
+    }
+
+    .sustainability_rating {
+      display: flex;
+      align-items: center; // Align image and text vertically
+      gap: 10px;
+      margin-bottom: 10px; // Space from sustainability to min. quantity
+
+      img {
+        width: 125px;
+        height: 25px;
+      }
+    }
+  }
+}
+
+.sustainability_icon {
+  background-image: url('path_to_your_sustainability_icon.png');
+}

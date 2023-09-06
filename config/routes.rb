@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/num_suppliers_worked_with', to: 'dashboard#num_suppliers_worked_with'
   get '/num_projects_manufactured', to: 'dashboard#num_projects_manufactured'
   get 'total_products_manufactured', to: 'dashboard#total_products_manufactured'
+  
 
   resources :brands, only: [:new, :create, :edit, :show, :update, :destroy] do
     resources :projects, only: [:index]

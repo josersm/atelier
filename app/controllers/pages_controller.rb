@@ -26,7 +26,6 @@ class PagesController < ApplicationController
     end
   end
 
-
   def dashboard
    puts "just hit dashboard controller"
    puts current_user
@@ -40,9 +39,11 @@ class PagesController < ApplicationController
 
 
 		@user = current_user
-    @supplier = current_user.supplier
-    @brand = current_user.brand
-    @projects = @brand.projects
+    # @supplier = current_user.supplier
+    # @brand = current_user.brand
+    # @projects = @brand.projects
+    # @favorites = @brand.favorites
+		# raise
   end
 
   def inbox

@@ -2,7 +2,7 @@ class SuppliersController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-
+    @suppliers = Supplier.includes(:materials).all
     @countries = Supplier.distinct.pluck(:country)
     @min_value = Supplier.minimum(:minimum_quantity)
     @max_value = Supplier.maximum(:minimum_quantity)
@@ -28,10 +28,7 @@ class SuppliersController < ApplicationController
     if params[:supplier_materials].present?
       @suppliers = @suppliers.joins(:supplier_materials).where(supplier_materials: { material_id: params[:supplier_materials] })
     end
-
   end
-
-
 
   def show
     @favorite = Favorite.new
