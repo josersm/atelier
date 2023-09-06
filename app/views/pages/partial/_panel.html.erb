@@ -1,14 +1,6 @@
 <% if Supplier.where(user: current_user).any? %>
-
-<%# SUPPLIER DASHBOARD %>
-	<% supplier = Supplier.where(user: current_user) %>
-	<% projects = Project.where(supplier_id: supplier) %>
-		<h2 class="h2-dashboard"><%= "Active Projects" %></h2>
-		<h2><%= projects.count %></h2>
-		<p>
-		<%# link_to "View all projects", supplier_projects_path(supplier.first.id), class: "mr-2" %>
-		</p>
-
+	<h2 class="h2-dashboard"><%= "Active Projects" %></h2>
+	<h2><%= @supplier_projects.count %></h2>
   <table data-controller="dashboard">
     <thead>
       <tr>
@@ -22,7 +14,7 @@
       </tr>
     </thead>
     <tbody>
-      <% projects.each do |project| %>
+      <% @supplier_projects.each do |project| %>
 				<% supplier = Supplier.find(project.supplier_id) %>
 				<% total_units = 0 %>
 				<% project.products.each do |product| %>
@@ -40,28 +32,26 @@
           <td><%= project.products.count %></td>
           <td><%= total_units %></td>
 
-					<%= simple_form_for Project.find(project.id) do |f| %>
-          <td data-action="click->dashboard#fire">
-						<%= f.input :status %>
+					<%= simple_form_for (project) do |f| %>
+						<td data-action="click->dashboard#fire">
+							<%= f.input :status %>
 							<%= f.select :status, options_for_select(
 								[
-							"pending",
-							"accepted",
-							"samples construction",
-							"delivery of samples",
-							"start of production",
-							"delivery of production"
-								],
-								selected = project.status
-								) %>
-					</td>
+									"pending",
+									"accepted",
+									"samples construction",
+									"delivery of samples",
+									"start of production",
+									"delivery of production"
+								],selected = project.status) %>
+						</td>
 
-          <td>
-						<%= f.input :delivery_date,
-            as: :string,
-            input_html: { data: { controller: "datepicker" } } %>
-					</td>
-					<%= f.submit "Update Project", class: "btn btn-primary" %>
+						<td>
+							<%= f.input :delivery_date,
+							as: :string,
+							input_html: { data: { controller: "datepicker" } } %>
+						</td>
+						<%= f.submit "Update Project", class: "btn btn-primary" %>
 					<% end %>
         </tr>
       <% end %>
@@ -69,22 +59,14 @@
   </table>
 
 <% else %>
-<%# BRAND DASHBOARD %>
-	<% brand = Brand.where(user: current_user) %>
-	<% projects = Project.where(brand_id: brand) %>
-	<% favorites = Favorite.where(brand_id: brand) %>
-	<%#	 raise %>
-
-	<%# MY SUPPLIERS - FAVORITES %>
 	<div class="dashboard-container">
 		<div class="title-line">
-			<h2 class="h2-dashboard"><%= "MY SUPPLIERS - FAVORITES" %></h2>
+			<h2 class="h2-dashboard">MY SUPPLIERS - FAVORITES</h2>
 			<div class="title-line-child"></div>
 		</div>
 
 		<div class="supplier-result-grid">
-			<% favorites.limit(3).each do |favorite| %>
-
+			<% @favorites.limit(3).each do |favorite| %>
 				<%= link_to supplier_path(favorite.supplier), class: "supplier-result-card" do %>
 					<img src="https://res.cloudinary.com/dzm55bol0/image/upload/v1693819062/image_143_a5j6tt.png" alt="Supplier Image" class="supplier-result-image" />
 					<div class="supplier-result-card-header">
@@ -99,9 +81,11 @@
 					</div>
 
 					<p class="supplier-result-description"><%= truncate(favorite.supplier.description, length: 155, separator: ' ', omission: '...') %></p>
+
 					<div class="supplier-footer-price">
-							<p><%= favorite.supplier.price_rating %></p>
-						</div>
+						<p><%= favorite.supplier.price_rating %></p>
+					</div>
+
 					<div class="supplier-result-card-footer">
 						<% if favorite.supplier.sustainability_rating <= 2%>
 							<%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821904/sust_1_ifiisc.png", class: "sust-img" %>
@@ -116,7 +100,7 @@
 						<% end %>
 						<p> <i>Min. Quantities <%= favorite.supplier.minimum_quantity %> units</i></p>
 					</div>
-					<%# create button to add to favourites %>
+						<%# create button to add to favourites %>
 				<% end %>
 
 			<% end %>
@@ -125,48 +109,158 @@
 	<%# MY PROJECTS %>
 	<div class="my-projects">
 		<div class="title-line">
-			<h2 class="h2-dashboard"><%= "MY PROJECTS" %></h2>
+			<h2 class="h2-dashboard">MY PROJECTS</h2>
 			<div class="title-line-child"></div>
 		</div>
-		<div class="cards container-dashboard mt-2 row">
+
+		<div class="cards container-dashboard row" id="my-projects-container">
 			<div class="card border border-dark col-xs-6 col-sm-6 col-md-6 col-lg-6">
 				<h3 class="h3-dashboard parent-icon">
-					ALL MY PROJECTS
-					<i style="" class="fa-solid fa-diagram-project"></i>
+					ALL MY PROJECTS<span><i style="" class="fa-solid fa-diagram-project"></i></span>
 				</h3>
 				<ul class="ul-columns">
-					<li>PROJECT PENDING (<%= projects.where(status: "pending").count %>)</li>
-					<li>PROJECT ACCEPTED (<%= projects.where(status: "accepted").count %>)</li>
-					<li>SAMPLES CONSTRUCTION (<%= projects.where(status: "samples construction").count %>)</li>
-					<li>DELIVERY OF SAMPLES (<%= projects.where(status: "delivery of samples").count %>)</li>
-					<li>START PRODUCTION (<%= projects.where(status: "start of production").count %>)</li>
-					<li>DELIVERY OF PRODUCTION (<%= projects.where(status: "delivery of production").count %>)</li>
+					<li>PROJECT PENDING (<%= @projects.where(status: "pending").count %>)</li>
+					<li>PROJECT ACCEPTED (<%= @projects.where(status: "accepted").count %>)</li>
+					<li>SAMPLES CONSTRUCTION (<%= @projects.where(status: "samples construction").count %>)</li>
+					<li>DELIVERY OF SAMPLES (<%= @projects.where(status: "delivery of samples").count %>)</li>
+					<li>START PRODUCTION (<%= @projects.where(status: "start of production").count %>)</li>
+					<li>DELIVERY OF PRODUCTION (<%= @projects.where(status: "delivery of production").count %>)</li>
 				</ul>
 				<p class="see-all">
 					<i class="fa-regular fa-eye"></i>
-					<%= link_to "SEE ALL", brand_projects_path(brand.first.id), class: "mr-2" %>
+					<%# raise %>
+					<%= link_to "SEE ALL", brand_projects_path(@brand.first.id), class: "mr-2" %>
 				</p>
 			</div>
+
 			<div class="card border border-dark col-xs-6 col-sm-6 col-md-6 col-lg-6">
 				<h3 class="h3-dashboard parent-icon">
-				UNREAD MESSAGES
-				<i style="" class="fa-solid fa-inbox"></i>
+					READ MESSAGES<span><i style="" class="fa-solid fa-inbox"></i></span>
 				</h3>
+
+				<% if @chatrooms %>
+				<%# raise %>
+					<% @chatrooms.each do |chatroom| %>
+						<% supplier = Supplier.find(chatroom.supplier_id) %>
+						<p class="chat-paragraph">
+						<%= link_to "#{supplier.name} READ MESSAGES", supplier_chatroom_path(supplier, chatroom), class: "chat-link" %>
+						</p>
+					<% end %>
+				<% end %>
+
+				<% if @no_chatrooms %>
+					<% @no_chatrooms.each do |supplier| %>
+						<p class="chat-paragraph"> <%= supplier.name %> <span>no messages</span></p>
+					<% end %>
+				<% end %>
 				<p class="see-all">
 					<i class="fa-regular fa-eye"></i>
 					<%= link_to "SEE ALL", inbox_path, class: "mr-2" %>
 				</p>
-
 			</div>
 		</div>
 	</div>
+		<%# PROJECTS INFOGRAPHIC %>
+	<div class="projects-infographic">
+		<div class="title-line">
+			<h2 class="h2-dashboard">PROJECTS INFOGRAPHIC</h2>
+			<div class="title-line-child"></div>
+		</div>
+		<div class="graph-container container-dashboard" style="display: flex;">
+			<div class="cards container-dashboard">
+				<div class="card border border-dark col-xs-6 col-sm-6 col-md-6 col-lg-6">
+					<p id="number-suppliers">TOTAL NUMBER OF SUPPLIERS</p>
+					<div class="graph-columns d-flex">
+						<div class="graph-box">
+							<p><%= @projects.count %></p>
+						</div>
+						<% countries = [] %>
+						<% products_count = [] %>
+						<% units_count = [] %>
+						<%# raise %>
+						<% @projects.each do |project| %>
+							<%# project.supplier.country %>
+							<% countries << project.supplier.country %>
+							<% products_count << project.products.count %>
+							<% units_count << project.supplier.country %>
+						<% end %>
+						<% groups = countries.group_by(&:itself) %>
+						<% counts = groups.map { |value, group| [value, group.count] } %>
+						<% results = counts.sort_by(&:last) %>
+						<ul>
+						<% results.reverse.each do |result| %>
+							<li><%= result[0] %> <span><%=result[1]%></span></li>
+							<% end %>
+						</ul>
+					</div>
+				</div>
+				<div class="cards inner-box d-flex">
+					<div class="card border border-dark col-xs-6 col-sm-6 col-md-6 col-lg-6">
+
+						<div class="graph-columns d-flex">
+							<div class="info-two-boxes">
+								<p>
+								<% total_products = 0 %>
+									<% @projects.each do |project| %>
+										<% total_products += project.products.count %>
+									<% end %>
+									<%= total_products %>
+									<%# raise %>
+								</p>
+							<p class="">
+								TOTAL PRODUCTS MANUFACTURED
+							</p>
+							</div>
+						</div>
+					</div>
+					<div class="card border border-dark col-xs-6 col-sm-6 col-md-6 col-lg-6">
+
+						<% all_total_units_projects = 0 %>
+						<% @projects.each do |project| %>
+							<% total_units = 0 %>
+							<% project.products.each do |product| %>
+								<% total_units += product.quantity_xs.to_i +
+						product.quantity_s.to_i +
+						product.quantity_m.to_i +
+						product.quantity_l.to_i +
+						product.quantity_xl.to_i %>
+							<% end %>
+							<% all_total_units_projects += total_units %>
+						<% end %>
+						<div class="graph-columns d-flex">
+							<div class="info-two-boxes">
+								<p>
+									<%= all_total_units_projects %>
+								</p>
+								<p class="">
+									TOTAL ITEMS MANUFACTURED
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<%# GRAPHS %>
+			<div class="graphs">
+				<div class="graph-title">
+					<p>NUMBER OF UNITS PRODUCED OVER THE PAST 12 MONTHS</p>
+				</div>
+				<% items_by_month_data = Product.group("DATE_TRUNC('month', created_at)").pluck(Arel.sql("DATE_TRUNC('month', created_at) AS month"), Arel.sql("SUM(quantity_xs + quantity_s + quantity_m + quantity_l + quantity_xl) AS total_items")) %>
+
+				<% items_by_month = items_by_month_data.map { |month, total_items| [month.strftime("%b"), total_items] } %>
+
+				<%= column_chart items_by_month, xtitle: '', ytitle: '', label: 'Items', colors: ['#000000'], class: 'vertical-ytitle' %>
+			</div>
+		</div>
+	</div>
+
 	<%# CURRENT PROJECTS %>
-	<div>
+	<div class="current-projects">
 		<div class="title-line">
 			<h2 class="h2-dashboard"><%= "CURRENT PROJECTS" %></h2>
 			<div class="title-line-child"></div>
 		</div>
-		<table class="container-dashboard mt-2">
+		<table class="container-dashboard container-current-projects">
 			<thead>
 				<tr>
 					<th>TITLE</th>
@@ -176,11 +270,11 @@
 					<th>TOTAL UNITS</th>
 					<th>STATUS</th>
 					<th>DELIVERY DATE</th>
-					<th>SEE PROJECT</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
-				<% projects.each do |project| %>
+				<% @projects.each do |project| %>
 					<% supplier = Supplier.find(project.supplier_id) %>
 					<% total_units = 0 %>
 					<% project.products.each do |product| %>
@@ -198,128 +292,12 @@
 						<td><%= project.products.count %></td>
 						<td><%= total_units %></td>
 						<td><%= project.status %></td>
-						<td><%= project.updated_at %></td>
+						<td><%= project.delivery_date %></td>
 						<td><%= link_to "SEE PROJECT", project_path(project), class: "mr-2" %></td>
 					</tr>
 				<% end %>
 			</tbody>
 		</table>
 	</div>
-	<%# PROJECTS INFOGRAPHIC %>
-	<div class="projects-infographic">
-		<div class="title-line">
-			<h2 class="h2-dashboard">PROJECTS INFOGRAPHIC</h2>
-			<div class="title-line-child"></div>
-		</div>
-		<div class="graph-container" style="display: flex;">
-			<div class="cards container-dashboard mt-2">
-				<div class="card border border-dark col-xs-6 col-sm-6 col-md-6 col-lg-6">
-					<p class="">
-						TOTAL NUMBER OF SUPPLIERS
-					</p>
-					<div class="graph-columns d-flex">
-						<div class="graph-box">
-							<p>
-								<%= projects.count %>
-							</p>
-						</div>
-						<% countries = [] %>
-						<% products_count = [] %>
-						<% units_count = [] %>
-						<%# raise %>
-						<% projects.each do |project| %>
-							<%# project.supplier.country %>
-							<% countries << project.supplier.country %>
-							<% products_count << project.products.count %>
-							<% units_count << project.supplier.country %>
-						<% end %>
-						<% groups = countries.group_by(&:itself) %>
-						<% counts = groups.map { |value, group| [value, group.count] } %>
-						<% results = counts.sort_by(&:last) %>
-						<ul>
-						<% results.reverse.each do |i| %>
-							<li><%= i[0] %> (<%=i[1]%>)</li>
-							<% end %>
-						</ul>
-					</div>
-				</div>
-				<div class="card border border-dark col-xs-6 col-sm-6 col-md-6 col-lg-6">
-					<p class="">
-						TOTAL PRODUCTS MANUFACTURED
-					</p>
-					<div class="graph-columns d-flex">
-						<div class="graph-box">
-							<p>
-							<% total_products = 0 %>
-								<% projects.each do |project| %>
-									<% total_products += project.products.count %>
-								<% end %>
-								<%= total_products %>
-							</p>
-						</div>
-						<ul>
-							<li>SPAIN (<%= projects.where(status: "pending").count %>)</li>
-							<li>PORTUGAL (<%= projects.where(status: "accepted").count %>)</li>
-							<li>MORROCO (<%= projects.where(status: "samples construction").count %>)</li>
-						</ul>
-					</div>
-				</div>
-				<div class="card border border-dark col-xs-6 col-sm-6 col-md-6 col-lg-6">
-					<p class="">
-						TOTAL ITEMS MANUFACTURED <br>
-						<% all_total_units_projects = 0 %>
-						<% projects.each do |project| %>
-							<% total_units = 0 %>
-							<% project.products.each do |product| %>
-								<% total_units += product.quantity_xs.to_i +
-						product.quantity_s.to_i +
-						product.quantity_m.to_i +
-						product.quantity_l.to_i +
-						product.quantity_xl.to_i %>
-							<% end %>
-							<% all_total_units_projects += total_units %>
-						<% end %>
-					</p>
-					<div class="graph-columns d-flex">
-						<div class="graph-box">
-							<p>
-								<%= all_total_units_projects %>
-							</p>
-						</div>
-						<ul>
-							<li>SPAIN (<%= projects.where(status: "pending").count %>)</li>
-							<li>PORTUGAL (<%= projects.where(status: "accepted").count %>)</li>
-							<li>MORROCO (<%= projects.where(status: "samples construction").count %>)</li>
-						</ul>
-					</div>
-				</div>
-			</div>
 
-
-			<%# GRAPHS %>
-			<div class="graphs">
-				<% start_date = 12.months.ago.beginning_of_month %> <!-- Adjust the time range as needed -->
-				<% end_date = Time.current.end_of_month %>
-
-				<% all_months = [] %>
-				<% current_month = start_date %>
-				<%
-				while current_month <= end_date
-					all_months << [current_month.strftime("%b"), 0]
-					current_month = current_month.next_month
-				end
-				%>
-
-				<% items_by_month_data = Product.group("DATE_TRUNC('month', created_at)").pluck(Arel.sql("DATE_TRUNC('month', created_at) AS month"), Arel.sql("SUM(quantity_xs + quantity_s + quantity_m + quantity_l + quantity_xl) AS total_items")) %>
-
-				<% items_by_month = all_months.map do |month, _|
-					month_data = items_by_month_data.find { |item_month, _| item_month.strftime("%b") == month }
-					[month, month_data ? month_data[1] : 0]
-				end %>
-
-				<%= column_chart items_by_month, xtitle: 'Month', ytitle: 'Items', label: 'Items' %>
-
-			</div>
-		</div>
-	</div>
 <% end %>
