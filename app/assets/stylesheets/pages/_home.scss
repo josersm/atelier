@@ -5,7 +5,7 @@
 .home-banner {
   object-fit: cover;
   width: 80%;
-  height: 750px;
+  height: 850px;
   padding: 30px 20px 30px;
 }
 
@@ -13,24 +13,32 @@
 // Filter
 
 .home-filter-container {
-  width: 80%;
+  width: 70%;
   margin: auto;
-  margin-top: 10%;
-  margin-bottom: 10%;
+}
+
+.home-filter-title {
+  text-align: center;
+  font-size: 24px;
+  color: black;
+  font-family: 'Roboto', 'Helvetica', sans-serif;
+  font-weight: 500;
+  padding-top: 1%;
 }
 
 // Cards Country
+
+.home-card-container {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  position: relative;
+  width: 70%;
+}
 
 .home-grid{
   display:grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap:20px
-}
-.home-card-container {
-  margin-top: 5%;
-  margin-bottom: 5%;
-  position: relative;
-  width: 80%;
 }
 
 .home-card-country {
@@ -55,7 +63,6 @@
 
 
 .home-card-image {
-
   height: 310px;
   object-fit: cover;
 
@@ -67,10 +74,14 @@
   margin-top: 5%;
   margin-bottom: 5%;
   position: relative;
-  width: 80%;
+  width: 70%;
+
 }
 
-.home-about_us-background {
+.home-about_us-background-1 {
+  background-color: black;
+}
+.home-about_us-background-2 {
   background-color: black;
 }
 
@@ -90,6 +101,20 @@
   padding-bottom: 15px;
 }
 
+.home-about_us-image-card {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  padding-left: 0px;
+  padding-right: 52px;
+  display: table-cell;
+
+  height: 100%;
+  vertical-align: middle;
+  text-align: center;
+}
+
 .home-about_us-image {
-  padding: 40px;
+  width: 100%;
+  display: inline-block;
+  vertical-align: middle;
 }
