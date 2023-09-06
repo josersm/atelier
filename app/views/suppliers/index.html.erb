@@ -29,6 +29,7 @@
               SUSTAINABILITY
               <div class="filter-toggle sustainability hidden" data-filter-toggle="sustainability">
                 <%= hidden_field_tag :sustainability_rating, params[:sustainability_rating] %>
+            
                 <%= link_to suppliers_path(sustainability_rating: 5), class: "sustainability-option" do %>
                   <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821902/sust_5_hrgnpe.png", class: "sust-img-filter", alt: "Sustainability Rating 5" %>
                 <% end %>

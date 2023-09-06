@@ -19,15 +19,15 @@
         </div>
         <div class="sustainability-icons-showpage" stylesheet:>
           <% if @supplier.sustainability_rating >= 5 %>
-           <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821902/sust_5_hrgnpe.png", class: "sust-img-filter", alt: "Sustainability Rating 5" %>
+           <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821902/sust_5_hrgnpe.png", class: "sust-img-filter", alt: "reviews rating 5" %>
         <% elsif @supplier.sustainability_rating >= 4 %>
-          <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821902/sust_4_ehprtk.png", class: "sust-img-filter", alt: "Sustainability Rating 4" %>
+          <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821902/sust_4_ehprtk.png", class: "sust-img-filter", alt: "reviews rating 4" %>
         <% elsif @supplier.sustainability_rating >= 3 %>
-          <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821903/sust_3_fr1mk5.png", class: "sust-img-filter", alt: "Sustainability Rating 3" %>
+          <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821903/sust_3_fr1mk5.png", class: "sust-img-filter", alt: "reviews rating 3" %>
         <% elsif @supplier.sustainability_rating >= 2 %>
-          <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821903/sust_2_loylzt.png", class: "sust-img-filter", alt: "Sustainability Rating 2" %>
+          <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821903/sust_2_loylzt.png", class: "sust-img-filter", alt: "reviews rating 2" %>
         <% elsif @supplier.sustainability_rating >= 1 %>
-          <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821904/sust_1_ifiisc.png", class: "sust-img-filter", alt: "Sustainability Rating 1" %>
+          <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821904/sust_1_ifiisc.png", class: "sust-img-filter", alt: "reviews rating 1" %>
         <% end %>
       </div>
 
@@ -104,10 +104,25 @@
           <%= image_tag("https://res.cloudinary.com/dzm55bol0/image/upload/v1693819062/image_143_a5j6tt.png", alt: "Supplier Image" ,id:"review-picture-brand") %>
           <div style="margin-left:25px;">
             <div style="display:flex">
-              <div>
+              <div id="review-brand-name-showpage">
                 <p> <%= review.brand.company_name %> </p>
-                </div>
-                <p id="review-rating-showpage" style="margin-left:40px;"> <%= review.rating %> </p>
+              </div>
+                <p id="review-rating-showpage" style="margin-left:40px;"> </p>
+
+              <div class="reviews-icons-showpage" stylesheet:>
+                  <% if review.rating >= 5 %>
+                  <%= image_tag "https://res.cloudinary.com/do4qlpmbv/image/upload/v1694009738/5_star_gfxo0b.png", class: "reviews-icon-stars", alt: "reviews rating 5" %>
+                <% elsif review.rating >= 4 %>
+                  <%= image_tag "https://res.cloudinary.com/do4qlpmbv/image/upload/v1694009738/4_star_bgxhxr.png", class: "reviews-icon-stars", alt: "reviews rating 4" %>
+                <% elsif review.rating >= 3 %>
+                  <%= image_tag "https://res.cloudinary.com/do4qlpmbv/image/upload/v1694009738/3_star_heeul5.png", class: "reviews-icon-stars", alt: "reviews rating 3" %>
+                <% elsif review.rating >= 2 %>
+                  <%= image_tag "https://res.cloudinary.com/do4qlpmbv/image/upload/v1694009738/2_star_ceoplz.png", class: "reviews-icon-stars", alt: "reviews rating 2" %>
+                <% elsif review.rating >= 1 %>
+                  <%= image_tag "https://res.cloudinary.com/do4qlpmbv/image/upload/v1694009738/1_star_lz9bks.png", class: "reviews-icon-stars", alt: "reviews rating 1" %>
+                <% end %>
+              </div>
+
                 <p> <%= review.created_at %></p>
             </div>
             <p id="review-comment-showpage"> <%= review.comment %> </p>

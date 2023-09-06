@@ -11,6 +11,8 @@
   border: 1px solid black;
   height: fit-content;
   padding: 13px;
+  top: 74px;
+  position: sticky;
 }
 
 .right-conatainer-showpage {
@@ -151,10 +153,7 @@ show-supplier-submit__btn {
 
 }
 
-// NOOOO!!!
-// .show-page__btn {
-//   margin-bottom: -330px;
-// }
+
 
 .show-page__btn{
   display: flex;
@@ -296,4 +295,13 @@ show-supplier-submit__btn {
 .btn_submit:hover {
   background: white;
   color: black;
+}
+
+.reviews-icon-stars  {
+  margin-right: 20px;
+  vertical-align: middle;
+}
+
+#review-brand-name-showpage {
+  margin-left: 10px;
 }
