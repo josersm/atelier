@@ -119,6 +119,26 @@
   transition: background-color 0.3s;
 }
 
+.show-supplier__btn:hover {
+  color:black;
+  background-color: white;
+}
+
+show-supplier-submit__btn {
+  text-decoration: none;
+  color: white;
+  background-color: black;
+  text-align: center;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 20px;
+}
+
+.show-supplier-submit__btn:hover {
+  color:black;
+  background-color: white;
+}
 
 
 .previous-project-images {
@@ -159,6 +179,7 @@
 /* Regular heart icon */
 .far.fa-heart {
   color: black;
+  margin-left: 5px;
   /* Set the default heart color */
   transition: color 0.3s;
   /* Add a transition for smooth color change */
@@ -171,17 +192,12 @@
 }
 
 
-
 #showpage-add-favorites {
   color: black;
   text-decoration: none;
 }
 
-#new_review {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
+
 
 #review-submit-container {
   display: flex;
@@ -205,7 +221,7 @@
 
 #new_review {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
 }
 
@@ -246,4 +262,38 @@
   margin-block-start: -53px;
   background-color: black;
   color: white;
+}
+
+.showpage-add-favorites {
+  display: flex;
+  align-items: center;
+}
+
+#supplier-name-rating-showpage {
+  margin-left: 10px;
+}
+
+.sustainability-icons-showpage {
+  width: 102px;
+  height: 31px;
+}
+
+.sust-img-filter {
+  max-width: 100%;
+  height: auto;
+  margin: 10px;
+  display: block;
+}
+
+.btn {
+  width: 20px;
+  background:black;
+  color:white;
+  width:20%;
+  transition: background 0.3s, color 0.3s
+}
+
+.btn_submit:hover {
+  background: white;
+  color: black;
 }
