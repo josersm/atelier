@@ -128,11 +128,13 @@
 			<h2 class="h2-dashboard"><%= "MY PROJECTS" %></h2>
 			<div class="title-line-child"></div>
 		</div>
-		<div class="cards container-dashboard mt-2 row">
+		<div class="cards container-dashboard mt-2 row" id="my-projects-container">
 			<div class="card border border-dark col-xs-6 col-sm-6 col-md-6 col-lg-6">
 				<h3 class="h3-dashboard parent-icon">
 					ALL MY PROJECTS
+					<span>
 					<i style="" class="fa-solid fa-diagram-project"></i>
+					</span>
 				</h3>
 				<ul class="ul-columns">
 					<li>PROJECT PENDING (<%= projects.where(status: "pending").count %>)</li>
@@ -150,7 +152,9 @@
 			<div class="card border border-dark col-xs-6 col-sm-6 col-md-6 col-lg-6">
 				<h3 class="h3-dashboard parent-icon">
 				UNREAD MESSAGES
-				<i style="" class="fa-solid fa-inbox"></i>
+				<span>
+					<i style="" class="fa-solid fa-inbox"></i>
+				</span>
 				</h3>
 				<p class="see-all">
 					<i class="fa-regular fa-eye"></i>
@@ -198,7 +202,7 @@
 						<td><%= project.products.count %></td>
 						<td><%= total_units %></td>
 						<td><%= project.status %></td>
-						<td><%= project.updated_at %></td>
+						<td><%= project.delivery_date %></td>
 						<td><%= link_to "SEE PROJECT", project_path(project), class: "mr-2" %></td>
 					</tr>
 				<% end %>
@@ -212,9 +216,9 @@
 			<div class="title-line-child"></div>
 		</div>
 		<div class="graph-container" style="display: flex;">
-			<div class="cards container-dashboard mt-2">
+			<div class="cards container-dashboard">
 				<div class="card border border-dark col-xs-6 col-sm-6 col-md-6 col-lg-6">
-					<p class="">
+					<p id="number-suppliers">
 						TOTAL NUMBER OF SUPPLIERS
 					</p>
 					<div class="graph-columns d-flex">
@@ -237,36 +241,33 @@
 						<% counts = groups.map { |value, group| [value, group.count] } %>
 						<% results = counts.sort_by(&:last) %>
 						<ul>
-						<% results.reverse.each do |i| %>
-							<li><%= i[0] %> (<%=i[1]%>)</li>
+						<% results.reverse.each do |result| %>
+							<li><%= result[0] %> <span><%=result[1]%></span></li>
 							<% end %>
 						</ul>
 					</div>
 				</div>
-				<div class="card border border-dark col-xs-6 col-sm-6 col-md-6 col-lg-6">
-					<p class="">
-						TOTAL PRODUCTS MANUFACTURED
-					</p>
-					<div class="graph-columns d-flex">
-						<div class="graph-box">
-							<p>
-							<% total_products = 0 %>
-								<% projects.each do |project| %>
-									<% total_products += project.products.count %>
-								<% end %>
-								<%= total_products %>
+				<div class="cards inner-box d-flex">
+					<div class="card border border-dark col-xs-6 col-sm-6 col-md-6 col-lg-6">
+
+						<div class="graph-columns d-flex">
+							<div class="info-two-boxes">
+								<p>
+								<% total_products = 0 %>
+									<% projects.each do |project| %>
+										<% total_products += project.products.count %>
+									<% end %>
+									<%= total_products %>
+									<%# raise %>
+								</p>
+							<p class="">
+								TOTAL PRODUCTS MANUFACTURED
 							</p>
+							</div>
 						</div>
-						<ul>
-							<li>SPAIN (<%= projects.where(status: "pending").count %>)</li>
-							<li>PORTUGAL (<%= projects.where(status: "accepted").count %>)</li>
-							<li>MORROCO (<%= projects.where(status: "samples construction").count %>)</li>
-						</ul>
 					</div>
-				</div>
-				<div class="card border border-dark col-xs-6 col-sm-6 col-md-6 col-lg-6">
-					<p class="">
-						TOTAL ITEMS MANUFACTURED <br>
+					<div class="card border border-dark col-xs-6 col-sm-6 col-md-6 col-lg-6">
+
 						<% all_total_units_projects = 0 %>
 						<% projects.each do |project| %>
 							<% total_units = 0 %>
@@ -279,18 +280,16 @@
 							<% end %>
 							<% all_total_units_projects += total_units %>
 						<% end %>
-					</p>
-					<div class="graph-columns d-flex">
-						<div class="graph-box">
-							<p>
-								<%= all_total_units_projects %>
-							</p>
+						<div class="graph-columns d-flex">
+							<div class="info-two-boxes">
+								<p>
+									<%= all_total_units_projects %>
+								</p>
+								<p class="">
+									TOTAL ITEMS MANUFACTURED
+								</p>
+							</div>
 						</div>
-						<ul>
-							<li>SPAIN (<%= projects.where(status: "pending").count %>)</li>
-							<li>PORTUGAL (<%= projects.where(status: "accepted").count %>)</li>
-							<li>MORROCO (<%= projects.where(status: "samples construction").count %>)</li>
-						</ul>
 					</div>
 				</div>
 			</div>

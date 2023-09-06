@@ -9,7 +9,15 @@
 	font-size: 18px;
 }
 
+#my-projects-container {
+	display: flex;
+	justify-content: space-between;
+}
 
+#number-suppliers {
+	text-align: center;
+	padding: 16px;
+}
 table {
 	text-align: center;
 	// margin: 0 auto;
@@ -23,8 +31,14 @@ table {
 			padding: 20px 25px;
 			font-weight: 400;
 		}
+	}
+	td {
+		padding: 20px 0;
+	}
+	tr:first-of-type {
+
 		td {
-			padding-top: 10px;
+			padding-top: 30px;
 		}
 	}
 
@@ -48,6 +62,8 @@ table {
   -webkit-columns: 2;
   -moz-columns: 2;
 	margin: 0;
+	padding-top: 20px;
+
 	// display: flex;
   // flex-direction: column;
 	li {
@@ -68,7 +84,9 @@ table {
 }
 .my-projects {
 	.card {
+		width: 48%;
 		padding: 30px 50px;
+		justify-content: space-between;
 	}
 }
 
@@ -84,41 +102,77 @@ a:hover {
 }
 
 .graph-container {
+	margin-top: 20px;
+
 	.cards {
 
-		width: 30%;
+		width: 26%;
 		.card {
 width: 100%;
 		}
 	}
 	.graphs {
-		width: 70%;
+		width: 68%;
 		border: #000000 1px solid;
 		padding: 50px;
 	}
 }
+.inner-box.cards {
+	width: 100%;
+	.card {
+		width: 50%;
+    margin-top: 20px;
+    border: none!important;
+	}
 
+}
+.info-two-boxes {
+	p:first-of-type {
+		font-size: 24px;
+		padding: 20px;
+	}
+	p {
+		padding: 10px;
+		text-align: center;
+	}
+}
 .graph-columns {
+	padding-bottom: 20px;
 	.graph-box {
 		line-height: 150px;
 		height: 150px;
-		width: 50%;
+		width: 40%;
+		border-right: 1px black solid;
 		p {
 		 font-size: 24px;
 		 text-align: center;
 
 	 }
 	}
+	ul {
+		padding: 0 20px;
+		list-style-type: none;
+		li {
+			// height: 30px;
+			// line-height: 30px;
+			padding: 10px 0;
+		}
+		span {
+			float: right;
+		}
+	}
 }
 
 .parent-icon {
-	position: relative;
-	i {
-    font-size: 36px;
-    position: absolute;
-    top: -6px;
-    left: 190px;
-    // margin-left: 20px;
+	// position: relative;
+	span {
+		float: right;
+		i {
+			font-size: 36px;
+			// position: absolute;
+    // top: -4px;
+    // left: 320px;
+		}
 	}
 }
 
