@@ -19,7 +19,7 @@
           <div class="filter-toggle country hidden" data-filter-toggle="country">
             <% @countries.each do |country| %>
               <div class="country-list-results">
-              <%= link_to country, suppliers_path(country: country), class: "country-option" %>
+              <%= link_to country, suppliers_path(request.query_parameters.merge(country: country)), class: "country-option" %>
               </div>
             <% end %>
           </div>
@@ -76,7 +76,7 @@
             <div class="filter-toggle material hidden" data-filter-toggle="material">
                 <% Material.all.each do |material| %>
                     <div class="material-list-results">
-                        <%= link_to material.name, suppliers_path(supplier_materials: material.id), class: "material-option" %>
+                    <%= link_to material.name, suppliers_path(request.query_parameters.merge(supplier_materials: material.id)), class: "material-option" %>
                     </div>
                 <% end %>
             </div>
@@ -95,6 +95,7 @@
   <div class="supplier-result-grid">
     <% @suppliers.each do |supplier| %>
       <%= link_to supplier_path(supplier), class: "supplier-result-card" do %>
+        <p class="supplier-result-country-name"><%= supplier.country.upcase %></p>
         <img src="https://res.cloudinary.com/dzm55bol0/image/upload/v1693819062/image_143_a5j6tt.png" alt="Supplier Image" class="supplier-result-image" />
         <div class="supplier-result-card-header">
           <div class="supplier-header-top">
@@ -106,7 +107,6 @@
             <% end %>
           </div>
         </div>
-
         <p class="supplier-result-description"><%= truncate(supplier.description, length: 155, separator: ' ', omission: '...') %></p>
         <div class="supplier-footer-price">
             <p><%= supplier.price_rating %></p>
