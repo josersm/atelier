@@ -10,4 +10,8 @@ class Chatroom < ApplicationRecord
       return self.brand
     end
   end
+
+  def last_message_time
+    messages.maximum(:created_at)
+  end
 end
