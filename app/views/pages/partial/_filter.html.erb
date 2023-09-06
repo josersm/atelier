@@ -1,0 +1,20 @@
+<%= form_tag suppliers_path, method: :get, class: "search-form" do %>
+  <%= hidden_field_tag :country, params[:country] %>
+  <%= select_tag :country, options_for_select(@countries, params[:country]), prompt: "Select a country", class: "search-input" %>
+
+
+  <%= hidden_field_tag :sustainability_rating, params[:sustainability_rating] %>
+  <%= select_tag :sustainability_rating, options_for_select((1..10), params[:sustainability_rating]), prompt: "1-10", class: "search-input" %>
+
+  <%= submit_tag "€", name: "price_rating", class: "search-button" %>
+  <%= submit_tag "€€", name: "price_rating", class: "search-button" %>
+  <%= submit_tag "€€€", name: "price_rating", class: "search-button" %>
+
+  <div data-controller="slider">
+   <%= hidden_field_tag :minimum_quantity, @min_value, data: { slider_target: "minInput" } %>
+   <%= hidden_field_tag :max_quantity, @max_value, data: { slider_target: "maxInput" } %>
+   <input type="text" data-slider-target="range" data-max-value="<%= @max_value %>">
+  </div>
+
+  <%= submit_tag "Filter", class: "search-button" %>
+<% end %>

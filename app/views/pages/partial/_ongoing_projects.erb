@@ -1,54 +1,67 @@
 <div class="container mt-4">
-  <div class="row">
-    <div class="col-6 m-auto">
-      <div class="flat-form">
-        <h3 class="mb-4">Number of Suppliers Worked With</h3>
-        <div class="flex-container justify-content-center align-items-center">
-          <div class="flex-item">
-            <% if @num_suppliers_worked_with.present? %>
-              <p><%= @num_suppliers_worked_with %></p>
-            <% else %>
-              <p>No suppliers worked with.</p>
-            <% end %>
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-6 m-auto">
+        <div class="flat-form">
+          <h3 class="mb-4">Number of Suppliers Worked With</h3>
+          <div class="flex-container justify-content-center align-items-center">
+            <div class="flex-item">
+              <% number_suppliers = [] %>
+              <% @projects.each do |project| %>
+                <% if !number_suppliers.include?(project.supplier) %>
+                  <% number_suppliers << project.supplier %>
+                <% end %>
+              <% end %>
+              <% if number_suppliers.count %>
+                <p><%= number_suppliers.count %></p>
+              <% else %>
+                <p>No suppliers worked with.</p>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<div class="container mt-4">
-  <div class="row">
-    <div class="col-6 m-auto">
-      <div class="flat-form">
-        <h2 class="mb-4">Total Projects Manufactured</h2>
-        <div class="flex-container justify-content-center align-items-center">
-          <div class="flex-item">
-            <% if @total_projects_manufactured.present? %>
-              <p><%= @total_projects_manufactured %></p>
-            <% else %>
-              <p>No projects manufactured.</p>
-            <% end %>
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-6 m-auto">
+        <div class="flat-form">
+          <h2 class="mb-4">Total products Manufactured</h2>
+          <div class="flex-container justify-content-center align-items-center">
+            <div class="flex-item">
+              <% number_products = 0 %>
+              <% @projects.each do |project| %>
+                <% number_products += project.products.count %>
+              <% end %>
+              <% if number_products > 0 %>
+                <p><%= number_products %></p>
+              <% elsif @products.count > 0  %>
+                <p><%= @products.count %></p>
+              <% else %>
+                <p>No products manufactured.</p>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-
-<div class="container mt-4">
-  <div class="row">
-    <div class="col-6 m-auto">
-      <div class="flat-form">
-        <h2 class="mb-4">Total products manufactured</h2>
-        <div class="flex-container justify-content-center align-items-center">
-          <div class="flex-item">
-            <% if @total_products_manufactured.present? %>
-              <p><%= @total_products_manufactured%></p>
-            <% else %>
-              <p>No products manufactured.</p>
-            <% end %>
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-6 m-auto">
+        <div class="flat-form">
+          <h2 class="mb-4">Total projects Manufactured</h2>
+          <div class="flex-container justify-content-center align-items-center">
+            <div class="flex-item">
+              <% if @projects.count > 0  %>
+                <p><%= @projects.count %></p>
+              <% else %>
+                <p> No projects manufactured.</p>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>

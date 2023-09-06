@@ -1,0 +1,24 @@
+<div class="chatroom-container">
+  <div class="title-line">
+    <h4>INBOX</h4>
+      <div class="title-line-child"></div>
+  </div>
+  <br>
+  <ul class="chatroom-list">
+      <% @chatrooms.sort_by { |chatroom| chatroom.last_message_time || Time.at(0) }.reverse.each do |chatroom| %>
+            <li class="chatroom-item">
+        <div>
+          <div class="name-time-container">
+          <span class="chat-partner"><%= chatroom.other_party(current_user).name.upcase %></span>
+          <% if chatroom.last_message_time %>
+            <span class="last-message-time">Last message: <%= time_ago_in_words(chatroom.last_message_time) %> ago</span>
+          <% else %>
+            <span class="last-message-time">No messages yet</span>
+          <% end %>
+          </div>
+        </div>
+          <%= link_to 'CHAT', supplier_chatroom_path(chatroom.supplier, chatroom), class: "chat-link" %>
+      </li>
+    <% end %>
+  </ul>
+</div>

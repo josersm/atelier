@@ -1,33 +1,30 @@
 <% if Supplier.where(user: current_user).any? %>
 
+<%# SUPPLIER DASHBOARD %>
 	<% supplier = Supplier.where(user: current_user) %>
 	<% projects = Project.where(supplier_id: supplier) %>
-		<h2><%= "Active Projects" %></h2>
+		<h2 class="h2-dashboard"><%= "Active Projects" %></h2>
 		<h2><%= projects.count %></h2>
 		<p>
 		<%# link_to "View all projects", supplier_projects_path(supplier.first.id), class: "mr-2" %>
 		</p>
 
-  <table>
+  <table data-controller="dashboard">
     <thead>
       <tr>
-        <th style="width: 300px">Title</th>
-        <th style="width: 300px">Name Of Brand</th>
-        <th style="width: 300px">Location</th>
-        <th style="width: 300px">number of products</th>
-        <th style="width: 300px">number of total units</th>
-        <th style="width: 300px">STATUS</th>
-        <th style="width: 300px">Estimated delivery of production</th>
+        <th>Title</th>
+        <th>Name Of Brand</th>
+        <th>Location</th>
+        <th>number of products</th>
+        <th>number of total units</th>
+        <th>STATUS</th>
+        <th>DELIVERY DATE</th>
       </tr>
     </thead>
     <tbody>
-
       <% projects.each do |project| %>
-<%# raise %>
 				<% supplier = Supplier.find(project.supplier_id) %>
-
 				<% total_units = 0 %>
-
 				<% project.products.each do |product| %>
 					<% total_units += product.quantity_xs.to_i +
 					product.quantity_s.to_i +
@@ -36,101 +33,293 @@
 					product.quantity_xl.to_i
 					%>
 				<% end %>
-				<%# raise %>
-        <tr>
+        <tr data-dashboard-target="dashboardElement">
           <td><%= project.title %></td>
           <td><%= project.brand.company_name %></td>
           <td><%= supplier.country %></td>
           <td><%= project.products.count %></td>
           <td><%= total_units %></td>
-          <td><%= project.status %></td>
-          <td><%= project.updated_at %></td>
+
+					<%= simple_form_for Project.find(project.id) do |f| %>
+          <td data-action="click->dashboard#fire">
+						<%= f.input :status %>
+							<%= f.select :status, options_for_select(
+								[
+							"pending",
+							"accepted",
+							"samples construction",
+							"delivery of samples",
+							"start of production",
+							"delivery of production"
+								],
+								selected = project.status
+								) %>
+					</td>
+
+          <td>
+						<%= f.input :delivery_date,
+            as: :string,
+            input_html: { data: { controller: "datepicker" } } %>
+					</td>
+					<%= f.submit "Update Project", class: "btn btn-primary" %>
+					<% end %>
         </tr>
       <% end %>
     </tbody>
   </table>
 
 <% else %>
-
-
+<%# BRAND DASHBOARD %>
 	<% brand = Brand.where(user: current_user) %>
 	<% projects = Project.where(brand_id: brand) %>
 	<% favorites = Favorite.where(brand_id: brand) %>
+	<%#	 raise %>
 
-
-	<div>
-		<h2><%= "My Suppliers - Favorites" %></h2><br>
-		<div class="cards d-flex">
-				<% favorites.limit(3).each do |favorite| %>
-				<div class="card">
-						<p>Name<%= favorite.supplier.name %></p><br>
-						<p>Description<%= favorite.supplier.description %></p><br>
-						<p>Price_rating<%= favorite.supplier.price_rating %></p><br>
-						<p>Sustainability_rating<%= favorite.supplier.sustainability_rating %></p><br>
-						<p>Minimum_quantity<%= favorite.supplier.minimum_quantity %></p><br>
-						<%# raise %>
-				</div>
-				<% end %>
+	<%# MY SUPPLIERS - FAVORITES %>
+	<div class="dashboard-container">
+		<div class="title-line">
+			<h2 class="h2-dashboard"><%= "MY SUPPLIERS - FAVORITES" %></h2>
+			<div class="title-line-child"></div>
 		</div>
 
-	</div>
+		<div class="supplier-result-grid">
+			<% favorites.limit(3).each do |favorite| %>
 
-	<div>
-			<h2><%= "Active Projects" %></h2>
-			<h2><%= projects.count %></h2>
-			<p>
-			<%= link_to "View all projects", brand_projects_path(brand.first.id), class: "mr-2" %>
-			</p>
-	</div>
+				<%= link_to supplier_path(favorite.supplier), class: "supplier-result-card" do %>
+					<img src="https://res.cloudinary.com/dzm55bol0/image/upload/v1693819062/image_143_a5j6tt.png" alt="Supplier Image" class="supplier-result-image" />
+					<div class="supplier-result-card-header">
+						<div class="supplier-header-top">
+							<p class="supplier-result-name"><%= truncate(favorite.supplier.name.upcase, length: 50, separator: ' ', omission: '...') %></p>
+						</div>
+						<div class="materials-list">
+							<% favorite.supplier.materials.each do |material| %>
+								<span class="material-item"><%= material.name.upcase %></span>
+							<% end %>
+						</div>
+					</div>
 
-
-
-  <table>
-    <thead>
-      <tr>
-        <th style="width: 300px">Title</th>
-        <th style="width: 300px">Name Of Supplier</th>
-        <th style="width: 300px">Location</th>
-        <th style="width: 300px">number of products</th>
-        <th style="width: 300px">number of total units</th>
-        <th style="width: 300px">STATUS</th>
-        <th style="width: 300px">Estimated delivery of production</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% projects.each do |project| %>
-
-				<% supplier = Supplier.find(project.supplier_id) %>
-
-				<% total_units = 0 %>
-
-				<% project.products.each do |product| %>
-					<% total_units += product.quantity_xs.to_i +
-					product.quantity_s.to_i +
-					product.quantity_m.to_i +
-					product.quantity_l.to_i +
-					product.quantity_xl.to_i
-					%>
-
+					<p class="supplier-result-description"><%= truncate(favorite.supplier.description, length: 155, separator: ' ', omission: '...') %></p>
+					<div class="supplier-footer-price">
+							<p><%= favorite.supplier.price_rating %></p>
+						</div>
+					<div class="supplier-result-card-footer">
+						<% if favorite.supplier.sustainability_rating <= 2%>
+							<%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821904/sust_1_ifiisc.png", class: "sust-img" %>
+						<% elsif favorite.supplier.sustainability_rating <= 4%>
+							<%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821903/sust_2_loylzt.png", class: "sust-img" %>
+						<% elsif favorite.supplier.sustainability_rating <= 6%>
+							<%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821903/sust_3_fr1mk5.png", class: "sust-img" %>
+						<% elsif favorite.supplier.sustainability_rating <= 8%>
+							<%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821902/sust_4_ehprtk.png", class: "sust-img" %>
+						<% else %>
+							<%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821902/sust_5_hrgnpe.png", class: "sust-img" %>
+						<% end %>
+						<p> <i>Min. Quantities <%= favorite.supplier.minimum_quantity %> units</i></p>
+					</div>
+					<%# create button to add to favourites %>
 				<% end %>
 
+			<% end %>
+		</div>
+	</div>
+	<%# MY PROJECTS %>
+	<div class="my-projects">
+		<div class="title-line">
+			<h2 class="h2-dashboard"><%= "MY PROJECTS" %></h2>
+			<div class="title-line-child"></div>
+		</div>
+		<div class="cards container-dashboard mt-2 row">
+			<div class="card border border-dark col-xs-6 col-sm-6 col-md-6 col-lg-6">
+				<h3 class="h3-dashboard parent-icon">
+					ALL MY PROJECTS
+					<i style="" class="fa-solid fa-diagram-project"></i>
+				</h3>
+				<ul class="ul-columns">
+					<li>PROJECT PENDING (<%= projects.where(status: "pending").count %>)</li>
+					<li>PROJECT ACCEPTED (<%= projects.where(status: "accepted").count %>)</li>
+					<li>SAMPLES CONSTRUCTION (<%= projects.where(status: "samples construction").count %>)</li>
+					<li>DELIVERY OF SAMPLES (<%= projects.where(status: "delivery of samples").count %>)</li>
+					<li>START PRODUCTION (<%= projects.where(status: "start of production").count %>)</li>
+					<li>DELIVERY OF PRODUCTION (<%= projects.where(status: "delivery of production").count %>)</li>
+				</ul>
+				<p class="see-all">
+					<i class="fa-regular fa-eye"></i>
+					<%= link_to "SEE ALL", brand_projects_path(brand.first.id), class: "mr-2" %>
+				</p>
+			</div>
+			<div class="card border border-dark col-xs-6 col-sm-6 col-md-6 col-lg-6">
+				<h3 class="h3-dashboard parent-icon">
+				UNREAD MESSAGES
+				<i style="" class="fa-solid fa-inbox"></i>
+				</h3>
+				<p class="see-all">
+					<i class="fa-regular fa-eye"></i>
+					<%= link_to "SEE ALL", inbox_path, class: "mr-2" %>
+				</p>
 
-        <tr>
-          <td><%= project.title %></td>
-          <td><%= supplier.name %></td>
-          <td><%= supplier.country %></td>
-										<%# raise %>
-          <td><%= project.products.count %></td>
-          <td><%= total_units %></td>
-          <td><%= project.status %></td>
-          <td><%= project.updated_at %></td>
-          <td><%= link_to "Check project", project_path(project), class: "mr-2" %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+			</div>
+		</div>
+	</div>
+	<%# CURRENT PROJECTS %>
+	<div>
+		<div class="title-line">
+			<h2 class="h2-dashboard"><%= "CURRENT PROJECTS" %></h2>
+			<div class="title-line-child"></div>
+		</div>
+		<table class="container-dashboard mt-2">
+			<thead>
+				<tr>
+					<th>TITLE</th>
+					<th>SUPPLIER NAME</th>
+					<th>COUNTRY</th>
+					<th>PRODUCTS</th>
+					<th>TOTAL UNITS</th>
+					<th>STATUS</th>
+					<th>DELIVERY DATE</th>
+					<th>SEE PROJECT</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% projects.each do |project| %>
+					<% supplier = Supplier.find(project.supplier_id) %>
+					<% total_units = 0 %>
+					<% project.products.each do |product| %>
+						<% total_units += product.quantity_xs.to_i +
+						product.quantity_s.to_i +
+						product.quantity_m.to_i +
+						product.quantity_l.to_i +
+						product.quantity_xl.to_i
+						%>
+					<% end %>
+					<tr>
+						<td><%= project.title %></td>
+						<td><%= supplier.name %></td>
+						<td><%= supplier.country %></td>
+						<td><%= project.products.count %></td>
+						<td><%= total_units %></td>
+						<td><%= project.status %></td>
+						<td><%= project.updated_at %></td>
+						<td><%= link_to "SEE PROJECT", project_path(project), class: "mr-2" %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+	<%# PROJECTS INFOGRAPHIC %>
+	<div class="projects-infographic">
+		<div class="title-line">
+			<h2 class="h2-dashboard">PROJECTS INFOGRAPHIC</h2>
+			<div class="title-line-child"></div>
+		</div>
+		<div class="graph-container" style="display: flex;">
+			<div class="cards container-dashboard mt-2">
+				<div class="card border border-dark col-xs-6 col-sm-6 col-md-6 col-lg-6">
+					<p class="">
+						TOTAL NUMBER OF SUPPLIERS
+					</p>
+					<div class="graph-columns d-flex">
+						<div class="graph-box">
+							<p>
+								<%= projects.count %>
+							</p>
+						</div>
+						<% countries = [] %>
+						<% products_count = [] %>
+						<% units_count = [] %>
+						<%# raise %>
+						<% projects.each do |project| %>
+							<%# project.supplier.country %>
+							<% countries << project.supplier.country %>
+							<% products_count << project.products.count %>
+							<% units_count << project.supplier.country %>
+						<% end %>
+						<% groups = countries.group_by(&:itself) %>
+						<% counts = groups.map { |value, group| [value, group.count] } %>
+						<% results = counts.sort_by(&:last) %>
+						<ul>
+						<% results.reverse.each do |i| %>
+							<li><%= i[0] %> (<%=i[1]%>)</li>
+							<% end %>
+						</ul>
+					</div>
+				</div>
+				<div class="card border border-dark col-xs-6 col-sm-6 col-md-6 col-lg-6">
+					<p class="">
+						TOTAL PRODUCTS MANUFACTURED
+					</p>
+					<div class="graph-columns d-flex">
+						<div class="graph-box">
+							<p>
+							<% total_products = 0 %>
+								<% projects.each do |project| %>
+									<% total_products += project.products.count %>
+								<% end %>
+								<%= total_products %>
+							</p>
+						</div>
+						<ul>
+							<li>SPAIN (<%= projects.where(status: "pending").count %>)</li>
+							<li>PORTUGAL (<%= projects.where(status: "accepted").count %>)</li>
+							<li>MORROCO (<%= projects.where(status: "samples construction").count %>)</li>
+						</ul>
+					</div>
+				</div>
+				<div class="card border border-dark col-xs-6 col-sm-6 col-md-6 col-lg-6">
+					<p class="">
+						TOTAL ITEMS MANUFACTURED <br>
+						<% all_total_units_projects = 0 %>
+						<% projects.each do |project| %>
+							<% total_units = 0 %>
+							<% project.products.each do |product| %>
+								<% total_units += product.quantity_xs.to_i +
+						product.quantity_s.to_i +
+						product.quantity_m.to_i +
+						product.quantity_l.to_i +
+						product.quantity_xl.to_i %>
+							<% end %>
+							<% all_total_units_projects += total_units %>
+						<% end %>
+					</p>
+					<div class="graph-columns d-flex">
+						<div class="graph-box">
+							<p>
+								<%= all_total_units_projects %>
+							</p>
+						</div>
+						<ul>
+							<li>SPAIN (<%= projects.where(status: "pending").count %>)</li>
+							<li>PORTUGAL (<%= projects.where(status: "accepted").count %>)</li>
+							<li>MORROCO (<%= projects.where(status: "samples construction").count %>)</li>
+						</ul>
+					</div>
+				</div>
+			</div>
 
-	<%# raise %>
-	<%= link_to "Favorites", favorites_path, class: "mr-2" %>
 
+			<%# GRAPHS %>
+			<div class="graphs">
+				<% start_date = 12.months.ago.beginning_of_month %> <!-- Adjust the time range as needed -->
+				<% end_date = Time.current.end_of_month %>
+
+				<% all_months = [] %>
+				<% current_month = start_date %>
+				<%
+				while current_month <= end_date
+					all_months << [current_month.strftime("%b"), 0]
+					current_month = current_month.next_month
+				end
+				%>
+
+				<% items_by_month_data = Product.group("DATE_TRUNC('month', created_at)").pluck(Arel.sql("DATE_TRUNC('month', created_at) AS month"), Arel.sql("SUM(quantity_xs + quantity_s + quantity_m + quantity_l + quantity_xl) AS total_items")) %>
+
+				<% items_by_month = all_months.map do |month, _|
+					month_data = items_by_month_data.find { |item_month, _| item_month.strftime("%b") == month }
+					[month, month_data ? month_data[1] : 0]
+				end %>
+
+				<%= column_chart items_by_month, xtitle: 'Month', ytitle: 'Items', label: 'Items' %>
+
+			</div>
+		</div>
+	</div>
 <% end %>

@@ -1,71 +1,113 @@
-<%= link_to 'back', suppliers_path(@supplier) %>
-<% if user_signed_in? && current_user.brand %>  <!-- Ensure user is logged in and has a brand -->
-  <% if current_user.brand.favorites.exists?(supplier_id: @supplier.id) %> <!-- Check if the supplier is in the favorites -->
-    <p>Already in favorites</p>
-  <% else %>
-    <%= link_to 'Add to Favorites',  supplier_favorites_path(@supplier, @favorite), data:{turbo_method: :post} %>
-  <% end %>
-<% end %>
+<div class="container d-flex justify-content: space-around; margin-bottom: 20px;">
+  <div class="container showpage-card-header">
+    <img src="https://res.cloudinary.com/dzm55bol0/image/upload/v1693819062/image_143_a5j6tt.png" alt="Supplier Image" class="supplier-showpage-image" />
 
-<% if current_user && current_user.user_type == "supplier" %>
-  <p>Edit page supplier page</p>
-<% elsif current_user %>
-  <p>Supplier page</p>
-<% else %>
-  <!-- Maybe some content for non-logged in users or just leave it blank -->
-<% end %>
+    <%= link_to 'submit form', new_supplier_project_path(@supplier), class: "show-supplier__btn show-page__btn" %> <br>
 
+    <%= link_to 'Chat with Supplier', supplier_chatroom_path(@supplier), class: "show-supplier__btn" %>
+  </div>
+  <div class="container showpage-description">
+    <div style="border: 1px solid black; dispay: flex; justify-content: space-between; padding: 20px; margin-bottom: 30px;">
+      <div style="display: flex; justify-content: space-between;">
+        <div style="display: flex;">
+          <p><%= @supplier.name %></p>
+          <div style="display: flex; align-items: center; margin-left: 20px;">
+            <p><%= @supplier.price_rating %></p>
+          </div>
+        </div>
+        <div class= "showpage-favorite__btn" style="display: flex; align-items: center;">
+          <% if user_signed_in? && current_user.brand %>
+            <% if current_user.brand.favorites.exists?(supplier_id: @supplier.id) %>
+              <p>Already in favorites </p>
+              <% else %>
+                <%= link_to supplier_favorites_path(@supplier, @favorite), id: "showpage-add-favorites", data: { turbo_method: :post } do %>
+                Add to Favorites <i class="far fa-heart"></i>
+              <% end %>
+            <% end %>
 
-<h1><%= @supplier.name %></h1>
-<h2>Company overview</h2>
-<%= @supplier.description %> <br>
+          <% end %>
 
-<h2>Previous projects details</h2>
-
-
-<div class="review">
-  <h2> Reviews </h2>
-  <%= simple_form_for [@supplier, @review] do |f| %>
-    <%= f.input :comment %>
-    <%= f.input :rating, collection: Review::AUTHORIZED_RATINGS,
-                         include_blank: false %>
-    <%= f.submit class: "btn btn-primary", value: "submit" %>
-  <% end %>
-</div>
-
-
-<% if @supplier.reviews.exists? %>
-  <% @reviews.each do |review| %>
-    <div class="review">
-      <p><%= review.comment %></p>
-      <p><%= review.rating %></p>
+          <% if current_user && current_user.user_type == "supplier" %>
+            <p>Edit page supplier page</p>
+          <% elsif current_user %>
+            <p> </p>
+          <% else %>
+            <!-- Maybe some content for non-logged in users or just leave it blank -->
+          <% end %>
+        </div>
+      </div>
+      <p><%= @supplier.sustainability_rating %></p>
     </div>
+
+    <div style="display: flex; align-items: center; margin-bottom: 20px;">
+      <h2>Description</h2>
+      <div style="border: 1px solid black; margin-left: 10px; flex-grow: 1;"></div>
+    </div>
+    <p style="margin: 10px; text-align: justify;"><%= @supplier.description %></p>
+
+    <div style="display: flex; align-items: center; margin-bottom: 20px;">
+      <h2>Map</h2>
+      <div style="border: 1px solid black; margin-left: 10px; flex-grow: 1; position:center"></div>
+    </div>
+    <div style="width: 800.984px; height: 320px;"
+      data-controller="map"
+      data-map-markers-value="<%= @markers.to_json %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+
+    <div style="display: flex; align-items: center; margin-top: 20px; margin-bottom: 20px;">
+      <h2>Previous projects</h2>
+      <div style="border: 1px solid black; margin-left: 10px; flex-grow: 1;"></div>
+    </div>
+    <div class="card previous-project-images">
+      <%= image_tag("https://res.cloudinary.com/dzm55bol0/image/upload/v1693819062/image_143_a5j6tt.png", alt: "Supplier Image", class: "supplier-showpage-image") %>
+    </div>
+    <div class="card previous-project-images">
+      <%= image_tag("https://res.cloudinary.com/dzm55bol0/image/upload/v1693819062/image_143_a5j6tt.png", alt: "Supplier Image", class: "supplier-showpage-image") %>
+    </div>
+    <div class="card previous-project-images">
+      <%= image_tag("https://res.cloudinary.com/dzm55bol0/image/upload/v1693819062/image_143_a5j6tt.png", alt: "Supplier Image", class: "supplier-showpage-image") %>
+    </div>
+
+    <div>
+      <div id:"comment-review-box" style="display: flex; align-items: center;">
+        <h2>Reviews</h2>
+        <div style="border: 1px solid black; margin-left: 10px; flex-grow: 1;"></div>
+      </div>
+
+      <div class="container reviews">
+      <%= simple_form_for [@supplier, @review] do |f| %>
+      <div id="comment-showpage">
+        <%= f.input :comment %>
+      </div>
+      <div id="review_rating">
+        <%= f.input :rating, collection: Review::AUTHORIZED_RATINGS, include_blank: false %>
+      </div>
+    </div>
+    <%= f.submit class: "btn btn-primary-showpage", id: "button-submitform-showpage", value: "submit" %>
   <% end %>
-<% else %>
-  <p>No reviews yet</p>
-<% end %>
+  <div class="container reviews-showpage-supplier">
+    <% if @supplier.reviews.exists? %>
+      <% @reviews.each do |review| %>
+        <div class="review-header">
+          <div id:"review-picture-brand" >
+            <%= image_tag("https://res.cloudinary.com/dzm55bol0/image/upload/v1693819062/image_143_a5j6tt.png", alt: "Supplier Image",id:"review-picture-brand") %> <br>
+          </div>
 
+          <div class="review-text d-flex" >
+            <p><%= review.brand_id %></p>
+            <p><%= review.rating %></p>
+            <p><%= review.created_at %></p>
+          </div>
 
+          <div class="review-comment" >
+            <p><%= review.comment %></p>
+          </div>
 
-
-<h2>Submit</h2>
-#link to new supplier button
-
-<h3> Map </h3>
-<div style="width: 100%; height: 600px;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-
-</div>
-
-<h2>Messages</h2>
-<%= link_to 'Chat with Supplier', supplier_chatroom_path(@supplier) %>
-
-<div>
-<%= link_to 'favorites', favorites_path(@favorite) %>
-</div>
-
-<div>
-<%= link_to 'submit form', new_supplier_project_path(@supplier) %>
+        </div>
+      <% end %>
+    <% else %>
+      <p>No reviews yet</p>
+    <% end %>
+  </div>
 </div>

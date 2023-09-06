@@ -1,1 +1,120 @@
 // Specific CSS for your home-page
+
+// Banner
+
+.home-banner {
+  object-fit: cover;
+  width: 80%;
+  height: 850px;
+  padding: 30px 20px 30px;
+}
+
+
+// Filter
+
+.home-filter-container {
+  width: 70%;
+  margin: auto;
+}
+
+.home-filter-title {
+  text-align: center;
+  font-size: 24px;
+  color: black;
+  font-family: 'Roboto', 'Helvetica', sans-serif;
+  font-weight: 500;
+  padding-top: 1%;
+}
+
+// Cards Country
+
+.home-card-container {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  position: relative;
+  width: 70%;
+}
+
+.home-grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap:20px
+}
+
+.home-card-country {
+  height: 262.5px;
+  object-fit: cover;
+  display: flex;
+  background-image: url("https://images.lifestyleasia.com/wp-content/uploads/sites/5/2022/05/17223957/jacquemus-nike-collaboration-featured.jpg");
+  background-size: cover;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-card-text {
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  font-family: 'Roboto', 'Helvetica', sans-serif;
+  text-transform: uppercase;
+  font-weight: 500; /* or use 'semibold' if it's supported by the font */
+  text-align: center;
+}
+
+
+.home-card-image {
+  height: 310px;
+  object-fit: cover;
+
+}
+
+// ABOUT US
+
+.home-about_us-container {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  position: relative;
+  width: 70%;
+
+}
+
+.home-about_us-background-1 {
+  background-color: black;
+}
+.home-about_us-background-2 {
+  background-color: black;
+}
+
+.home-about_us-header {
+  color: white;
+  padding: 40px;
+  padding-bottom: 0px;
+}
+
+.home-about_us-body {
+  color: white;
+  padding: 40px;
+  text-align: justify;
+}
+
+.home-about_us-body-text {
+  padding-bottom: 15px;
+}
+
+.home-about_us-image-card {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  padding-left: 0px;
+  padding-right: 52px;
+  display: table-cell;
+
+  height: 100%;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.home-about_us-image {
+  width: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}
