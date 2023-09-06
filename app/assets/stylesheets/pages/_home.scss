@@ -5,7 +5,7 @@
 .home-banner {
   object-fit: cover;
   width: 80%;
-  height: 750px;
+  height: 850px;
   padding: 30px 20px 30px;
 }
 
@@ -13,7 +13,7 @@
 // Filter
 
 .home-filter-container {
-  width: 80%;
+  width: 70%;
   margin: auto;
 }
 
@@ -28,16 +28,17 @@
 
 // Cards Country
 
-.home-grid{
-  display:grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap:20px
-}
 .home-card-container {
   margin-top: 5%;
   margin-bottom: 5%;
   position: relative;
-  width: 80%;
+  width: 70%;
+}
+
+.home-grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap:20px
 }
 
 .home-card-country {
@@ -62,7 +63,6 @@
 
 
 .home-card-image {
-
   height: 310px;
   object-fit: cover;
 
@@ -74,7 +74,7 @@
   margin-top: 5%;
   margin-bottom: 5%;
   position: relative;
-  width: 80%;
+  width: 70%;
 }
 
 .home-about_us-background {
