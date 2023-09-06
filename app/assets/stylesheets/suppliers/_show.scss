@@ -1,19 +1,97 @@
+
+.big-container-showpage {
+  display:flex;
+  justify-content: space-between;
+  margin-top:40px;
+  margin-bottom:40px;
+}
+
+.left-conatainer-showpage {
+  width: 25%;
+  border: 1px solid black;
+  height: fit-content;
+  padding: 13px;
+}
+
+.right-conatainer-showpage {
+  width: 70%;
+}
+
+.description-supplier-showpage {
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  margin-bottom: 30px;
+}
+
+#supplier-name-rating-showpage {
+  display:flex;
+}
+
+
+#customized-header {
+  display: flex;
+  align-items: center;
+  margin:40px 0px;
+}
+
+#map-component {
+  width: 100%;
+  height: 320px;
+}
+
+.project-pictures-showpage {
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap:20px;
+  width:100%
+}
+
+.review-showpage {
+  display:flex;
+  border: 1px solid black;
+  padding: 14px;
+  margin-top:30px;
+}
+
+.showpage-all-button-showpage {
+  display:flex;
+  flex-direction:column
+}
+
+.submit-button {
+  margin-bottom:20px;
+}
+
+#review-comment-showpage {
+  margin-top:20px
+}
+
+#review-rating-showpage {
+  margin-left:40px;
+}
+
+#label {
+  display: none;
+}
+
 .showpage-description {
- max-width: 1300px;
+  max-width: 1300px;
 }
 
 .showpage-card {
   border: 1px solid #131212;
-  width:30%;
-  padding:20px;
+  width: 30%;
+  padding: 20px;
 }
 
 .supplier-showpage-image {
   width: 100%;
-
+  margin-bottom:40px;
 }
 
-.showpage-card-header{
+.showpage-card-header {
   border: 1px solid #131212;
   display: flex;
   flex-direction: column;
@@ -48,12 +126,19 @@
   height: 250px;
   display: inline-block;
   margin: 8px;
-  border: 1px solid #ccc; /* Optional border */
+  border: 1px solid #ccc;
+  /* Optional border */
 
 }
 
-.show-page__btn {
-  margin-bottom: -330px;
+// NOOOO!!!
+// .show-page__btn {
+//   margin-bottom: -330px;
+// }
+
+.show-page__btn{
+  display: flex;
+  justify-content: center;
 }
 
 .showpage-favorite-back__btn {
@@ -73,13 +158,16 @@
 
 /* Regular heart icon */
 .far.fa-heart {
-  color: black; /* Set the default heart color */
-  transition: color 0.3s; /* Add a transition for smooth color change */
+  color: black;
+  /* Set the default heart color */
+  transition: color 0.3s;
+  /* Add a transition for smooth color change */
 }
 
 /* Hover effect for the heart icon */
 .far.fa-heart:hover {
-  color: red; /* Change the heart color on hover */
+  color: red;
+  /* Change the heart color on hover */
 }
 
 
@@ -115,7 +203,7 @@
   margin-block-start: -53px;
 }
 
-#new_review  {
+#new_review {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -123,19 +211,9 @@
 
 #comment-showpage {
   display: flex;
-  width: 80%;
+  width: 80%
 }
 
-#review_rating {
-  margin-left: 15px;
-  display: none;
-}
-
-#review_comment {
-  width: 700px;
-  height: 39px;
-  margin-top: 20px;
-}
 
 #review-picture-brand {
   width: 50px;
@@ -144,11 +222,13 @@
 
 .reviews-showpage-supplier {
   width: 812px;
-height: 180px;
+  height: 180px;
   flex-shrink: 0;
   border: 1px solid black;
 }
-
+.review_comment{
+  flex-grow:1
+}
 .review-header {
   display: flex;
   width: 750px;
