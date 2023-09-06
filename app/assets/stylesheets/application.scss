@@ -11,9 +11,13 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
-
+@import "suppliers/show";
 
 // General style
-h1, h2, h5, p {
+h1, h2, h4, h5, p {
   margin: 0;
+}
+
+body {
+  padding-top: 70px;
 }

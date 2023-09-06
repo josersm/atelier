@@ -1,6 +1,10 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: #FBFBFB;
+  position: fixed;   // Use fixed instead of sticky
+  top: 0;            // Ensure it stays at the top
+  width: 100%;       // Ensure it spans the full width
+  z-index: 1000;     // Use a high z-index value to make sure it stays on top of other elements
 }
 
 .navbar-lewagon .navbar-collapse {
