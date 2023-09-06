@@ -26,12 +26,13 @@ class PagesController < ApplicationController
     end
   end
 
-
   def dashboard
 		@user = current_user
-    @supplier = current_user.supplier
-    @brand = current_user.brand
-    @projects = @brand.projects
+    # @supplier = current_user.supplier
+    # @brand = current_user.brand
+    # @projects = @brand.projects
+    # @favorites = @brand.favorites
+		# raise
   end
 
   def inbox

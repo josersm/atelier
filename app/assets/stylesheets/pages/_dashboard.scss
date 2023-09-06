@@ -1,0 +1,127 @@
+.dashboard-container {
+	margin-top: 40px;
+}
+.h2-dashboard {
+	font-size: 20px;
+	margin: 20px 0;
+}
+.h3-dashboard {
+	font-size: 18px;
+}
+
+
+table {
+	text-align: center;
+	// margin: 0 auto;
+	// width: 90%;
+
+	thead {
+		border: 1px solid black;
+		th {
+			width: 300px;
+			font-size: 16px;
+			padding: 20px 25px;
+			font-weight: 400;
+		}
+		td {
+			padding-top: 10px;
+		}
+	}
+
+}
+
+.container-dashboard {
+	width: 95%;
+	margin: 0px auto;
+}
+
+.see-all {
+	text-align: right;
+	margin-top: 20px;
+	a {
+		font-size: 14px;
+	}
+}
+
+.ul-columns {
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
+	margin: 0;
+	// display: flex;
+  // flex-direction: column;
+	li {
+			font-size: 12px;
+			padding: 10px;
+	}
+}
+
+.title-line {
+	display: flex;
+	align-items: center;
+	margin-top: 20px;
+}
+.title-line-child {
+	border: 1px solid black;
+	flex-grow: 1;
+	margin-left: 13px;
+}
+.my-projects {
+	.card {
+		padding: 30px 50px;
+	}
+}
+
+a {
+    color: #000000;
+    text-decoration: none;
+}
+
+a:hover {
+    color:#000000;
+    text-decoration:none;
+    cursor:pointer;
+}
+
+.graph-container {
+	.cards {
+
+		width: 30%;
+		.card {
+width: 100%;
+		}
+	}
+	.graphs {
+		width: 70%;
+		border: #000000 1px solid;
+		padding: 50px;
+	}
+}
+
+.graph-columns {
+	.graph-box {
+		line-height: 150px;
+		height: 150px;
+		width: 50%;
+		p {
+		 font-size: 24px;
+		 text-align: center;
+
+	 }
+	}
+}
+
+.parent-icon {
+	position: relative;
+	i {
+    font-size: 36px;
+    position: absolute;
+    top: -6px;
+    left: 190px;
+    // margin-left: 20px;
+	}
+}
+
+.flat-form {
+	padding-bottom: 50px;
+}
