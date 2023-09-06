@@ -1,10 +1,16 @@
-<h1>Brand Details</h1>
-<p><strong>Company Name:</strong> <%= @brand.company_name %></p>
-<p><strong>BIC Number:</strong> <%= @brand.bic_number %></p>
-<p><strong>Email:</strong> <%= @brand.email %></p>
-<p><strong>Contact Number:</strong> <%= @brand.contact_number %></p>
-<p><strong>Country:</strong> <%= @brand.country %></p>
-<p><strong>Address:</strong> <%= @brand.address %></p>
+<div class="centered-brand-container">
+  <div class="brand-details-container">
+    <%= image_tag 'trendy.jpg', alt: 'Brand Image', width: '300', height: '200', class: 'brand-image' %>
+    <h1>Brand Details</h1>
+    <p><strong>Company Name:</strong> <%= @brand.company_name %></p>
+    <p><strong>BIC Number:</strong> <%= @brand.bic_number %></p>
+    <p><strong>Email:</strong> <%= @brand.email %></p>
+    <p><strong>Contact Number:</strong> <%= @brand.contact_number %></p>
+    <p><strong>Country:</strong> <%= @brand.country %></p>
+    <p><strong>Address:</strong> <%= @brand.address %></p>
 
-<%= link_to 'Edit', edit_brand_path(@brand), class: 'btn btn-primary' %>
-<%= link_to 'Delete', brand_path(@brand), method: :delete, data: { confirm: 'Are you sure you want to delete this brand?' }, class: 'btn btn-danger' %>
+    <%= link_to 'Edit', edit_brand_path(@brand), class: 'btn btn-primary' %>
+    <%= link_to 'Delete', brand_path(@brand), method: :delete, data: { confirm: 'Are you sure you want to delete this brand?' }, class: 'btn btn-danger' %>
+  </div>
+</div>
+

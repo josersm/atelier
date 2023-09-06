@@ -4,7 +4,8 @@
 	<% supplier = Supplier.where(user: current_user) %>
 	<% projects = Project.where(supplier_id: supplier) %>
 		<h2><%= "Active Projects" %></h2>
-		<h2><%= projects.count %></h2>
+		<h2><%= projects.count %></h2> 
+    <h2><%= supplier %></h2>
 		<p>
 		<%# link_to "View all projects", supplier_projects_path(supplier.first.id), class: "mr-2" %>
 		</p>
@@ -24,8 +25,9 @@
     <tbody>
 
       <% projects.each do |project| %>
-				<% supplier = Supplier.find(project.supplier_id) %>
-
+        <% if project.supplier %>
+          <% supplier = Supplier.find(project.supplier_id) %>
+        <% end %>
 				<% total_units = 0 %>
 
 				<% project.products.each do |product| %>
@@ -117,7 +119,7 @@
 		</div>
 
 	</div>
-<%# CURRENT PROJECTS %>
+
 		<h2><%= "CURRENT PROJECTS" %></h2>
 
   <table>
@@ -136,12 +138,31 @@
     <tbody>
       <% projects.each do |project| %>
 
-				<% supplier = Supplier.find(project.supplier_id) %>
+  <% if project.supplier_id.present? %>
+  <% supplier = Supplier.find_by(id: project.supplier_id) %>
+  <% else %>
+  <% supplier = nil %>
+  <% end %>
 
-				<% total_units = 0 %>
+  <% total_units = 0 %>
 
-				<% project.products.each do |product| %>
-					<% total_units += product.quantity_xs.to_i +
+  <% if project.supplier %>
+  <p>Supplier Information:</p>
+  <p><strong>Name:</strong> <%= supplier.name %></p>
+  <p><strong>Email:</strong> <%= supplier.email %></p>
+  <% else %>
+  <p>No supplier information available.</p>
+  <% end %>
+
+
+
+  <p><strong>Total Units:</strong> <%= total_units %></p>
+     <% if project.supplier %>
+          <% supplier = Supplier.find(project.supplier_id) %>
+        <% end %>
+		<% total_units = 0 %>
+    <% project.products.each do |product| %>
+		<% total_units += product.quantity_xs.to_i +
 					product.quantity_s.to_i +
 					product.quantity_m.to_i +
 					product.quantity_l.to_i +
@@ -152,8 +173,8 @@
 
         <tr>
           <td><%= project.title %></td>
-          <td><%= supplier.name %></td>
-          <td><%= supplier.country %></td>
+          <td><%= supplier %></td>
+          <td><%= project %></td>
           <td><%= project.products.count %></td>
           <td><%= total_units %></td>
           <td><%= project.status %></td>

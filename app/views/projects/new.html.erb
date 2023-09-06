@@ -1,5 +1,5 @@
 
-<h1> <%# @supplier.name %> </h1>
+<h1> <% @supplier.name %> </h1>
 <h1>Create a project</h1>
 
 
@@ -28,10 +28,10 @@
 
 
 
-  <%# <div> %>
-    <%# f.label :supplier_id %>
-    <%# f.text_area :supplier_id %>
-  <%# </div> %>
+  <% <div> %>
+    <% f.label :supplier_id %>
+    <% f.text_area :supplier_id %>
+  <% </div> %>
 
 	<%= f.hidden_field :supplier_id, value: @supplier.id %>
 

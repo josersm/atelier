@@ -28,6 +28,17 @@ class PagesController < ApplicationController
 
 
   def dashboard
+   puts "just hit dashboard controller"
+   puts current_user
+   puts "this is the supplier"
+   puts current_user.supplier
+   puts "this is the brand"
+   puts current_user.brand
+   #puts @brand.projects
+
+
+
+
 		@user = current_user
     @supplier = current_user.supplier
     @brand = current_user.brand
