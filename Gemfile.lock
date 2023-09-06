@@ -267,11 +267,8 @@ PLATFORMS
   arm64-darwin-20
   arm64-darwin-21
   arm64-darwin-22
-<<<<<<< HEAD
    x86_64-linux
-=======
   x86_64-darwin-22
->>>>>>> 2e9ea7dfdd9c274012b967857be26e668ae65bff
 
 DEPENDENCIES
   bootsnap
