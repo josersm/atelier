@@ -76,9 +76,9 @@
             </div>
           </div>
 
-          <div class="materials-container" data-action="click->filter#showOption" data-filter="material">
+          <div class="materials-container" data-action="click->home-filter#showOption" data-home-filter="material">
               MATERIAL
-              <div class="filter-toggle material hidden" data-filter-toggle="material">
+              <div class="filter-toggle material hidden" data-home-filter-toggle="material">
                   <% Material.all.each do |material| %>
                       <div class="material-list-results">
                           <%= link_to material.name, suppliers_path(supplier_materials: material.id), class: "material-option" %>
@@ -112,11 +112,13 @@
 
   <%# About us %>
   <div class="container home-about_us-container">
-    <div class="row home-about_us-background">
-      <div class="col-7">
+    <div class="row home-about_us-background-1">
         <div class="card-header home-about_us-header">
           <h2>WHAT IS L'ATELIER ?</h2>
         </div>
+    </div>
+    <div class="row home-about_us-background-2">
+      <div class="col-7">
         <div class="card-body home-about_us-body">
           <div class="card-body home-about_us-body-text">
               The word “atelier” is defined as a workshop or studio, especially one used by an artist or designer. The word “atelier” is defined as a workshop or studio, especially one used by an artist or designer. It's a term infused with creativity, craftsmanship, and the essence of bringing ideas to life through skilled hands and innovative minds. This very essence encapsulates the vision and purpose of the new manufacturing startup, aptly named "L'atelier."
@@ -129,8 +131,8 @@
           </div>
         </div>
       </div>
-      <div class="col-5 home-about_us-image">
-        <img src="" alt="">
+      <div class="col-5 home-about_us-image-card">
+        <img src="https://res.cloudinary.com/danagi9y4/image/upload/v1693997853/L_EQUIPE_W_wlyani.png" alt="" class="home-about_us-image">
       </div>
     </div>
   </div>
