@@ -2065,11 +2065,11 @@ materials.each do |material_name|
   Material.create!(name: material_name)
 end
 
-(1..60).each do |i|
+(Supplier.first.id..Supplier.last.id).each do |i|
   5.times do
     SupplierMaterial.create(
       material_id: rand(1..20),
-      supplier_id: Supplier.find(i).id
+      supplier_id: Supplier.find(i)
     )
   end
 end
