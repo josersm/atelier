@@ -126,33 +126,39 @@
 					<li>START PRODUCTION (<%= @projects.where(status: "start of production").count %>)</li>
 					<li>DELIVERY OF PRODUCTION (<%= @projects.where(status: "delivery of production").count %>)</li>
 				</ul>
-				<p class="see-all">
-					<i class="fa-regular fa-eye"></i>
-					<%# raise %>
-					<%= link_to "SEE ALL", brand_projects_path(@brand.first.id), class: "mr-2" %>
-				</p>
+
+					<p class="see-all">
+						<i class="fa-regular fa-eye"></i>
+						<%# raise %>
+						<%= link_to "SEE ALL", brand_projects_path(@brand.first.id), class: "mr-2" %>
+					</p>
+
+
 			</div>
 
 			<div class="card border border-dark col-xs-6 col-sm-6 col-md-6 col-lg-6">
 				<h3 class="h3-dashboard parent-icon">
 					READ MESSAGES<span><i style="" class="fa-solid fa-inbox"></i></span>
 				</h3>
+				<ul class="ul-columns">
 
 				<% if @chatrooms %>
 				<%# raise %>
 					<% @chatrooms.each do |chatroom| %>
 						<% supplier = Supplier.find(chatroom.supplier_id) %>
-						<p class="chat-paragraph">
+						<li><p class="chat-paragraph">
 						<%= link_to "#{supplier.name} READ MESSAGES", supplier_chatroom_path(supplier, chatroom), class: "chat-link" %>
-						</p>
+						</p></li>
 					<% end %>
 				<% end %>
 
 				<% if @no_chatrooms %>
 					<% @no_chatrooms.each do |supplier| %>
-						<p class="chat-paragraph"> <%= supplier.name %> <span>no messages</span></p>
+						<li><p class="chat-paragraph"> <%= supplier.name %> <span>NO MESSAGES</span></p></li>
 					<% end %>
 				<% end %>
+</ul>
+
 				<p class="see-all">
 					<i class="fa-regular fa-eye"></i>
 					<%= link_to "SEE ALL", inbox_path, class: "mr-2" %>
