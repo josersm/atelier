@@ -28,29 +28,27 @@
         <div data-action="click->filter#showOption" data-filter="sustainability">
               SUSTAINABILITY
               <div class="filter-toggle sustainability hidden" data-filter-toggle="sustainability">
-                  <%= hidden_field_tag :sustainability_rating, params[:sustainability_rating] %>
-                  <div class="sustainability-icons">
-                      <%= link_to suppliers_path(request.query_parameters.merge(sustainability_rating: 5)), class: "sustainability-option" do %>
-                          <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821902/sust_5_hrgnpe.png", class: "sust-img-filter", alt: "Sustainability Rating 5" %>
-                      <% end %>
+                <%= hidden_field_tag :sustainability_rating, params[:sustainability_rating] %>
+            
+                <%= link_to suppliers_path(sustainability_rating: 5), class: "sustainability-option" do %>
+                  <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821902/sust_5_hrgnpe.png", class: "sust-img-filter", alt: "Sustainability Rating 5" %>
+                <% end %>
 
-                      <%= link_to suppliers_path(request.query_parameters.merge(sustainability_rating: 4)), class: "sustainability-option" do %>
-                          <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821902/sust_4_ehprtk.png", class: "sust-img-filter", alt: "Sustainability Rating 4" %>
-                      <% end %>
+                <%= link_to suppliers_path(sustainability_rating: 4), class: "sustainability-option" do %>
+                    <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821902/sust_4_ehprtk.png", class: "sust-img-filter", alt: "Sustainability Rating 4" %>
+                <% end %>
 
-                      <%= link_to suppliers_path(request.query_parameters.merge(sustainability_rating: 3)), class: "sustainability-option" do %>
-                          <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821903/sust_3_fr1mk5.png", class: "sust-img-filter", alt: "Sustainability Rating 3" %>
-                      <% end %>
+                <%= link_to suppliers_path(sustainability_rating: 3), class: "sustainability-option" do %>
+                    <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821903/sust_3_fr1mk5.png", class: "sust-img-filter", alt: "Sustainability Rating 3" %>
+                <% end %>
 
-                      <%= link_to suppliers_path(request.query_parameters.merge(sustainability_rating: 2)), class: "sustainability-option" do %>
-                          <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821903/sust_2_loylzt.png", class: "sust-img-filter", alt: "Sustainability Rating 2" %>
-                      <% end %>
+                <%= link_to suppliers_path(sustainability_rating: 2), class: "sustainability-option" do %>
+                    <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821903/sust_2_loylzt.png", class: "sust-img-filter", alt: "Sustainability Rating 2" %>
+                <% end %>
 
-                      <%= link_to suppliers_path(request.query_parameters.merge(sustainability_rating: 1)), class: "sustainability-option" do %>
-                          <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821904/sust_1_ifiisc.png", class: "sust-img-filter", alt: "Sustainability Rating 1" %>
-                      <% end %>
-
-                  </div>
+                <%= link_to suppliers_path(sustainability_rating: 1), class: "sustainability-option" do %>
+                    <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821904/sust_1_ifiisc.png", class: "sust-img-filter", alt: "Sustainability Rating 1" %>
+                <% end %>
               </div>
           </div>
 
