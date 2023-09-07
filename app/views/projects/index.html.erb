@@ -1,44 +1,52 @@
+
 <div class="container">
-  <h1>Project Index</h1>
-  <table>
-    <thead>
-      <tr>
-        <th style="width: 300px">Title</th>
-        <th style="width: 300px">Name Of Supplier</th>
-        <th style="width: 300px">Location</th>
-        <th style="width: 300px">number of products</th>
-        <th style="width: 300px">number of total units</th>
-        <th style="width: 300px">STATUS</th>
-        <th style="width: 300px">Estimated delivery of production</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @projects.each do |project| %>
-			<% supplier = Supplier.find(project.supplier_id) %>
+  <div id="customized-header">
+    <h1>Project Index</h1>
+    <div style="border: 1px solid black; margin-left: 10px; flex-grow: 1;"></div>
+</div>
 
-				<% total_units = 0 %>
-
-				<% project.products.each do |product| %>
-					<% total_units += product.quantity_xs.to_i +
-					product.quantity_s.to_i +
-					product.quantity_m.to_i +
-					product.quantity_l.to_i +
-					product.quantity_xl.to_i
-					%>
-
-				<% end %>
-
+<div class="container">
+  <div class="container">
+    <table>
+      <thead>
         <tr>
-          <td><%= project.title %></td>
-          <td><%= supplier.name %></td>
-          <td><%= supplier.country %></td>
-          <td><%= project.products.count %></td>
-          <td><%= total_units %></td>
-          <td><%= project.status %></td>
-          <td><%= project.updated_at %></td>
-          <td><%= link_to "Check project", project_path(project), class: "mr-2" %></td>
+          <th style="width: 300px">Title</th>
+          <th style="width: 300px">Name Of Supplier</th>
+          <th style="width: 300px">Location</th>
+          <th style="width: 300px">number of products</th>
+          <th style="width: 300px">number of total units</th>
+          <th style="width: 300px">STATUS</th>
+          <th style="width: 300px">Estimated delivery of production</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <% @projects.each do |project| %>
+        <% supplier = Supplier.find(project.supplier_id) %>
+
+          <% total_units = 0 %>
+
+          <% project.products.each do |product| %>
+            <% total_units += product.quantity_xs.to_i +
+            product.quantity_s.to_i +
+            product.quantity_m.to_i +
+            product.quantity_l.to_i +
+            product.quantity_xl.to_i
+            %>
+
+          <% end %>
+
+          <tr>
+            <td><%= project.title %></td>
+            <td><%= supplier.name %></td>
+            <td><%= supplier.country %></td>
+            <td><%= project.products.count %></td>
+            <td><%= total_units %></td>
+            <td><%= project.status %></td>
+            <td><%= project.updated_at %></td>
+            <td><%= link_to "Check project", project_path(project), class: "mr-2" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
 </div>

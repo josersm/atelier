@@ -1,42 +1,33 @@
 
-<h1> <%# @supplier.name %> </h1>
-<h1>Create a project</h1>
+<div class="container">
+  <div id="customized-header">
+    <h1> <% @supplier.name %> </h1>
+    <h1>Create a project</h1>
+    <div style="border: 1px solid black; margin-left: 10px; flex-grow: 1;"></div>
+</div>
 
 
+<div class="form-container">
+  <%= simple_form_for @project do |f| %>
+    <div class="form-group">
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </div>
 
-<%= simple_form_for @project do |f| %>
-  <div>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
+    <div class="form-group">
+      <%= f.label :delivery_mode %>
+      <%= f.select :delivery_mode, options_for_select(['Standard Delivery', 'Express Delivery', 'Eco Delivery']) %>
+    </div>
 
-	<div>
-		<%= f.label :delivery_mode %>
-		<%= f.select :delivery_mode, options_for_select(
-			[
-			'Standard Delivery',
-			'Express Delivery',
-			'Eco Delivery'
-			]
-			) %>
-	</div>
+    <div class="form-group">
+      <%= f.label :description %>
+      <%= f.text_area :description, rows: 4 %>
+    </div>
 
-  <div>
-    <%= f.label :description %>
-    <%= f.text_area :description, rows: 4 %>
-  </div>
+    <%= f.hidden_field :supplier_id, value: @supplier.id %>
 
-
-
-  <%# <div> %>
-    <%# f.label :supplier_id %>
-    <%# f.text_area :supplier_id %>
-  <%# </div> %>
-
-	<%= f.hidden_field :supplier_id, value: @supplier.id %>
-
-
-  <div>
-    <%= f.submit "Create Project" %>
-  </div>
-<% end %>
+    <div class="form-group">
+      <%= f.submit "Create Project", class: "btn btn-outline-primary-blue", style: "width: auto;" %>
+    </div>
+  <% end %>
+</div>
