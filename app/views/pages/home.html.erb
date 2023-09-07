@@ -99,19 +99,22 @@
   <%# Cards of 8 countries %>
   <div class="container home-card-container">
     <div class="home-grid">
-			<% countries = [] %>
-      <% @suppliers.each_with_index do |supplier, i| %>
-				<% unless countries.include?(supplier.country) || i > 7%>
-					<% countries << supplier.country %>
-					<div class="home-grid__card">
-						<div class="home-card-country">
-							<%= link_to supplier.country, suppliers_path(country: supplier.country), class: "home-card-text" %>
-						</div>
-					</div>
-				<% end %>
+      <% countries_to_display = ["Spain", "Portugal", "Morocco", "Italy", "France", "Turkey", "Bangladesh", "Peru"] %>
+      <% displayed_countries = [] %>
+      <% @suppliers.each do |supplier| %>
+        <% if countries_to_display.include?(supplier.country) && !displayed_countries.include?(supplier.country) %>
+          <% displayed_countries << supplier.country %>
+          <div id="home-grid__card">
+            <div class="home-card-country-<%= supplier.country.downcase %>">
+              <%= link_to supplier.country, suppliers_path(country: supplier.country), class: "home-card-text" %>
+            </div>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>
+
+
 
 
   <%# About us %>
