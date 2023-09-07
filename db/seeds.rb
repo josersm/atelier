@@ -145,6 +145,7 @@ One of our standout features is our strong dedication to sustainability. We prio
 user_supplier_price_1 = "€€€"
 user_supplier_sus_1 = 5
 
+puts "creating 1 supplier"
 user_supplier_1 = User.create(
   email: "#{user_supplier_name_1}@gmail.com",
   password: "123456",
@@ -166,6 +167,7 @@ Supplier.create(
 
 #-------------------------------------------------------------
 
+puts "creating 2 supplier"
 # user_supplier_spain_2
 user_supplier_country_2 = "Spain"
 user_supplier_name_2 = "TelasBarcelona"
@@ -195,7 +197,7 @@ Supplier.create(
   user: user_supplier_2
 )
 
-
+puts "creating 3 supplier"
 #------------------------------------------------------
 # user_supplier_spain_3
 user_supplier_country_3 = "Spain"
@@ -227,7 +229,7 @@ Supplier.create(
 )
 
 # ---------------------------------------------------------------------------
-
+puts "creating 4 supplier"
 # user_supplier_spain_4
 user_supplier_country_4 = "Spain"
 user_supplier_name_4 = "Tejidos Innovadores S.L."
@@ -258,7 +260,7 @@ Supplier.create(
 )
 
 # ---------------------------------------------------------------------------
-
+puts "creating 5 supplier"
 # user_supplier_spain_5
 user_supplier_country_5 = "Spain"
 user_supplier_name_5 = "Confecciones Catalanas"
