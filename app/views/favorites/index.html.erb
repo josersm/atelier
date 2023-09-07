@@ -1,17 +1,14 @@
 <div data-controller="compare">
-
   <div class="title-line favorites-index-line">
       <h5>FAVORITES</h5>
       <div class="title-line-child"></div>
       <button data-action="click->compare#compare" class="bw-button">Compare</button>
   </div>
-
   <div class="favorites-result-container">
       <div class="favorites-result-grid">
         <% @favorites.each do |favorite| %>
           <div class="favorites-card-container">
             <div class="favorites-result-card">
-
               <%= link_to supplier_path(favorite.supplier.id) do %>
                 <div class="supplier-link">
                 <img src="https://res.cloudinary.com/dzm55bol0/image/upload/v1693819062/image_143_a5j6tt.png" alt="Supplier Image" class="supplier-result-image" />
@@ -52,11 +49,11 @@
                 </div>
                 <%= button_to 'REMOVE', favorite_path(favorite), method: :delete, class: 'remove-button-favorites', data: { confirm: 'Are you sure you want to remove this favorite?' } %>
               </div>
-
             </div>
           </div>
         <% end %>
+        </div>
       </div>
+    </div>
   </div>
-
-</div> <!-- end of data-controller div -->
+</div>
