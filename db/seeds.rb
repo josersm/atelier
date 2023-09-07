@@ -39,7 +39,7 @@ puts "users for brands have been created"
 # 8 users for suppliers
 
 user_5 = User.create(
-  email: Faker::Internet.email,
+  email: 'g@gmail.com',
   password: "123456",
   user_type: "supplier",
 )
