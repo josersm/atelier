@@ -1,12 +1,13 @@
 Message.destroy_all
-SupplierMaterial.destroy_all
+Chatroom.destroy_all
 Favorite.destroy_all
-User.destroy_all
-Supplier.destroy_all
-Material.destroy_all
 Product.destroy_all
 Project.destroy_all
+SupplierMaterial.destroy_all
 Brand.destroy_all
+Supplier.destroy_all
+User.destroy_all
+Material.destroy_all
 
 # 4 users for brands
 
