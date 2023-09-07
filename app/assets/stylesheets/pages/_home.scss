@@ -199,7 +199,7 @@
   vertical-align: middle;
 }
 
-.home-grid__card {
+#home-grid__card {
 	display: inline-block;
 	vertical-align: middle;
 	transform: translateZ(0);
@@ -210,13 +210,16 @@
 	transition-property: transform;
 }
 
-.home-grid__card:hover,
-.home-grid__card:focus,
-.home-grid__card:active {
+#home-grid__card:hover,
+#home-grid__card:focus,
+#home-grid__card:active {
 	transform: scale(1.1);
 }
 a.home-card-text:hover {
 	color: rgb(255, 255, 255);
 	cursor: pointer;
 	text-decoration: none;
+}
+a.home-card-text {
+	color: white;
 }

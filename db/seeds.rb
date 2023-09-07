@@ -2059,7 +2059,7 @@ materials.each do |material_name|
   Material.create!(name: material_name)
 end
 
-(1..69).each do |i|
+(1..60).each do |i|
   5.times do
     SupplierMaterial.create(
       material_id: rand(1..20),
