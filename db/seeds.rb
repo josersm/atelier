@@ -1,3 +1,4 @@
+Message.destroy_all
 SupplierMaterial.destroy_all
 Favorite.destroy_all
 User.destroy_all
