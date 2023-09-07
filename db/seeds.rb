@@ -2025,7 +2025,7 @@ puts "creating supplier 60"
 # user_supplier_spain_60
 user_supplier_country_60 = "Peru"
 user_supplier_name_60 = "Sustainable Cashmere Couture"
-user_supplier_address_60 = Faker::Address.street_address,
+user_supplier_address_60 = Faker::Address.street_address
 user_supplier_description_60 = "Sustainable Cashmere Couture, based in the captivating landscapes of Peru, provides textiles at an affordable price point, making it a practical choice for creators. Sustainability is considered, with a rating of 3, offering responsible material options. While specific address details are not provided, you can trust Sustainable Cashmere Couture to supply a variety of textiles that cater to your creative needs in Peru."
 user_supplier_price_60 = "€"
 user_supplier_sus_60 = 3
