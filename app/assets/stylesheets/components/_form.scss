@@ -1,0 +1,49 @@
+
+
+  .form-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #000000; /* Black border */
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  label {
+    display: block;
+    font-weight: bold;
+  }
+
+  input[type="text"],
+  select,
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #000000; /* Black border */
+  }
+
+  select {
+    height: 40px;
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+
+  .show-page__btn {
+    display: flex;
+    justify-content: center;
+  }
+
+  .show-supplier__btn {
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    text-align: center;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }

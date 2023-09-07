@@ -15,7 +15,7 @@
           <h1> <%= @supplier.name %> </h1>
             <h3> <%= @supplier.price_rating %> </h3>
         </div>
-        <div class="sustainability-icons-showpage" stylesheet:>
+        <div class="sustainability-icons-showpage">
           <% if @supplier.sustainability_rating >= 5 %>
            <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821902/sust_5_hrgnpe.png", class: "sust-img-filter", alt: "reviews rating 5" %>
         <% elsif @supplier.sustainability_rating >= 4 %>
@@ -26,6 +26,12 @@
           <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821903/sust_2_loylzt.png", class: "sust-img-filter", alt: "reviews rating 2" %>
         <% elsif @supplier.sustainability_rating >= 1 %>
           <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821904/sust_1_ifiisc.png", class: "sust-img-filter", alt: "reviews rating 1" %>
+        <% end %>
+      </div>
+
+      <div class="materials-list">
+        <% @supplier.materials.each do |material| %>
+          <span class="material-item"><%= material.name.upcase %></span>
         <% end %>
       </div>
 
@@ -107,7 +113,7 @@
               </div>
                 <p id="review-rating-showpage" style="margin-left:40px;"> </p>
 
-              <div class="reviews-icons-showpage" stylesheet:>
+              <div class="reviews-icons-showpage">
                   <% if review.rating >= 5 %>
                   <%= image_tag "https://res.cloudinary.com/do4qlpmbv/image/upload/v1694009738/5_star_gfxo0b.png", class: "reviews-icon-stars", alt: "reviews rating 5" %>
                 <% elsif review.rating >= 4 %>
