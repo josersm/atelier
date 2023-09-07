@@ -5,7 +5,7 @@
 .home-banner {
   object-fit: cover;
   width: 80%;
-  height: 750px;
+  height: 850px;
   padding: 30px 20px 30px;
 }
 
@@ -13,35 +13,117 @@
 // Filter
 
 .home-filter-container {
-  width: 80%;
+  width: 70%;
   margin: auto;
-  margin-top: 10%;
-  margin-bottom: 10%;
+}
+
+.home-filter-title {
+  text-align: center;
+  font-size: 24px;
+  color: black;
+  font-family: 'Roboto', 'Helvetica', sans-serif;
+  font-weight: 500;
+  padding-top: 1%;
 }
 
 // Cards Country
+
+.home-card-container {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  position: relative;
+  width: 70%;
+}
 
 .home-grid{
   display:grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap:20px
 }
-.home-card-container {
-  margin-top: 5%;
-  margin-bottom: 5%;
-  position: relative;
-  width: 80%;
-}
 
-.home-card-country {
+// .home-card-country {
+//   height: 262.5px;
+//   object-fit: cover;
+//   display: flex;
+//   background-image: url("https://wwd.com/wp-content/uploads/2018/02/jacquemus.jpg");
+//   background-size: cover;
+//   justify-content: center;
+//   align-items: center;
+// }
+
+.home-card-country-spain {
   height: 262.5px;
   object-fit: cover;
   display: flex;
-  background-image: url("https://images.lifestyleasia.com/wp-content/uploads/sites/5/2022/05/17223957/jacquemus-nike-collaboration-featured.jpg");
+  background-image: url("https://shop.ftc-cashmere.com/pub/media/cms/Women_Collection/89/Slider/Sliders_Pullover_W_8.jpg");
   background-size: cover;
   justify-content: center;
   align-items: center;
 }
+.home-card-country-portugal {
+  height: 262.5px;
+  object-fit: cover;
+  display: flex;
+  background-image: url("https://i.pinimg.com/736x/c6/f9/f8/c6f9f82005d1ed2c67e406746d90a440.jpg");
+  background-size: cover;
+  justify-content: center;
+  align-items: center;
+}
+.home-card-country-morocco {
+  height: 262.5px;
+  object-fit: cover;
+  display: flex;
+  background-image: url("https://i.pinimg.com/1200x/52/50/a8/5250a845072367ce836b8c85fef9de33.jpg");
+  background-size: cover;
+  justify-content: center;
+  align-items: center;
+}
+.home-card-country-italy {
+  height: 262.5px;
+  object-fit: cover;
+  display: flex;
+  background-image: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjA8J2Eqm-sB5_R8I1fkfXLytwm4ZYwwTz465kCHraqKFVUHZRR2t5WPHHf5fuT5k9gIl47pbtoWYCWZ3-ipVOoY0I84DD6uWgMss92Uc6JrVkXC0ZotyEdlHB-Xwws-fNST0_Cdk-QBbNoXfooYzQL2HEv2W3xhRSLlmDgiGgTyp8a-N5djjn_4mhL/s1095/Evan-Mock-ZARA-MAN-STUDIO-01.jpg");
+  background-size: cover;
+  justify-content: center;
+  align-items: center;
+}
+.home-card-country-france {
+  height: 262.5px;
+  object-fit: cover;
+  display: flex;
+  background-image: url("https://www.jayley.com/images/jayley-pink-cashmere-banana-peel-blend-cardigan-p13568-92064_image.jpg");
+  background-size: cover;
+  justify-content: center;
+  align-items: center;
+}
+.home-card-country-turkey {
+  height: 262.5px;
+  object-fit: cover;
+  display: flex;
+  background-image: url("https://i.pinimg.com/originals/c8/7d/a0/c87da0c9e787d2431f7ee2f764bad493.png");
+  background-size: cover;
+  justify-content: center;
+  align-items: center;
+}
+.home-card-country-bangladesh {
+  height: 262.5px;
+  object-fit: cover;
+  display: flex;
+  background-image: url("https://www.shotkit.com/wp-content/uploads/2020/09/fashion-photography-featured.jpg");
+  background-size: cover;
+  justify-content: center;
+  align-items: center;
+}
+.home-card-country-peru {
+  height: 262.5px;
+  object-fit: cover;
+  display: flex;
+  background-image: url("https://i.pinimg.com/1200x/38/fa/a8/38faa8cea73e780616236d676587cc47.jpg");
+  background-size: cover;
+  justify-content: center;
+  align-items: center;
+}
+
 
 .home-card-text {
   text-decoration: none;
@@ -51,11 +133,11 @@
   text-transform: uppercase;
   font-weight: 500; /* or use 'semibold' if it's supported by the font */
   text-align: center;
+  text-shadow: 2px 2px 8px black;
 }
 
 
 .home-card-image {
-
   height: 310px;
   object-fit: cover;
 
@@ -67,10 +149,14 @@
   margin-top: 5%;
   margin-bottom: 5%;
   position: relative;
-  width: 80%;
+  width: 70%;
+
 }
 
-.home-about_us-background {
+.home-about_us-background-1 {
+  background-color: black;
+}
+.home-about_us-background-2 {
   background-color: black;
 }
 
@@ -90,6 +176,20 @@
   padding-bottom: 15px;
 }
 
+.home-about_us-image-card {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  padding-left: 0px;
+  padding-right: 52px;
+  display: table-cell;
+
+  height: 100%;
+  vertical-align: middle;
+  text-align: center;
+}
+
 .home-about_us-image {
-  padding: 40px;
+  width: 100%;
+  display: inline-block;
+  vertical-align: middle;
 }

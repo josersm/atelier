@@ -1,15 +1,23 @@
 <!-- app/views/products/edit.html.erb -->
 
-<h1>Edit Product</h1>
-<%= simple_form_for [ @project, @product] do |f| %>
-  <%= f.input :name, label: 'Name' %>
-  <%= f.input :description, label: 'Description' %>
-  <%= f.input :quantity_xs, label: 'Quantity XS' %>
-  <%= f.input :quantity_s, label: 'Quantity S' %>
-  <%= f.input :quantity_m, label: 'Quantity M' %>
-  <%= f.input :quantity_l, label: 'Quantity L' %>
-  <%= f.input :quantity_xl, label: 'Quantity XL' %>
-  <%= f.button :submit, 'Create Product' %>
-<% end %>
-
- <%= link_to "back", brand_projects_path(@project.brand, @project) %>
+<div class="container pt-3">
+  <%= link_to "back", brand_path(@project.brand) %>
+  <h1>Edit Product</h1>
+  <%= simple_form_for [ @project, @product] do |f| %>
+    <%= f.label :name, label: 'Name' %>
+    <%= f.input :name, label: 'Name' %>
+    <%= f.label :description, label: 'Description' %>
+    <%= f.input :description, label: 'Description' %>
+    <%= f.label :quantity_xs, label: 'Quantity XS' %>
+    <%= f.input :quantity_xs, label: 'Quantity XS' %>
+    <%= f.label :quantity_s, label: 'Quantity S' %>
+    <%= f.input :quantity_s, label: 'Quantity S' %>
+    <%= f.label :quantity_m, label: 'Quantity M' %>
+    <%= f.input :quantity_m, label: 'Quantity M' %>
+    <%= f.label :quantity_l, label: 'Quantity L' %>
+    <%= f.input :quantity_l, label: 'Quantity L' %>
+    <%= f.label :quantity_xl, label: 'Quantity XL' %>
+    <%= f.input :quantity_xl, label: 'Quantity XL' %>
+    <%= f.button :submit, 'Create Product' %>
+  <% end %>
+</div>

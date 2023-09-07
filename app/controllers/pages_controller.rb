@@ -33,9 +33,36 @@ class PagesController < ApplicationController
     # @projects = @brand.projects
     # @favorites = @brand.favorites
 		# raise
+		@brand = Brand.where(user: current_user)
+	 	@projects = Project.where(brand: @brand)
+		@supplier = Supplier.where(user: current_user)
+		@favorites = Favorite.where(brand_id: @brand)
+		@supplier_projects = Project.where(supplier_id: @supplier)
+		chatrooms_dashboards(@projects)
   end
 
   def inbox
     @chatrooms = current_user.chatrooms
   end
+
+	def chatrooms_dashboards(projects)
+		suppliers = []
+		@chatrooms = []
+		@no_chatrooms = []
+		projects.each do |project|
+			supplier = Supplier.find(project.supplier_id)
+			unless suppliers.include?(supplier)
+				suppliers << supplier
+			end
+		end
+
+		suppliers.each do |supplier|
+			if Chatroom.find_by(supplier_id: supplier.id)
+				@chatrooms << Chatroom.find_by(supplier_id: supplier.id)
+			else
+				@no_chatrooms << supplier
+			end
+		end
+		
+	end
 end
