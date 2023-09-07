@@ -29,8 +29,14 @@
 
 #supplier-name-rating-showpage {
   display:flex;
-}
+  align-items: center;
+  margin-left: 10px;
 
+  h3 {
+    margin-left: 17px;
+    margin-bottom: 0px;
+  }
+}
 
 #customized-header {
   display: flex;
@@ -67,7 +73,8 @@
 }
 
 #review-comment-showpage {
-  margin-top:20px
+  margin-top:20px;
+  margin-left:10px;
 }
 
 #review-rating-showpage {
@@ -231,8 +238,8 @@ show-supplier-submit__btn {
 
 
 #review-picture-brand {
-  width: 50px;
-  height: 49px;
+  width: 45px;
+  height: 45px;
 }
 
 .reviews-showpage-supplier {
@@ -268,9 +275,8 @@ show-supplier-submit__btn {
   align-items: center;
 }
 
-#supplier-name-rating-showpage {
-  margin-left: 10px;
-}
+
+
 
 .sustainability-icons-showpage {
   width: 102px;
@@ -300,6 +306,7 @@ show-supplier-submit__btn {
 .reviews-icon-stars  {
   margin-right: 20px;
   vertical-align: middle;
+  margin-top: -5px;
 }
 
 #review-brand-name-showpage {

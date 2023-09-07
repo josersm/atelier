@@ -13,9 +13,7 @@
       <div>
         <div id="supplier-name-rating-showpage">
           <h1> <%= @supplier.name %> </h1>
-          <div id="supplier-name-rating-showpage">
             <h3> <%= @supplier.price_rating %> </h3>
-          </div>
         </div>
         <div class="sustainability-icons-showpage" stylesheet:>
           <% if @supplier.sustainability_rating >= 5 %>
@@ -32,7 +30,7 @@
       </div>
 
       </div>
-      <div>
+      <div style="margin-right: 10px;">
         <% if user_signed_in? && current_user.brand %>
           <% if current_user.brand.favorites.exists?(supplier_id: @supplier.id) %>
             <p>Already in favorites </p>
@@ -101,7 +99,7 @@
     <% if @supplier.reviews %>
       <% @reviews.each do |review| %>
         <div class="container review-showpage">
-          <%= image_tag("https://res.cloudinary.com/dzm55bol0/image/upload/v1693819062/image_143_a5j6tt.png", alt: "Supplier Image" ,id:"review-picture-brand") %>
+          <%= image_tag("https://res.cloudinary.com/do4qlpmbv/image/upload/v1694076042/blank-profile-picture-973460_1280_iznyuv.png", alt: "Supplier Image" ,id:"review-picture-brand") %>
           <div style="margin-left:25px;">
             <div style="display:flex">
               <div id="review-brand-name-showpage">
