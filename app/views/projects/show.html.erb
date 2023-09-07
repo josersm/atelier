@@ -1,49 +1,75 @@
+<div class="container" >
+  <h1>CONTACT DETAILS</h1>
 
-<h1>CONTACT DETAILS</h1>
-<div>
-<div class="brand-details">
-  <h2>Brand Details</h2>
-  <%= "Company Name: #{@brand.company_name}" %>
-  <%= "BIC Number: #{@brand.bic_number}" %>
-  <%= "Email: #{@brand.email}" %>
-  <%= "Contact Number: #{@brand.contact_number}" %>
-  <%= "Country: #{@brand.country}" %>
-  <%= "Address: #{@brand.address}" %>
-</div>
-
-  <h2>Products:</h2>
-<% if @project.products.empty? %>
-  <p>No products available</p>
-<% else %>
-  <h2>Display Product List</h2>
-  <ul class="list-group">
-    <% @project.products.each do |product| %>
-      <li class="list-group-item d-flex justify-content-between align-items-center">
-        <%= product.name %>
-        <%= link_to 'Edit Product', edit_project_product_path( @project, product), class: 'btn btn-sm btn-warning' %>
-      </li>
-    <% end %>
-  </ul>
-<% end %>
-
-
-  <h2>Create New Product</h2>
-  <div data-controller="toggle">
-    <button data-action="click->toggle#fire" class="btn btn-outline-primary-blue">Add a new product</button>
-    <div class="product-details d-none" data-toggle-target="togglableElement">
-      <%= simple_form_for [ @project, @product] do |f| %>
-        <%= f.input :name, label: 'Name' %>
-        <%= f.input :description, label: 'Description' %>
-        <%= f.input :quantity_xs, label: 'Quantity XS' %>
-        <%= f.input :quantity_s, label: 'Quantity S' %>
-        <%= f.input :quantity_m, label: 'Quantity M' %>
-        <%= f.input :quantity_l, label: 'Quantity L' %>
-        <%= f.input :quantity_xl, label: 'Quantity XL' %>
-        <%= f.input :price, label: 'Price' %>
-        <%= f.button :submit, 'Create Product' %>
-      <% end %>
+  <div id="customized-header">
+      <h2>Brand Details</h2>
+      <div style="border: 1px solid black; margin-left: 10px; flex-grow: 1;">
+      </div>
+    </div>
+    <div class="container brand-details">
+    <div class="brand-information" style:"display: grid; grid-template-columns: 1fr 1fr;">
+      <p>Company Name: <%= @brand.company_name %></p>
+      <p>BIC Number: <% @brand.bic_number %></p>
+      <p>Email: <% @brand.email %></p>
+      <p>Contact Number: <% @brand.contact_number %></p>
+      <p>Country: <% @brand.country %><p>
+      <p>Address: <% @brand.address %></p>
     </div>
   </div>
 
+  <div id="customized-header">
+    <h2>Products</h2>
+    <div style="border: 1px solid black; margin-left: 10px; flex-grow: 1;">
+    </div>
+  </div>
+  <% if @project.products.empty? %>
+    <p>No products available</p>
+  <% else %>
+    <div id="customized-header">
+      <h2>Display Product List</h2>
+      <div style="border: 1px solid black; margin-left: 10px; flex-grow: 1;">
+      </div>
+    </div>
+    <ul class="list-group">
+      <% @project.products.each do |product| %>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <%= product.name %>
+          <%= link_to 'Edit Product', edit_project_product_path( @project, product), class: 'btn' %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
 
-</div>
+  <div id="customized-header">
+    <h2>Create New Product</h2>
+    <div style="border: 1px solid black; margin-left: 10px; flex-grow: 1;">
+    </div>
+  </div>
+    <div data-controller="toggle">
+      <button data-action="click->toggle#fire" class="btn btn-outline-primary-blue">Add a new product</button>
+      <div class="product-details d-none" data-toggle-target="togglableElement">
+        <%= simple_form_for [ @project, @product] do |f| %>
+          <%= f.label :name, label: 'Name' %>
+          <%= f.input :name, label: 'Name' %>
+          <%= f.label :description, label: 'Description' %>
+          <%= f.input :description, label: 'Description' %>
+          <%= f.label :quantity_xs, label: 'Quantity XS' %>
+          <%= f.input :quantity_xs, label: 'Quantity XS' %>
+          <%= f.label :quantity_s, label: 'Quantity S' %>
+          <%= f.input :quantity_s, label: 'Quantity S' %>
+          <%= f.label :quantity_m, label: 'Quantity M' %>
+          <%= f.input :quantity_m, label: 'Quantity M' %>
+          <%= f.label :quantity_l, label: 'Quantity L' %>
+          <%= f.input :quantity_l, label: 'Quantity L' %>
+          <%= f.label :quantity_xl, label: 'Quantity XL' %>
+          <%= f.input :quantity_xl, label: 'Quantity XL' %>
+          <%= f.label :price, label: 'Price' %>
+          <%= f.input :price, label: 'Price' %>
+          <%= f.button :submit, 'Create Product' %>
+        <% end %>
+      </div>
+    </div>
+
+
+  </div>
+<div>

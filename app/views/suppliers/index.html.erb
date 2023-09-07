@@ -19,7 +19,7 @@
           <div class="filter-toggle country hidden" data-filter-toggle="country">
             <% @countries.each do |country| %>
               <div class="country-list-results">
-              <%= link_to country, suppliers_path(country: country), class: "country-option" %>
+              <%= link_to country, suppliers_path(request.query_parameters.merge(country: country)), class: "country-option" %>
               </div>
             <% end %>
           </div>
@@ -28,29 +28,27 @@
         <div data-action="click->filter#showOption" data-filter="sustainability">
               SUSTAINABILITY
               <div class="filter-toggle sustainability hidden" data-filter-toggle="sustainability">
-                  <%= hidden_field_tag :sustainability_rating, params[:sustainability_rating] %>
-                  <div class="sustainability-icons">
-                      <%= link_to suppliers_path(sustainability_rating: 5), class: "sustainability-option" do %>
-                          <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821902/sust_5_hrgnpe.png", class: "sust-img-filter", alt: "Sustainability Rating 5" %>
-                      <% end %>
+                <%= hidden_field_tag :sustainability_rating, params[:sustainability_rating] %>
+            
+                <%= link_to suppliers_path(sustainability_rating: 5), class: "sustainability-option" do %>
+                  <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821902/sust_5_hrgnpe.png", class: "sust-img-filter", alt: "Sustainability Rating 5" %>
+                <% end %>
 
-                      <%= link_to suppliers_path(sustainability_rating: 4), class: "sustainability-option" do %>
-                          <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821902/sust_4_ehprtk.png", class: "sust-img-filter", alt: "Sustainability Rating 4" %>
-                      <% end %>
+                <%= link_to suppliers_path(sustainability_rating: 4), class: "sustainability-option" do %>
+                    <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821902/sust_4_ehprtk.png", class: "sust-img-filter", alt: "Sustainability Rating 4" %>
+                <% end %>
 
-                      <%= link_to suppliers_path(sustainability_rating: 3), class: "sustainability-option" do %>
-                          <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821903/sust_3_fr1mk5.png", class: "sust-img-filter", alt: "Sustainability Rating 3" %>
-                      <% end %>
+                <%= link_to suppliers_path(sustainability_rating: 3), class: "sustainability-option" do %>
+                    <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821903/sust_3_fr1mk5.png", class: "sust-img-filter", alt: "Sustainability Rating 3" %>
+                <% end %>
 
-                      <%= link_to suppliers_path(sustainability_rating: 2), class: "sustainability-option" do %>
-                          <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821903/sust_2_loylzt.png", class: "sust-img-filter", alt: "Sustainability Rating 2" %>
-                      <% end %>
+                <%= link_to suppliers_path(sustainability_rating: 2), class: "sustainability-option" do %>
+                    <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821903/sust_2_loylzt.png", class: "sust-img-filter", alt: "Sustainability Rating 2" %>
+                <% end %>
 
-                      <%= link_to suppliers_path(sustainability_rating: 1), class: "sustainability-option" do %>
-                          <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821904/sust_1_ifiisc.png", class: "sust-img-filter", alt: "Sustainability Rating 1" %>
-                      <% end %>
-
-                  </div>
+                <%= link_to suppliers_path(sustainability_rating: 1), class: "sustainability-option" do %>
+                    <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821904/sust_1_ifiisc.png", class: "sust-img-filter", alt: "Sustainability Rating 1" %>
+                <% end %>
               </div>
           </div>
 
@@ -79,7 +77,7 @@
             <div class="filter-toggle material hidden" data-filter-toggle="material">
                 <% Material.all.each do |material| %>
                     <div class="material-list-results">
-                        <%= link_to material.name, suppliers_path(supplier_materials: material.id), class: "material-option" %>
+                    <%= link_to material.name, suppliers_path(request.query_parameters.merge(supplier_materials: material.id)), class: "material-option" %>
                     </div>
                 <% end %>
             </div>
@@ -98,6 +96,7 @@
   <div class="supplier-result-grid">
     <% @suppliers.each do |supplier| %>
       <%= link_to supplier_path(supplier), class: "supplier-result-card" do %>
+        <p class="supplier-result-country-name"><%= supplier.country.upcase %></p>
         <img src="https://res.cloudinary.com/dzm55bol0/image/upload/v1693819062/image_143_a5j6tt.png" alt="Supplier Image" class="supplier-result-image" />
         <div class="supplier-result-card-header">
           <div class="supplier-header-top">
@@ -109,7 +108,6 @@
             <% end %>
           </div>
         </div>
-
         <p class="supplier-result-description"><%= truncate(supplier.description, length: 155, separator: ' ', omission: '...') %></p>
         <div class="supplier-footer-price">
             <p><%= supplier.price_rating %></p>

@@ -7,3 +7,4 @@ import "@rails/actioncable"
 import "channels"
 import "chartkick"
 import "Chart.bundle"
+

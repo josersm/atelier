@@ -2,11 +2,17 @@
 	<%# <% @brand = Brand.new %>
 <%# raise %>
 	<%= simple_form_for Brand.new do |f| %>
+	<%= f.label :company_name %>
   <%= f.input :company_name %>
+	<%= f.label :bic_number %>
   <%= f.input :bic_number %>
+	<%= f.label :email %>
   <%= f.input :email %>
-  <%= f.input :contact_number %>
-  <%# <%= f.input :country %>
+	<%= f.label :contact_number %>
+  <%= f.input :contact_number, :as => :string %>
+	<%= f.label :country %>
+	<%= f.input :country, :as => :string %>
+	<%= f.label :address %>
   <%= f.input :address %>
   <%= f.submit label, class: "btn btn-primary" %>
 	<% end %>
@@ -17,13 +23,21 @@
 	<%# <% @supplier = Supplier.new %>
 
   <%= simple_form_for Supplier.new do |f| %>
+		<%= f.label :name %>
     <%= f.input :name %>
+    <%= f.label :address %>
     <%= f.input :address %>
+    <%= f.label :description %>
     <%= f.input :description %>
+    <%= f.label :email %>
     <%= f.input :email %>
+    <%= f.label :phone_number %>
     <%= f.input :phone_number %>
+    <%= f.label :price_rating %>
     <%= f.input :price_rating %>
+    <%= f.label :sustainability_rating %>
     <%= f.input :sustainability_rating %>
+    <%= f.label :minimum_quantity %>
     <%= f.input :minimum_quantity %>
 
     <%= f.association :materials, as: :check_boxes %>
