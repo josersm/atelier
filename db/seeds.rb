@@ -2266,7 +2266,7 @@ Supplier.create(
   phone_number: Faker::PhoneNumber.cell_phone,
   price_rating: ["€", "€€", "€€€"].sample,
   sustainability_rating: rand(1..5),
-  minimum_quantity: rand(1..1000),
+  minimum_quantity: rand(300..750).round(-1),
   user: user_5
 )
 
@@ -2279,7 +2279,7 @@ Supplier.create(
   phone_number: Faker::PhoneNumber.cell_phone,
   price_rating: ["€", "€€", "€€€"].sample,
   sustainability_rating: rand(1..5),
-  minimum_quantity: rand(1..1000),
+  minimum_quantity: rand(300..750).round(-1),
   user: user_6
 )
 
@@ -2292,7 +2292,7 @@ Supplier.create(
   phone_number: Faker::PhoneNumber.cell_phone,
   price_rating: ["€", "€€", "€€€"].sample,
   sustainability_rating: rand(1..5),
-  minimum_quantity: rand(1..1000),
+  minimum_quantity: rand(300..750).round(-1),
   user: user_7
 )
 
@@ -2305,7 +2305,7 @@ Supplier.create(
   phone_number: Faker::PhoneNumber.cell_phone,
   price_rating: ["€", "€€", "€€€"].sample,
   sustainability_rating: rand(1..5),
-  minimum_quantity: rand(1..1000),
+  minimum_quantity: rand(300..750).round(-1),
   user: user_8
 )
 
@@ -2318,7 +2318,7 @@ Supplier.create(
   phone_number: Faker::PhoneNumber.cell_phone,
   price_rating: ["€", "€€", "€€€"].sample,
   sustainability_rating: rand(1..5),
-  minimum_quantity: rand(1..1000),
+  minimum_quantity: rand(300..750).round(-1),
   user: user_9
 )
 
@@ -2331,7 +2331,7 @@ Supplier.create(
   phone_number: Faker::PhoneNumber.cell_phone,
   price_rating: ["€", "€€", "€€€"].sample,
   sustainability_rating: rand(1..5),
-  minimum_quantity: rand(1..1000),
+  minimum_quantity: rand(300..750).round(-1),
   user: user_10
 )
 
@@ -2344,7 +2344,7 @@ Supplier.create(
   phone_number: Faker::PhoneNumber.cell_phone,
   price_rating: ["€", "€€", "€€€"].sample,
   sustainability_rating: rand(1..5),
-  minimum_quantity: rand(1..1000),
+  minimum_quantity: 750,
   user: user_11
 )
 
