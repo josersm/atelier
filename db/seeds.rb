@@ -36,7 +36,6 @@ user_4 = User.create(
 
 puts "users for brands have been created"
 
-
 # 4 brands
 
 Brand.create(
