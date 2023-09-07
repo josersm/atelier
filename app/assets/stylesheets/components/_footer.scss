@@ -1,0 +1,12 @@
+body{
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+footer {
+	margin-top: auto; // putting footer always at the bottom
+	padding: 20px 0;
+	text-align: center;
+	background-color: #fbfbfb;
+}
