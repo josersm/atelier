@@ -59,6 +59,11 @@
   text-transform: uppercase;
   font-weight: 500; /* or use 'semibold' if it's supported by the font */
   text-align: center;
+	width:100%;
+	height:100%;
+	display:flex;
+	justify-content: center;
+	align-items: center;
 }
 
 
@@ -117,4 +122,26 @@
   width: 100%;
   display: inline-block;
   vertical-align: middle;
+}
+
+.home-grid__card {
+	display: inline-block;
+	vertical-align: middle;
+	transform: translateZ(0);
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+	backface-visibility: hidden;
+	-moz-osx-font-smoothing: grayscale;
+	transition-duration: 0.3s;
+	transition-property: transform;
+}
+
+.home-grid__card:hover,
+.home-grid__card:focus,
+.home-grid__card:active {
+	transform: scale(1.1);
+}
+a.home-card-text:hover {
+	color: rgb(255, 255, 255);
+	cursor: pointer;
+	text-decoration: none;
 }
