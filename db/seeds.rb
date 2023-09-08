@@ -2059,21 +2059,25 @@ Supplier.create(
 
 
 
-materials= ["cotton", "polyester", "cashmere", "linen", "Silk", "Wool", "Leather", "Denim", "Velvet", "Nylon", "Spandex", "Rayon", "Satin", "Chiffon", "Tulle", "Fleece", "Tweed", "Corduroy", "Lace", "Suede", "Jacquard", "Chambray", "Organza"]
+materials = [
+  "cotton", "polyester", "cashmere", "linen", "Silk", "Wool",
+  "Leather", "Denim", "Velvet", "Nylon", "Spandex", "Rayon",
+  "Satin", "Chiffon", "Tulle", "Fleece", "Tweed", "Corduroy",
+  "Lace", "Suede", "Jacquard", "Chambray", "Organza"
+]
 
 materials.each do |material_name|
   Material.create!(name: material_name)
 end
 
-(Supplier.first.id..Supplier.last.id).each do |i|
-  5.times do
-    SupplierMaterial.create(
-      material_id: rand(1..20),
-      supplier_id: Supplier.find(i)
-    )
+Supplier.all.each do |supplier|
+  selected_materials = Material.all.sample(rand(1..20))
+
+  selected_materials.each do |material|
+    SupplierMaterial.find_or_create_by!(material: material, supplier: supplier)
   end
 end
-puts "Materials have been created"
+
 
 
 
