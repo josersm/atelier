@@ -2114,6 +2114,7 @@ my_project_1 = Project.create(
 	delivery_mode: "Standard Delivery",
 	description: "first description",
 	status: "pending",
+	delivery_date: Date.new(2023, 10, 13),
 )
 
 Product.create(
@@ -2125,6 +2126,7 @@ Product.create(
   quantity_m: rand(1..10),
   quantity_l: rand(1..10),
   quantity_xl: rand(1..10),
+	updated_at: Date.new(2023, 10, 13)
 )
 
 # project 2
@@ -2135,7 +2137,8 @@ my_project_2 = Project.create(
 	title: "my 2 project",
 	delivery_mode: "Standard Delivery",
 	description: "first description",
-	status: "pending",
+	status: "accepted",
+	delivery_date: Date.new(2023, 8, 23),
 )
 
 Product.create(
@@ -2146,7 +2149,19 @@ Product.create(
   quantity_s: rand(1..10),
   quantity_m: rand(1..10),
   quantity_l: rand(1..10),
-  quantity_xl: rand(1..10)
+  quantity_xl: rand(1..10),
+	updated_at: Date.new(2022, 10, 13)
+)
+
+Product.create(
+  project_id: my_project_2.id,
+	description: "my summer collection",
+	name: "my summer collection",
+	quantity_xs: rand(20..100),
+  quantity_s: rand(20..100),
+  quantity_m: rand(20..100),
+  quantity_l: rand(20..100),
+  quantity_xl: rand(20..100)
 )
 puts "project 3.."
 # project 3
