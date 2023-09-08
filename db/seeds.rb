@@ -4,6 +4,7 @@ Favorite.destroy_all
 Product.destroy_all
 Project.destroy_all
 SupplierMaterial.destroy_all
+Review.destroy_all
 Brand.destroy_all
 Supplier.destroy_all
 User.destroy_all
@@ -136,13 +137,13 @@ end
 # user_supplier_spain_1
 user_supplier_country_1 = "Spain"
 user_supplier_name_1 = "ModaGalicia"
-user_supplier_address_1 = "Polígono Industrial de La Grela, Rúa Severo Ochoa, 6, 15008 A Coruña"
-user_supplier_description_1 = "Moda Galicia is a distinguished textile supplier based in Spain, renowned for its commitment to quality and sustainability. Located in the heart of the industrial hub at Polígono Industrial de La Grela in A Coruña, Moda Galicia offers a premium selection of textile products made primarily from high-quality cotton.
+user_supplier_address_1 = "Rúa Severo Ochoa, 6, 15008 A Coruña"
+user_supplier_description_1 = "Moda Galicia is a distinguished textile supplier based in Spain, renowned for its commitment to quality and sustainability. Located in the heart of the industrial hub at Polígono Industrial de La Grela in A Coruña, Moda Galicia offers a premium selection of textile products made primarily from high-quality linen.
 
 Our textiles are known for their exceptional durability and comfort, making them perfect for a wide range of applications in the fashion and textile industry. While our products fall into the premium price range, they offer excellent value for the exceptional quality and sustainability they embody.
 
 One of our standout features is our strong dedication to sustainability. We prioritize environmentally responsible practices in our manufacturing processes, ensuring that our cotton textiles are produced with minimal ecological impact. Moda Galicia is your trusted partner for top-tier cotton textiles that combine quality, sustainability, and style, making them the ideal choice for brands and businesses committed to excellence and eco-consciousness."
-user_supplier_price_1 = "€€€"
+user_supplier_price_1 = "€€"
 user_supplier_sus_1 = 5
 
 puts "creating 1 supplier"
@@ -158,7 +159,7 @@ Supplier.create(
   description: "#{user_supplier_description_1}",
   country: "#{user_supplier_country_1}",
   email: "#{user_supplier_name_1}@gmail.com",
-  phone_number: Faker::PhoneNumber.cell_phone,
+  phone_number: 667469864,
   price_rating: "#{user_supplier_price_1}",
   sustainability_rating: "#{user_supplier_sus_1}",
   minimum_quantity: rand(10..300).round(-1),
@@ -172,8 +173,11 @@ puts "creating 2 supplier"
 user_supplier_country_2 = "Spain"
 user_supplier_name_2 = "TelasBarcelona"
 user_supplier_address_2 = "Av. Diagonal, 661, 08028 Barcelona"
-user_supplier_description_2 = "TelasBarcelona, located in the vibrant city of Barcelona, is your destination for premium fabrics. They offer top-quality materials at a premium price point, making it an excellent choice for those looking for high-end options. Sustainability is a top priority with a rating of 5, ensuring eco-conscious creators have a premium source for their needs.
+user_supplier_description_2 = "Founded in the heart of the vibrant and culturally rich city of Barcelona, TelasBarcelona has firmly established itself as the premier destination for discerning individuals and businesses seeking only the finest in premium fabrics. Renowned for its unwavering commitment to excellence, this distinguished textile emporium boasts a meticulously curated selection of top-quality materials that cater to the most discerning tastes.
 
+At TelasBarcelona, quality reigns supreme, and this dedication to delivering nothing but the best is reflected in its premium price point. While some may perceive it as an investment, TelasBarcelona's fabrics are undeniably worth every penny, ensuring that clients who demand nothing but the highest standards find their ideal source here.
+
+What truly sets TelasBarcelona apart is its unwavering commitment to sustainability. With a top-tier sustainability rating of 5, TelasBarcelona is a beacon of eco-consciousness in the textile industry. By choosing TelasBarcelona, eco-conscious creators gain access to a premium source that aligns with their values, offering a wide range of materials that are not only luxurious but also environmentally responsible.
 "
 user_supplier_price_2 = "€€€"
 user_supplier_sus_2 = 5
@@ -193,7 +197,7 @@ Supplier.create(
   phone_number: Faker::PhoneNumber.cell_phone,
   price_rating: "#{user_supplier_price_2}",
   sustainability_rating: "#{user_supplier_sus_2}",
-  minimum_quantity: rand(10..300).round(-1),
+  minimum_quantity: 60,
   user: user_supplier_2
 )
 
@@ -221,10 +225,10 @@ Supplier.create(
   description: "#{user_supplier_description_3}",
   country: "#{user_supplier_country_3}",
   email: "#{user_supplier_name_3}@gmail.com",
-  phone_number: Faker::PhoneNumber.cell_phone,
+  phone_number: 981667478,
   price_rating: "#{user_supplier_price_3}",
   sustainability_rating: "#{user_supplier_sus_3}",
-  minimum_quantity: rand(10..300).round(-1),
+  minimum_quantity: 80,
   user: user_supplier_3
 )
 
