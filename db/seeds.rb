@@ -1,11 +1,13 @@
-SupplierMaterial.destroy_all
+Message.destroy_all
+Chatroom.destroy_all
 Favorite.destroy_all
-User.destroy_all
-Supplier.destroy_all
-Material.destroy_all
 Product.destroy_all
 Project.destroy_all
+SupplierMaterial.destroy_all
 Brand.destroy_all
+Supplier.destroy_all
+User.destroy_all
+Material.destroy_all
 
 # 4 users for brands
 
@@ -1073,7 +1075,7 @@ Supplier.create(
 # user_supplier_spain_31
 user_supplier_country_31 = "Morocco"
 user_supplier_name_31 = "Agadir Innovation Textiles"
-user_supplier_address_31 = Faker::Address.street_address,
+user_supplier_address_31 = Faker::Address.street_address
 user_supplier_description_31 = "Agadir Innovation Textiles, located in the vibrant region of Agadir, Morocco, offers fabrics at an affordable price point. Sustainability is a priority here, with a commendable rating of 4, ensuring eco-conscious choices for creators in the area. While specific address details are not provided, you can rely on Agadir Innovation Textiles to deliver a diverse range of textiles that cater to your artistic requirements in Agadir.
 
 "
@@ -1105,7 +1107,7 @@ Supplier.create(
 # user_supplier_spain_32
 user_supplier_country_32 = "Morocco"
 user_supplier_name_32 = "Tangier Creative Fabrics"
-user_supplier_address_32 = Faker::Address.street_address,
+user_supplier_address_32 = Faker::Address.street_address
 user_supplier_description_32 = "Tangier Creative Fabrics, situated in the bustling city of Tangier, Morocco, provides fabrics at an average price point, making it an attractive choice for creators seeking a balance between quality and affordability. Sustainability remains a consideration, with a rating of 3, offering responsible material options. While specific address details are not provided, you can trust Tangier Creative Fabrics to offer a wide range of textiles to meet your creative needs in Tangier.
 
 "
@@ -1140,7 +1142,7 @@ Supplier.create(
 # user_supplier_spain_33
 user_supplier_country_33 = "Italy"
 user_supplier_name_33 = "Venetian Fabrics"
-user_supplier_address_33 = Faker::Address.street_address,
+user_supplier_address_33 = Faker::Address.street_address
 user_supplier_description_33 = "Venetian Fabrics, based in the enchanting city of Venice, Italy, specializes in premium fabrics. These fabrics are available at a premium price, reflecting their exceptional quality. Sustainability takes center stage with a remarkable rating of 5, ensuring that your creative endeavors align with responsible choices. While specific address details are not provided, you can count on Venetian Fabrics to provide a premium selection of textiles that cater to the artistic aspirations of Venice.
 
 "
@@ -1172,7 +1174,7 @@ Supplier.create(
 # user_supplier_spain_34
 user_supplier_country_34 = "Italy"
 user_supplier_name_34 = "Artisanal Fabrics of Rome"
-user_supplier_address_34 = Faker::Address.street_address,
+user_supplier_address_34 = Faker::Address.street_address
 user_supplier_description_34 = "Artisanal Fabrics of Rome, nestled in the historic capital of Italy, offers premium fabrics at a premium price. Sustainability is a top priority here, boasting a rating of 5, ensuring that your artistic choices are aligned with eco-conscious values. While specific address details are not provided, you can trust Artisanal Fabrics of Rome to offer a premium selection of textiles that cater to the creative needs of Rome.
 
 "
@@ -1204,7 +1206,7 @@ Supplier.create(
 # user_supplier_spain_35
 user_supplier_country_35 = "Italy"
 user_supplier_name_35 = "Sicilian Silk Elegance"
-user_supplier_address_35 = Faker::Address.street_address,
+user_supplier_address_35 = Faker::Address.street_address
 user_supplier_description_35 = "Sicilian Silk Elegance, situated in the picturesque island of Sicily, Italy, specializes in premium fabrics. These fabrics come at a premium price, reflecting their exceptional quality and the exquisite craftsmanship of the region. Sustainability remains paramount, with a remarkable rating of 5, ensuring that your artistic creations align with responsible choices. While specific address details are not provided, you can expect Sicilian Silk Elegance to offer a premium selection of textiles that capture the elegance of Sicily.
 
 "
@@ -1236,7 +1238,7 @@ Supplier.create(
 # user_supplier_spain_36
 user_supplier_country_36 = "Italy"
 user_supplier_name_36 = "Milanese Textile Excellence"
-user_supplier_address_36 = Faker::Address.street_address,
+user_supplier_address_36 = Faker::Address.street_address
 user_supplier_description_36 = "Milanese Textile Excellence, located in the fashion-forward city of Milan, Italy, offers fabrics at an average price point, striking a balance between quality and cost-effectiveness. Sustainability is a consideration, with a rating of 4, providing responsible material options for creators in the area. While specific address details are not provided, you can rely on Milanese Textile Excellence to supply a diverse range of textiles to meet your artistic needs in Milan.
 
 "
@@ -1270,7 +1272,7 @@ Supplier.create(
 # user_supplier_spain_37
 user_supplier_country_37 = "Egypt"
 user_supplier_name_37 = "Luxor Fabrics"
-user_supplier_address_37 = Faker::Address.street_address,
+user_supplier_address_37 = Faker::Address.street_address
 user_supplier_description_37 = "Luxor Fabrics, situated in the historic city of Luxor, Egypt, provides fabrics at an average price point, making it a practical choice for creators. Sustainability remains a priority with a notable rating of 4, ensuring eco-conscious choices for creators in Luxor. While specific address details are not provided, you can trust Luxor Fabrics to offer a diverse range of textiles that cater to your artistic requirements in Luxor.
 
 "
@@ -2063,7 +2065,7 @@ end
   5.times do
     SupplierMaterial.create(
       material_id: rand(1..20),
-      supplier_id: Supplier.find(i).id
+      supplier_id: Supplier.find(i)
     )
   end
 end
