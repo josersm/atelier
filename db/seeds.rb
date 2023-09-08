@@ -4,6 +4,7 @@ Favorite.destroy_all
 Product.destroy_all
 Project.destroy_all
 SupplierMaterial.destroy_all
+Review.destroy_all
 Brand.destroy_all
 Supplier.destroy_all
 User.destroy_all
