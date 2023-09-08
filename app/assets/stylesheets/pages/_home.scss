@@ -41,15 +41,89 @@
   grid-gap:20px
 }
 
-.home-card-country {
+// .home-card-country {
+//   height: 262.5px;
+//   object-fit: cover;
+//   display: flex;
+//   background-image: url("https://wwd.com/wp-content/uploads/2018/02/jacquemus.jpg");
+//   background-size: cover;
+//   justify-content: center;
+//   align-items: center;
+// }
+
+.home-card-country-spain {
   height: 262.5px;
   object-fit: cover;
   display: flex;
-  background-image: url("https://images.lifestyleasia.com/wp-content/uploads/sites/5/2022/05/17223957/jacquemus-nike-collaboration-featured.jpg");
+  background-image: url("https://shop.ftc-cashmere.com/pub/media/cms/Women_Collection/89/Slider/Sliders_Pullover_W_8.jpg");
   background-size: cover;
   justify-content: center;
   align-items: center;
 }
+.home-card-country-portugal {
+  height: 262.5px;
+  object-fit: cover;
+  display: flex;
+  background-image: url("https://i.pinimg.com/736x/c6/f9/f8/c6f9f82005d1ed2c67e406746d90a440.jpg");
+  background-size: cover;
+  justify-content: center;
+  align-items: center;
+}
+.home-card-country-morocco {
+  height: 262.5px;
+  object-fit: cover;
+  display: flex;
+  background-image: url("https://i.pinimg.com/1200x/52/50/a8/5250a845072367ce836b8c85fef9de33.jpg");
+  background-size: cover;
+  justify-content: center;
+  align-items: center;
+}
+.home-card-country-italy {
+  height: 262.5px;
+  object-fit: cover;
+  display: flex;
+  background-image: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjA8J2Eqm-sB5_R8I1fkfXLytwm4ZYwwTz465kCHraqKFVUHZRR2t5WPHHf5fuT5k9gIl47pbtoWYCWZ3-ipVOoY0I84DD6uWgMss92Uc6JrVkXC0ZotyEdlHB-Xwws-fNST0_Cdk-QBbNoXfooYzQL2HEv2W3xhRSLlmDgiGgTyp8a-N5djjn_4mhL/s1095/Evan-Mock-ZARA-MAN-STUDIO-01.jpg");
+  background-size: cover;
+  justify-content: center;
+  align-items: center;
+}
+.home-card-country-france {
+  height: 262.5px;
+  object-fit: cover;
+  display: flex;
+  background-image: url("https://www.jayley.com/images/jayley-pink-cashmere-banana-peel-blend-cardigan-p13568-92064_image.jpg");
+  background-size: cover;
+  justify-content: center;
+  align-items: center;
+}
+.home-card-country-turkey {
+  height: 262.5px;
+  object-fit: cover;
+  display: flex;
+  background-image: url("https://i.pinimg.com/originals/c8/7d/a0/c87da0c9e787d2431f7ee2f764bad493.png");
+  background-size: cover;
+  justify-content: center;
+  align-items: center;
+}
+.home-card-country-bangladesh {
+  height: 262.5px;
+  object-fit: cover;
+  display: flex;
+  background-image: url("https://www.shotkit.com/wp-content/uploads/2020/09/fashion-photography-featured.jpg");
+  background-size: cover;
+  justify-content: center;
+  align-items: center;
+}
+.home-card-country-peru {
+  height: 262.5px;
+  object-fit: cover;
+  display: flex;
+  background-image: url("https://i.pinimg.com/1200x/38/fa/a8/38faa8cea73e780616236d676587cc47.jpg");
+  background-size: cover;
+  justify-content: center;
+  align-items: center;
+}
+
 
 .home-card-text {
   text-decoration: none;
@@ -59,6 +133,12 @@
   text-transform: uppercase;
   font-weight: 500; /* or use 'semibold' if it's supported by the font */
   text-align: center;
+	width:100%;
+	height:100%;
+	display:flex;
+	justify-content: center;
+	align-items: center;
+  text-shadow: 2px 2px 8px black;
 }
 
 
@@ -117,4 +197,29 @@
   width: 100%;
   display: inline-block;
   vertical-align: middle;
+}
+
+#home-grid__card {
+	display: inline-block;
+	vertical-align: middle;
+	transform: translateZ(0);
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+	backface-visibility: hidden;
+	-moz-osx-font-smoothing: grayscale;
+	transition-duration: 0.3s;
+	transition-property: transform;
+}
+
+#home-grid__card:hover,
+#home-grid__card:focus,
+#home-grid__card:active {
+	transform: scale(1.1);
+}
+a.home-card-text:hover {
+	color: rgb(255, 255, 255);
+	cursor: pointer;
+	text-decoration: none;
+}
+a.home-card-text {
+	color: white;
 }
