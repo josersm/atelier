@@ -29,7 +29,7 @@
               SUSTAINABILITY
               <div class="filter-toggle sustainability hidden" data-filter-toggle="sustainability">
                 <%= hidden_field_tag :sustainability_rating, params[:sustainability_rating] %>
-            
+
                 <%= link_to suppliers_path(sustainability_rating: 5), class: "sustainability-option" do %>
                   <%= image_tag "https://res.cloudinary.com/dzm55bol0/image/upload/v1693821902/sust_5_hrgnpe.png", class: "sust-img-filter", alt: "Sustainability Rating 5" %>
                 <% end %>
@@ -95,6 +95,7 @@
 <div class="supplier-result-container">
   <div class="supplier-result-grid">
     <% @suppliers.each do |supplier| %>
+      <%# raise %>
       <%= link_to supplier_path(supplier), class: "supplier-result-card" do %>
         <p class="supplier-result-country-name"><%= supplier.country.upcase %></p>
         <img src="https://res.cloudinary.com/dzm55bol0/image/upload/v1693819062/image_143_a5j6tt.png" alt="Supplier Image" class="supplier-result-image" />

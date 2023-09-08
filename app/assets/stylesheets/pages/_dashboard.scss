@@ -148,6 +148,9 @@ width: 100%;
 }
 .graph-columns {
 	padding-bottom: 20px;
+	ul {
+		width: 70%;
+	}
 	.graph-box {
 		line-height: 150px;
 		height: 150px;
@@ -213,4 +216,12 @@ width: 100%;
 .chat-paragraph
  {
 	font-size: 12px;
+ }
+
+ .my-dashboard {
+	font-size: 30px;
+	text-align: center;
+	border: 2px solid black;
+	padding: 20px;
+	margin-bottom: 60px;
  }

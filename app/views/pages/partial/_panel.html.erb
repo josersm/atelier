@@ -60,6 +60,9 @@
 
 <% else %>
 	<div class="dashboard-container">
+		<div class="">
+			<h2 class="h2-dashboard my-dashboard">My Dashboard</h2>
+		</div>
 		<div class="title-line">
 			<h2 class="h2-dashboard">MY SUPPLIERS - FAVORITES</h2>
 			<div class="title-line-child"></div>
@@ -138,25 +141,34 @@
 					READ MESSAGES<span><i style="" class="fa-solid fa-inbox"></i></span>
 				</h3>
 
+						<ul class="ul-columns">
 				<% if @chatrooms %>
 				<%# raise %>
 					<% @chatrooms.each do |chatroom| %>
 						<% supplier = Supplier.find(chatroom.supplier_id) %>
-						<p class="chat-paragraph">
+						<li>
+												<p class="chat-paragraph">
 						<%= link_to "#{supplier.name} READ MESSAGES", supplier_chatroom_path(supplier, chatroom), class: "chat-link" %>
 						</p>
+						</li>
+
 					<% end %>
 				<% end %>
 
 				<% if @no_chatrooms %>
 					<% @no_chatrooms.each do |supplier| %>
+					<li>
 						<p class="chat-paragraph"> <%= supplier.name %> <span>no messages</span></p>
+						</li>
 					<% end %>
 				<% end %>
+						</ul>
+
 				<p class="see-all">
 					<i class="fa-regular fa-eye"></i>
 					<%= link_to "SEE ALL", inbox_path, class: "mr-2" %>
 				</p>
+
 			</div>
 		</div>
 	</div>

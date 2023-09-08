@@ -2118,65 +2118,95 @@ puts "project 1.."
 my_project_1 = Project.create(
   brand_id: Brand.first.id,
   supplier_id: Supplier.first.id,
-	title: "my 1 project",
+	title: "The Best Co.",
 	delivery_mode: "Standard Delivery",
 	description: "first description",
-	status: "pending",
+	status: "accepted",
+	delivery_date: Date.new(2023, 10, 13),
 )
 
 Product.create(
   project_id: my_project_1.id,
 	description: "my collection",
-	name: "my collection",
-	quantity_xs: rand(1..10),
-  quantity_s: rand(1..10),
-  quantity_m: rand(1..10),
-  quantity_l: rand(1..10),
-  quantity_xl: rand(1..10),
+	name: "Jeans Jackets",
+	quantity_xs: rand(20..100),
+  quantity_s: rand(20..100),
+  quantity_m: rand(20..100),
+  quantity_l: rand(20..100),
+  quantity_xl: rand(20..100),
+  created_at: 1.month.ago,
+)
+
+Product.create(
+  project_id: my_project_1.id,
+	description: "my collection",
+	name: "Simple Shirt",
+	quantity_xs: rand(20..100),
+  quantity_s: rand(20..100),
+  quantity_m: rand(20..100),
+  quantity_l: rand(20..100),
+  quantity_xl: rand(20..100),
+  created_at: 1.month.ago,
 )
 
 # project 2
 puts "project 2.."
 my_project_2 = Project.create(
   brand_id: Brand.first.id,
-  supplier_id: Supplier.first.id,
-	title: "my 2 project",
+  supplier_id: Supplier.last.id,
+	title: "Summer Series",
 	delivery_mode: "Standard Delivery",
 	description: "first description",
 	status: "pending",
+	delivery_date: Date.new(2023, 8, 23),
 )
 
 Product.create(
   project_id: my_project_2.id,
 	description: "my collection",
 	name: "my collection",
-	quantity_xs: rand(1..10),
-  quantity_s: rand(1..10),
-  quantity_m: rand(1..10),
-  quantity_l: rand(1..10),
-  quantity_xl: rand(1..10)
+	quantity_xs: rand(20..100),
+  quantity_s: rand(20..100),
+  quantity_m: rand(20..100),
+  quantity_l: rand(20..100),
+  quantity_xl: rand(20..100),
+  created_at: 2.month.ago
+)
+
+Product.create(
+  project_id: my_project_2.id,
+	description: "my summer collection",
+	name: "my summer collection",
+	quantity_xs: rand(20..100),
+  quantity_s: rand(20..100),
+  quantity_m: rand(20..100),
+  quantity_l: rand(20..100),
+  quantity_xl: rand(20..100),
+	created_at: 2.month.ago
+
 )
 puts "project 3.."
 # project 3
 my_project_3 = Project.create(
   brand_id: Brand.first.id,
-  supplier_id: Supplier.first.id,
-	title: "my 3 project",
+  supplier_id: Supplier.second.id,
+	title: "Code D Colleccion",
 	delivery_mode: "Standard Delivery",
 	description: "first description",
-	status: "pending",
+	status: "samples construction",
+	delivery_date: Date.new(2023, 3, 23),
 )
 
 Product.create(
   project_id: my_project_3.id,
 	description: "my collection",
 	name: "my collection",
-	quantity_xs: rand(1..10),
-  quantity_s: rand(1..10),
-  quantity_m: rand(1..10),
-  quantity_l: rand(1..10),
-  quantity_xl: rand(1..10),
-  created_at: "Sun, 30 Aug 2023 17:04:50.346529000 UTC +00:00"
+	quantity_xs: rand(20..100),
+  quantity_s: rand(20..100),
+  quantity_m: rand(20..100),
+  quantity_l: rand(20..100),
+  quantity_xl: rand(20..100),
+	created_at: 3.month.ago
 )
 
 # project 4
@@ -2184,43 +2214,263 @@ puts "project 4.."
 my_project_4 = Project.create(
   brand_id: Brand.first.id,
   supplier_id: Supplier.first.id,
-	title: "my 4 project",
+	title: "Off the Wall",
 	delivery_mode: "Standard Delivery",
 	description: "first description",
-	status: "pending",
+	status: "delivery of samples",
+	delivery_date: Date.new(2023, 1, 23),
 )
 
 Product.create(
   project_id: my_project_4.id,
 	description: "my collection",
 	name: "my collection",
-	quantity_xs: rand(1..10),
-  quantity_s: rand(1..10),
-  quantity_m: rand(1..10),
-  quantity_l: rand(1..10),
-  quantity_xl: rand(1..10)
+	quantity_xs: rand(20..100),
+  quantity_s: rand(20..100),
+  quantity_m: rand(20..100),
+  quantity_l: rand(20..100),
+  quantity_xl: rand(20..100),
+	created_at: 4.month.ago
+)
+
+Product.create(
+  project_id: my_project_4.id,
+	description: "my collection",
+	name: "Trousers Series",
+	quantity_xs: rand(20..100),
+  quantity_s: rand(20..100),
+  quantity_m: rand(20..100),
+  quantity_l: rand(20..100),
+  quantity_xl: rand(20..100),
+	created_at: 4.month.ago
 )
 
 # project 5
 puts "project 5.."
 my_project_5 = Project.create(
   brand_id: Brand.first.id,
-  supplier_id: Supplier.first.id,
-	title: "my 5 project",
+  supplier_id: Supplier.third.id,
+	title: "Trousers Series",
 	delivery_mode: "Standard Delivery",
 	description: "first description",
-	status: "pending",
+	status: "start of production",
+	delivery_date: Date.new(2023, 8, 23),
 )
 
 Product.create(
   project_id: my_project_5.id,
 	description: "my collection",
 	name: "my collection",
-	quantity_xs: rand(1..10),
-  quantity_s: rand(1..10),
-  quantity_m: rand(1..10),
-  quantity_l: rand(1..10),
-  quantity_xl: rand(1..10)
+	quantity_xs: rand(20..100),
+  quantity_s: rand(20..100),
+  quantity_m: rand(20..100),
+  quantity_l: rand(20..100),
+  quantity_xl: rand(20..100),
+	created_at: 5.month.ago
+)
+
+# project 6
+puts "project 6.."
+my_project_6 = Project.create(
+  brand_id: Brand.first.id,
+  supplier_id: Supplier.first.id,
+	title: "Malhorn",
+	delivery_mode: "Standard Delivery",
+	description: "first description",
+	status: "delivery of production",
+	delivery_date: Date.new(2022, 8, 23),
+)
+
+Product.create(
+  project_id: my_project_6.id,
+	description: "my collection",
+	name: "my collection",
+	quantity_xs: rand(20..100),
+  quantity_s: rand(20..100),
+  quantity_m: rand(20..100),
+  quantity_l: rand(20..100),
+  quantity_xl: rand(20..100),
+	created_at: 6.month.ago
+)
+
+Product.create(
+  project_id: my_project_6.id,
+	description: "my collection",
+	name: "my collection",
+	quantity_xs: rand(20..100),
+  quantity_s: rand(20..100),
+  quantity_m: rand(20..100),
+  quantity_l: rand(20..100),
+  quantity_xl: rand(20..100),
+	created_at: 6.month.ago
+)
+
+# project 7
+puts "project 7.."
+my_project_7 = Project.create(
+  brand_id: Brand.first.id,
+  supplier_id: Supplier.first.id,
+	title: "Namedarumaaz",
+	delivery_mode: "Standard Delivery",
+	description: "first description",
+	status: "samples construction",
+	delivery_date: Date.new(2022, 8, 23),
+)
+
+Product.create(
+  project_id: my_project_7.id,
+	description: "my collection",
+	name: "my collection",
+	quantity_xs: rand(20..100),
+  quantity_s: rand(20..100),
+  quantity_m: rand(20..100),
+  quantity_l: rand(20..100),
+  quantity_xl: rand(20..100),
+	created_at: 7.month.ago
+)
+
+# project 8
+puts "project 8.."
+my_project_8 = Project.create(
+  brand_id: Brand.first.id,
+  supplier_id: Supplier.first.id,
+	title: "Faith No More",
+	delivery_mode: "Standard Delivery",
+	description: "first description",
+	status: "delivery of production",
+	delivery_date: Date.new(2022, 8, 23),
+)
+
+Product.create(
+  project_id: my_project_8.id,
+	description: "Wagon WIP",
+	name: "my collection",
+	quantity_xs: rand(20..100),
+  quantity_s: rand(20..100),
+  quantity_m: rand(20..100),
+  quantity_l: rand(20..100),
+  quantity_xl: rand(20..100),
+	created_at: 8.month.ago
+)
+
+# project 9
+puts "project 9.."
+my_project_9 = Project.create(
+  brand_id: Brand.first.id,
+  supplier_id: Supplier.first.id,
+	title: "Wagon WIP",
+	delivery_mode: "Standard Delivery",
+	description: "first description",
+	status: "delivery of production",
+	delivery_date: Date.new(2022, 2, 23),
+)
+
+Product.create(
+  project_id: my_project_9.id,
+	description: "my collection",
+	name: "my collection",
+	quantity_xs: rand(20..100),
+  quantity_s: rand(20..100),
+  quantity_m: rand(20..100),
+  quantity_l: rand(20..100),
+  quantity_xl: rand(20..100),
+	created_at: 9.month.ago
+)
+
+# project 10
+puts "project 10.."
+my_project_10 = Project.create(
+  brand_id: Brand.first.id,
+  supplier_id: Supplier.first.id,
+	title: "Super Bad",
+	delivery_mode: "Standard Delivery",
+	description: "first description",
+	status: "samples construction",
+	delivery_date: Date.new(2021, 7, 11),
+)
+
+Product.create(
+  project_id: my_project_10.id,
+	description: "my collection",
+	name: "White Shirts",
+	quantity_xs: rand(20..100),
+  quantity_s: rand(20..100),
+  quantity_m: rand(20..100),
+  quantity_l: rand(20..100),
+  quantity_xl: rand(20..100),
+	created_at: 10.month.ago
+)
+
+Product.create(
+  project_id: my_project_10.id,
+	description: "my collection",
+	name: "Blue Jeans",
+	quantity_xs: rand(20..100),
+  quantity_s: rand(20..100),
+  quantity_m: rand(20..100),
+  quantity_l: rand(20..100),
+  quantity_xl: rand(20..100),
+	created_at: 10.month.ago
+)
+
+# project 11
+puts "project 11.."
+my_project_11 = Project.create(
+  brand_id: Brand.first.id,
+  supplier_id: Supplier.second.id,
+	title: "Third eye",
+	delivery_mode: "Standard Delivery",
+	description: "first description",
+	status: "delivery of production",
+	delivery_date: Date.new(2021, 10, 12),
+)
+
+Product.create(
+  project_id: my_project_11.id,
+	description: "my collection",
+	name: "my collection",
+	quantity_xs: rand(20..100),
+  quantity_s: rand(20..100),
+  quantity_m: rand(20..100),
+  quantity_l: rand(20..100),
+  quantity_xl: rand(20..100),
+	created_at: 11.month.ago
+)
+
+# project 12
+puts "project 12.."
+my_project_12 = Project.create(
+  brand_id: Brand.first.id,
+  supplier_id: Supplier.last.id,
+	title: "Coleccion del Mundo",
+	delivery_mode: "Standard Delivery",
+	description: "first description",
+	status: "start of production",
+	delivery_date: Date.new(2021, 8, 23),
+)
+
+Product.create(
+  project_id: my_project_12.id,
+	description: "my collection",
+	name: "my collection",
+	quantity_xs: rand(20..100),
+  quantity_s: rand(20..100),
+  quantity_m: rand(20..100),
+  quantity_l: rand(20..100),
+  quantity_xl: rand(20..100),
+	created_at: 12.month.ago
+)
+
+Product.create(
+  project_id: my_project_12.id,
+	description: "my collection",
+	name: "Long Shirt",
+	quantity_xs: rand(20..100),
+  quantity_s: rand(20..100),
+  quantity_m: rand(20..100),
+  quantity_l: rand(20..100),
+  quantity_xl: rand(20..100),
+	created_at: 12.month.ago
 )
 
 puts "Projects have been created"
