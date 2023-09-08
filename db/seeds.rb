@@ -145,6 +145,7 @@ One of our standout features is our strong dedication to sustainability. We prio
 user_supplier_price_1 = "€€€"
 user_supplier_sus_1 = 5
 
+puts "creating 1 supplier"
 user_supplier_1 = User.create(
   email: "#{user_supplier_name_1}@gmail.com",
   password: "123456",
@@ -166,6 +167,7 @@ Supplier.create(
 
 #-------------------------------------------------------------
 
+puts "creating 2 supplier"
 # user_supplier_spain_2
 user_supplier_country_2 = "Spain"
 user_supplier_name_2 = "TelasBarcelona"
@@ -195,7 +197,7 @@ Supplier.create(
   user: user_supplier_2
 )
 
-
+puts "creating 3 supplier"
 #------------------------------------------------------
 # user_supplier_spain_3
 user_supplier_country_3 = "Spain"
@@ -227,7 +229,7 @@ Supplier.create(
 )
 
 # ---------------------------------------------------------------------------
-
+puts "creating 4 supplier"
 # user_supplier_spain_4
 user_supplier_country_4 = "Spain"
 user_supplier_name_4 = "Tejidos Innovadores S.L."
@@ -258,7 +260,7 @@ Supplier.create(
 )
 
 # ---------------------------------------------------------------------------
-
+puts "creating 5 supplier"
 # user_supplier_spain_5
 user_supplier_country_5 = "Spain"
 user_supplier_name_5 = "Confecciones Catalanas"
@@ -289,6 +291,7 @@ Supplier.create(
 )
 
 # ---------------------------------------------------------------------------
+puts "creating 6 supplier"
 
 # user_supplier_spain_6
 user_supplier_country_6 = "Spain"
@@ -319,6 +322,7 @@ Supplier.create(
   user: user_supplier_6
 )
 
+puts "creating 7 supplier"
 # ---------------------------------------------------------------------------
 # user_supplier_spain_7
 user_supplier_country_7 = "Spain"
@@ -351,7 +355,7 @@ Supplier.create(
 
 # ---------------------------------------------------------------------------
 
-
+puts "creating 8 supplier"
 # user_supplier_spain_8
 user_supplier_country_8 = "Spain"
 user_supplier_name_8 = "TextilCosta del Sol"
@@ -380,7 +384,7 @@ Supplier.create(
   minimum_quantity: rand(10..300).round(-1),
   user: user_supplier_8
 )
-
+puts "creating 9 supplier"
 # ---------------------------------------------------------------------------
 # user_supplier_spain_9
 user_supplier_country_9 = "Spain"
@@ -412,7 +416,7 @@ Supplier.create(
 )
 
 # ---------------------------------------------------------------------------
-
+puts "creating 10 supplier"
 # user_supplier_spain_10
 user_supplier_country_10 = "Spain"
 user_supplier_name_10 = "TextilNaturaleza Asturias"
@@ -442,7 +446,7 @@ Supplier.create(
 )
 
 # ---------------------------------------------------------------------------
-
+puts "creating 11 supplier"
 # user_supplier_spain_11
 user_supplier_country_11 = "Spain"
 user_supplier_name_11 = "TextilNaturaleza Asturias"
@@ -473,7 +477,7 @@ Supplier.create(
 )
 
 # ---------------------------------------------------------------------------
-
+puts "creating supplier 12"
 # user_supplier_spain_12
 user_supplier_country_12 = "Spain"
 user_supplier_name_12 = "ModaEstampados Galicia"
@@ -504,7 +508,7 @@ Supplier.create(
 )
 
 # ---------------------------------------------------------------------------
-
+puts "creating supplier 13"
 
 # user_supplier_spain_13
 user_supplier_country_13 = "Spain"
@@ -535,7 +539,7 @@ Supplier.create(
   user: user_supplier_13
 )
 
-
+puts "creating supplier 14"
 # user_supplier_spain_14
 user_supplier_country_14 = "Spain"
 user_supplier_name_14 = "ModaArteTextil Zaragoz"
@@ -566,7 +570,7 @@ Supplier.create(
 )
 
 # ---------------------------------------------------------------------------
-
+puts "creating supplier 15"
 # user_supplier_spain_15
 user_supplier_country_15 = "Spain"
 user_supplier_name_15 = "TelaBordados Asturias"
@@ -597,7 +601,7 @@ Supplier.create(
 )
 
 # ---------------------------------------------------------------------------
-
+puts "creating supplier 16"
 # user_supplier_spain_16
 user_supplier_country_16 = "Spain"
 user_supplier_name_16 = "TextilSostenible Canarias"
@@ -628,7 +632,7 @@ Supplier.create(
 )
 
 # ---------------------------------------------------------------------------
-
+puts "creating supplier 17"
 # B. - PORTUGAL SUPPLIERS ----------
 
 # user_supplier_spain_17
@@ -661,7 +665,7 @@ Supplier.create(
 )
 
 # ---------------------------------------------------------------------------
-
+puts "creating supplier 18"
 # user_supplier_spain_18
 user_supplier_country_18 = "Portugal"
 user_supplier_name_18 = "ModaLusitana"
@@ -692,7 +696,7 @@ Supplier.create(
 )
 
 # ---------------------------------------------------------------------------
-
+puts "creating supplier 19"
 # user_supplier_spain_19
 user_supplier_country_19 = "Portugal"
 user_supplier_name_19 = "Tecidos do Porto"
@@ -723,7 +727,7 @@ Supplier.create(
 )
 
 # ---------------------------------------------------------------------------
-
+puts "creating supplier 20"
 # user_supplier_spain_20
 user_supplier_country_20 = "Portugal"
 user_supplier_name_20 = "ModaArte Português"
@@ -754,7 +758,7 @@ Supplier.create(
 
 # ---------------------------------------------------------------------------
 # Continue the pattern for numbers 21 through 24, replacing "20" with "21", "22", and so on.
-
+puts "creating supplier 21"
 # user_supplier_spain_21
 user_supplier_country_21 = "Portugal"
 user_supplier_name_21 = "TelaArtesanal Porto"
@@ -785,7 +789,7 @@ Supplier.create(
 )
 
 # ---------------------------------------------------------------------------
-
+puts "creating supplier 22"
 # user_supplier_spain_22
 user_supplier_country_22 = "Portugal"
 user_supplier_name_22 = "ModaClássica Lisboa"
@@ -816,7 +820,7 @@ Supplier.create(
 )
 
 # ---------------------------------------------------------------------------
-
+puts "creating supplier 23"
 # user_supplier_spain_23
 user_supplier_country_23 = "Portugal"
 user_supplier_name_23 = "TelaVanguarda Algarve"
@@ -847,7 +851,7 @@ Supplier.create(
 )
 
 # ---------------------------------------------------------------------------
-
+puts "creating supplier 24"
 # user_supplier_spain_24
 user_supplier_country_24 = "Portugal"
 user_supplier_name_24 = "Têxteis Costura Lusitana"
@@ -878,7 +882,7 @@ Supplier.create(
 )
 
 # ---------------------------------------------------------------------------
-
+puts "creating supplier 25"
 # user_supplier_spain_25
 user_supplier_country_25 = "Portugal"
 user_supplier_name_25 = "ModaArteTêxtil Braga"
@@ -910,7 +914,7 @@ Supplier.create(
 
 # ---------------------------------------------------------------------------
 # Continue the pattern for numbers 26 and beyond, replacing "25" with the desired number.
-
+puts "creating supplier 26"
 # user_supplier_spain_26
 user_supplier_country_26 = "Portugal"
 user_supplier_name_26 = "Têxteis do Douro"
@@ -942,7 +946,7 @@ Supplier.create(
 
 # ---------------------------------------------------------------------------
 # Continue the pattern for numbers 27 and beyond, replacing "26" with the desired number.
-
+puts "creating supplier 27"
 # user_supplier_spain_27
 user_supplier_country_27 = "Portugal"
 user_supplier_name_27 = "Lisbon Weaving Excellence"
@@ -974,7 +978,7 @@ Supplier.create(
 
 # ---------------------------------------------------------------------------
 # Continue the pattern for numbers 28 and beyond, replacing "27" with the desired number.
-
+puts "creating supplier 28"
 # user_supplier_spain_28
 user_supplier_country_28 = "Portugal"
 user_supplier_name_28 = "Porto Fabrics"
@@ -1008,7 +1012,7 @@ Supplier.create(
 # Continue the pattern for numbers 29 and beyond, replacing "28" with the desired number.
 
 # C. - MOROCCO SUPPLIERS -------------------------------------
-
+puts "creating supplier 29"
 # user_supplier_spain_29
 user_supplier_country_29 = "Morocco"
 user_supplier_name_29 = "Moroccan Textile Innovators Ltd."
@@ -1040,7 +1044,7 @@ Supplier.create(
 
 # ---------------------------------------------------------------------------
 # Continue the pattern for numbers 30 and beyond, replacing "29" with the desired number.
-
+puts "creating supplier 30"
 # user_supplier_spain_30
 user_supplier_country_30 = "Morocco"
 user_supplier_name_30 = "Marrakech Fashion Weavers"
@@ -1071,7 +1075,7 @@ Supplier.create(
 
 # ---------------------------------------------------------------------------
 # Continue the pattern for numbers 31 and beyond, replacing "30" with the desired number.
-
+puts "creating supplier 31"
 # user_supplier_spain_31
 user_supplier_country_31 = "Morocco"
 user_supplier_name_31 = "Agadir Innovation Textiles"
@@ -1103,7 +1107,7 @@ Supplier.create(
 
 # ---------------------------------------------------------------------------
 # Continue the pattern for numbers 32 and beyond, replacing "31" with the desired number.
-
+puts "creating supplier 32"
 # user_supplier_spain_32
 user_supplier_country_32 = "Morocco"
 user_supplier_name_32 = "Tangier Creative Fabrics"
@@ -1135,7 +1139,7 @@ Supplier.create(
 
 # ---------------------------------------------------------------------------
 # Continue the pattern for numbers 33 and beyond, replacing "32" with the desired number.
-
+puts "creating supplier 33"
 # D. - ITALY SUPPLIERS ------------------------------------------------
 
 
@@ -1170,7 +1174,7 @@ Supplier.create(
 
 # ---------------------------------------------------------------------------
 # Continue the pattern for numbers 34 and beyond, replacing "33" with the desired number.
-
+puts "creating supplier 34"
 # user_supplier_spain_34
 user_supplier_country_34 = "Italy"
 user_supplier_name_34 = "Artisanal Fabrics of Rome"
@@ -1202,7 +1206,7 @@ Supplier.create(
 
 # ---------------------------------------------------------------------------
 # Continue the pattern for numbers 35 and beyond, replacing "34" with the desired number.
-
+puts "creating supplier 35"
 # user_supplier_spain_35
 user_supplier_country_35 = "Italy"
 user_supplier_name_35 = "Sicilian Silk Elegance"
@@ -1234,7 +1238,7 @@ Supplier.create(
 
 # ---------------------------------------------------------------------------
 # Continue the pattern for numbers 36 and beyond, replacing "35" with the desired number.
-
+puts "creating supplier 36"
 # user_supplier_spain_36
 user_supplier_country_36 = "Italy"
 user_supplier_name_36 = "Milanese Textile Excellence"
@@ -1268,7 +1272,7 @@ Supplier.create(
 # Continue the pattern for numbers 37 and beyond, replacing "36" with the desired number.
 
 # E. - EGYPT SUPPLIERS ----------
-
+puts "creating supplier 37"
 # user_supplier_spain_37
 user_supplier_country_37 = "Egypt"
 user_supplier_name_37 = "Luxor Fabrics"
@@ -1300,7 +1304,7 @@ Supplier.create(
 
 # ---------------------------------------------------------------------------
 # Continue the pattern for numbers 38 and beyond, replacing "37" with the desired number.
-
+puts "creating supplier 38"
 # user_supplier_spain_38
 user_supplier_country_38 = "Egypt"
 user_supplier_name_38 = "Artisanal Fabrics of Alexandria"
@@ -1332,7 +1336,7 @@ Supplier.create(
 
 # ---------------------------------------------------------------------------
 # Continue the pattern for numbers 39 and beyond, replacing "38" with the desired number.
-
+puts "creating supplier 39"
 # user_supplier_spain_39
 user_supplier_country_39 = "Egypt"
 user_supplier_name_39 = "Elegant Threads of Giza"
@@ -1364,7 +1368,7 @@ Supplier.create(
 
 # ---------------------------------------------------------------------------
 # Continue the pattern for numbers 40 and beyond, replacing "39" with the desired number.
-
+puts "creating supplier 40"
 # user_supplier_spain_40
 user_supplier_country_40 = "Egypt"
 user_supplier_name_40 = "Egyptian Sewing Artisans"
@@ -1399,7 +1403,7 @@ Supplier.create(
 
 # F. - TURKEY SUPPLIERS ---------------------------------------
 
-
+puts "creating supplier 41"
 # user_supplier_spain_41
 user_supplier_country_41 = "Turkey"
 user_supplier_name_41 = "Anatolian Textile Creations"
@@ -1431,7 +1435,7 @@ Supplier.create(
 
 # ---------------------------------------------------------------------------
 # Continue the pattern for numbers 42 and beyond, replacing "41" with the desired number.
-
+puts "creating supplier 42"
 # user_supplier_spain_42
 user_supplier_country_42 = "Turkey"
 user_supplier_name_42 = "Mediterranean Innovation Textiles"
@@ -1463,7 +1467,7 @@ Supplier.create(
 
 # ---------------------------------------------------------------------------
 # Continue the pattern for numbers 43 and beyond, replacing "42" with the desired number.
-
+puts "creating supplier 43"
 # user_supplier_spain_43
 user_supplier_country_43 = "Turkey"
 user_supplier_name_43 = "Ankara Silk Craftsmen"
@@ -1496,7 +1500,7 @@ Supplier.create(
 # ---------------------------------------------------------------------------
 # Continue the pattern for numbers 44 and beyond, replacing "43" with the desired number.
 
-
+puts "creating supplier 44"
 # user_supplier_spain_44
 user_supplier_country_44 = "Turkey"
 user_supplier_name_44 = "Turkish Textile Artisans Ltd."
@@ -1531,7 +1535,7 @@ Supplier.create(
 
 # G. - BANGLADESH SUPPLIERS -----------------------------------------
 
-
+puts "creating supplier 45"
 # user_supplier_spain_45
 user_supplier_country_45 = "Bangladesh"
 user_supplier_name_45 = "Bangladesh Textile Innovations Ltd."
@@ -1563,7 +1567,7 @@ Supplier.create(
 
 # ---------------------------------------------------------------------------
 # Continue the pattern for numbers 46 and beyond, replacing "45" with the desired number.
-
+puts "creating supplier 46"
 # user_supplier_spain_46
 user_supplier_country_46 = "Bangladesh"
 user_supplier_name_46 = "Creative Textiles Bangladesh"
@@ -1595,7 +1599,7 @@ Supplier.create(
 
 # ---------------------------------------------------------------------------
 # Continue the pattern for numbers 47 and beyond, replacing "46" with the desired number.
-
+puts "creating supplier 47"
 # user_supplier_spain_47
 user_supplier_country_47 = "Bangladesh"
 user_supplier_name_47 = "Sylhet Creative Fabrics"
@@ -1627,7 +1631,7 @@ Supplier.create(
 
 # ---------------------------------------------------------------------------
 # Continue the pattern for numbers 48 and beyond, replacing "47" with the desired number.
-
+puts "creating supplier 48"
 # user_supplier_spain_48
 user_supplier_country_48 = "Bangladesh"
 user_supplier_name_48 = "Sustainable Fashion in Comilla"
@@ -1661,7 +1665,7 @@ Supplier.create(
 # Continue the pattern for numbers 49 and beyond, replacing "48" with the desired number.
 
 # H. - CHINA SUPPLIERS ----------
-
+puts "creating supplier 49"
 # user_supplier_spain_49
 user_supplier_country_49 = "China"
 user_supplier_name_49 = "Guangzhou Crafted Textiles"
@@ -1693,7 +1697,7 @@ Supplier.create(
 
 # ---------------------------------------------------------------------------
 # Continue the pattern for numbers 50 and beyond, replacing "49" with the desired number.
-
+puts "creating supplier 50"
 # user_supplier_spain_50
 user_supplier_country_50 = "China"
 user_supplier_name_50 = "Beijing Fabrics"
@@ -1724,7 +1728,7 @@ Supplier.create(
 
 # ---------------------------------------------------------------------------
 # Continue the pattern for numbers 51 and beyond, replacing "50" with the desired number.
-
+puts "creating supplier 51"
 # user_supplier_spain_51
 user_supplier_country_51 = "China"
 user_supplier_name_51 = "Hangzhou Textile Art"
@@ -1756,7 +1760,7 @@ Supplier.create(
 
 # ---------------------------------------------------------------------------
 # Continue the pattern for numbers 52 and beyond, replacing "51" with the desired number.
-
+puts "creating supplier 52"
 # user_supplier_spain_52
 user_supplier_country_52 = "China"
 user_supplier_name_52 = "Pearl River Textiles"
@@ -1788,7 +1792,7 @@ Supplier.create(
 
 # ---------------------------------------------------------------------------
 # Continue the pattern for numbers 53 and beyond, replacing "52" with the desired number.
-
+puts "creating supplier 53"
 # I. - FRANCE SUPPLIERS ----------
 
 
@@ -1823,7 +1827,7 @@ Supplier.create(
 
 # ---------------------------------------------------------------------------
 # Continue the pattern for numbers 54 and beyond, replacing "53" with the desired number.
-
+puts "creating supplier 54"
 # user_supplier_spain_54
 user_supplier_country_54 = "France"
 user_supplier_name_54 = "Riviera Textiles"
@@ -1855,7 +1859,7 @@ Supplier.create(
 
 # ---------------------------------------------------------------------------
 # Continue the pattern for numbers 55 and beyond, replacing "54" with the desired number.
-
+puts "creating supplier 55"
 # user_supplier_spain_55
 user_supplier_country_55 = "France"
 user_supplier_name_55 = "Alsace Silk Studios"
@@ -1887,7 +1891,7 @@ Supplier.create(
 
 # ---------------------------------------------------------------------------
 # Continue the pattern for numbers 56 and beyond, replacing "55" with the desired number.
-
+puts "creating supplier 56"
 # user_supplier_spain_56
 user_supplier_country_56 = "France"
 user_supplier_name_56 = "French LoomCraft"
@@ -1921,7 +1925,7 @@ Supplier.create(
 # Continue the pattern for numbers 57 and beyond, replacing "56" with the desired number.
 
 # J. - PERU SUPPLIERS ----------
-
+puts "creating supplier 57"
 # user_supplier_spain_57
 user_supplier_country_57 = "Peru"
 user_supplier_name_57 = "Puno Cashmere Crafts"
@@ -1953,7 +1957,7 @@ Supplier.create(
 
 # ---------------------------------------------------------------------------
 # Continue the pattern for numbers 58 and beyond, replacing "57" with the desired number.
-
+puts "creating supplier 58"
 # user_supplier_spain_58
 user_supplier_country_58 = "Peru"
 user_supplier_name_58 = "Cashmere Haven Peru"
@@ -1985,7 +1989,7 @@ Supplier.create(
 
 # ---------------------------------------------------------------------------
 # Continue the pattern for numbers 59 and beyond, replacing "58" with the desired number.
-
+puts "creating supplier 59"
 # user_supplier_spain_59
 user_supplier_country_59 = "Peru"
 user_supplier_name_59 = "Cashmere Sewing Artisans"
@@ -2017,11 +2021,11 @@ Supplier.create(
 
 # ---------------------------------------------------------------------------
 # Continue the pattern for numbers 60 and beyond, replacing "59" with the desired number.
-
+puts "creating supplier 60"
 # user_supplier_spain_60
 user_supplier_country_60 = "Peru"
 user_supplier_name_60 = "Sustainable Cashmere Couture"
-user_supplier_address_60 = Faker::Address.street_address,
+user_supplier_address_60 = Faker::Address.street_address
 user_supplier_description_60 = "Sustainable Cashmere Couture, based in the captivating landscapes of Peru, provides textiles at an affordable price point, making it a practical choice for creators. Sustainability is considered, with a rating of 3, offering responsible material options. While specific address details are not provided, you can trust Sustainable Cashmere Couture to supply a variety of textiles that cater to your creative needs in Peru."
 user_supplier_price_60 = "€"
 user_supplier_sus_60 = 3
@@ -2061,7 +2065,7 @@ materials.each do |material_name|
   Material.create!(name: material_name)
 end
 
-(1..60).each do |i|
+(Supplier.first.id..Supplier.last.id).each do |i|
   5.times do
     SupplierMaterial.create(
       material_id: rand(1..20),
@@ -2076,17 +2080,19 @@ puts "Materials have been created"
 
 
 # favorite
-
+puts "favorite 1 - isa"
 Favorite.create(
   brand_id: Brand.first.id,
   supplier_id: Supplier.first.id,
 )
 
+puts "favorite 2"
 Favorite.create(
   brand_id: Brand.first.id,
   supplier_id: Supplier.second.id,
 )
 
+puts "favorite 3"
 Favorite.create(
   brand_id: Brand.second.id,
   supplier_id: Supplier.second.id,
@@ -2100,7 +2106,7 @@ puts "Favorites have been created"
 # seeds for Graphs
 
 # project 1
-
+puts "project 1.."
 my_project_1 = Project.create(
   brand_id: Brand.first.id,
   supplier_id: Supplier.first.id,
@@ -2122,7 +2128,7 @@ Product.create(
 )
 
 # project 2
-
+puts "project 2.."
 my_project_2 = Project.create(
   brand_id: Brand.first.id,
   supplier_id: Supplier.first.id,
@@ -2142,7 +2148,7 @@ Product.create(
   quantity_l: rand(1..10),
   quantity_xl: rand(1..10)
 )
-
+puts "project 3.."
 # project 3
 my_project_3 = Project.create(
   brand_id: Brand.first.id,
@@ -2166,6 +2172,7 @@ Product.create(
 )
 
 # project 4
+puts "project 4.."
 my_project_4 = Project.create(
   brand_id: Brand.first.id,
   supplier_id: Supplier.first.id,
@@ -2187,6 +2194,7 @@ Product.create(
 )
 
 # project 5
+puts "project 5.."
 my_project_5 = Project.create(
   brand_id: Brand.first.id,
   supplier_id: Supplier.first.id,
@@ -2211,43 +2219,49 @@ puts "Projects have been created"
 
 
 # 8 users for suppliers
-
+puts "user 1-suppliers"
 user_5 = User.create(
   email: Faker::Internet.email,
   password: "123456",
   user_type: "supplier",
 )
 
+puts "user 2-suppliers"
 user_6 = User.create(
   email: Faker::Internet.email,
   password: "123456",
   user_type: "supplier",
 )
 
+puts "user 3-suppliers"
 user_7 = User.create(
   email: Faker::Internet.email,
   password: "123456",
   user_type: "supplier",
 )
 
+puts "user 4-suppliers"
 user_8 = User.create(
   email: Faker::Internet.email,
   password: "123456",
   user_type: "supplier",
 )
 
+puts "user 5-suppliers"
 user_9 = User.create(
   email: Faker::Internet.email,
   password: "123456",
   user_type: "supplier",
 )
 
+puts "user 6-suppliers"
 user_10 = User.create(
   email: Faker::Internet.email,
   password: "123456",
   user_type: "supplier",
 )
 
+puts "user 7-suppliers"
 user_11 = User.create(
   email: Faker::Internet.email,
   password: "123456",
@@ -2258,7 +2272,7 @@ puts "users for suppliers have been created"
 
 
 # 8 suppliers
-
+puts "suppliers 1"
 Supplier.create(
   name: Faker::Company.name,
   address: Faker::Address.street_address,
@@ -2268,10 +2282,11 @@ Supplier.create(
   phone_number: Faker::PhoneNumber.cell_phone,
   price_rating: ["€", "€€", "€€€"].sample,
   sustainability_rating: rand(1..5),
-  minimum_quantity: rand(1..1000),
+  minimum_quantity: rand(300..750).round(-1),
   user: user_5
 )
 
+puts "suppliers 2"
 Supplier.create(
   name: Faker::Company.name,
   address: Faker::Address.street_address,
@@ -2281,10 +2296,11 @@ Supplier.create(
   phone_number: Faker::PhoneNumber.cell_phone,
   price_rating: ["€", "€€", "€€€"].sample,
   sustainability_rating: rand(1..5),
-  minimum_quantity: rand(1..1000),
+  minimum_quantity: rand(300..750).round(-1),
   user: user_6
 )
 
+puts "suppliers 3"
 Supplier.create(
   name: Faker::Company.name,
   address: Faker::Address.street_address,
@@ -2294,10 +2310,11 @@ Supplier.create(
   phone_number: Faker::PhoneNumber.cell_phone,
   price_rating: ["€", "€€", "€€€"].sample,
   sustainability_rating: rand(1..5),
-  minimum_quantity: rand(1..1000),
+  minimum_quantity: rand(300..750).round(-1),
   user: user_7
 )
 
+puts "suppliers 4"
 Supplier.create(
   name: Faker::Company.name,
   address: Faker::Address.street_address,
@@ -2307,10 +2324,11 @@ Supplier.create(
   phone_number: Faker::PhoneNumber.cell_phone,
   price_rating: ["€", "€€", "€€€"].sample,
   sustainability_rating: rand(1..5),
-  minimum_quantity: rand(1..1000),
+  minimum_quantity: rand(300..750).round(-1),
   user: user_8
 )
 
+puts "suppliers 5"
 Supplier.create(
   name: Faker::Company.name,
   address: Faker::Address.street_address,
@@ -2320,10 +2338,11 @@ Supplier.create(
   phone_number: Faker::PhoneNumber.cell_phone,
   price_rating: ["€", "€€", "€€€"].sample,
   sustainability_rating: rand(1..5),
-  minimum_quantity: rand(1..1000),
+  minimum_quantity: rand(300..750).round(-1),
   user: user_9
 )
 
+puts "suppliers 6"
 Supplier.create(
   name: Faker::Company.name,
   address: Faker::Address.street_address,
@@ -2333,10 +2352,11 @@ Supplier.create(
   phone_number: Faker::PhoneNumber.cell_phone,
   price_rating: ["€", "€€", "€€€"].sample,
   sustainability_rating: rand(1..5),
-  minimum_quantity: rand(1..1000),
+  minimum_quantity: rand(300..750).round(-1),
   user: user_10
 )
 
+puts "suppliers 7"
 Supplier.create(
   name: Faker::Company.name,
   address: Faker::Address.street_address,
@@ -2346,7 +2366,7 @@ Supplier.create(
   phone_number: Faker::PhoneNumber.cell_phone,
   price_rating: ["€", "€€", "€€€"].sample,
   sustainability_rating: rand(1..5),
-  minimum_quantity: rand(1..1000),
+  minimum_quantity: 750,
   user: user_11
 )
 
